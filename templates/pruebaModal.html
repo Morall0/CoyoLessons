@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../statics/styles/modal.css">
+    <title>Modal</title>
+    <link rel="stylesheet" href="../libs/fontawesome-free-5.15.3-web/css/all.css">
+    <script src="../libs/jquery/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <button id="crearCuenta">Crear cuenta</button>
+    <div id='miModal' class='modaluser'>
+        <div class='modal-contenidouser'>
+            <p id="modalhead">
+                Crear cuenta
+                <i id ="closeBtn" class="fas fa-times-circle fa-2x"></i>
+            </p>
+            <p id="modalcont">
+                <form>
+                    <label for="numcuenta">Numero de cuenta
+                        <input id="numcuenta" type="text" name="numcuenta" pattern='^((3(19|20|21))|(1(16|17|18)))\d{6}$' title="Introduce un número de cuenta válido" required>
+                    </label>
+                    <br>
+                    <label for="nombre">Nombre
+                        <input id="nombre" type="text" name="nombre" pattern="([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú](\s)?){2,30}" title="Ingresa tu(s) nombre(s)" required>
+                    </label>
+                    <br>
+                    <label for="apPaterno">Apellido paterno
+                        <input id="apPaterno" type="text">
+                    </label>
+                    <br>
+                    <label for="apMaterno">Apellido materno
+                        <input id="apMaterno" type="text">
+                    </label>
+                    <br>
+                    <label for="correo">Correo electrónico
+                        <input id="mail" type="text">
+                    </label>
+                    <br>
+                    <label for="tel">Teléfono
+                        <input id="text" type="numer">
+                    </label>
+                    <br>
+                    <label for="fecha">Fecha de nacimiento
+                        <input type="date" min="01-01-1980" max="01-01-2006">
+                    </label>
+                    <br>
+                    <select name="" id="año">
+                        <li>hola</li>
+                    </select>
+                    <select name="" id="materias">
+                        <li>hola</li>
+                    </select>
+                    <select name="" id="Horario">
+                        <li>hola</li>
+                    </select>
+                    <button type="submit">Hola</button>
+                </form>
+            </p>
+        </div>
+    </div>
+    <script src="../dynamics/js/modal.js"></script>
+</body>
+</html>

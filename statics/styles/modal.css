@@ -1,0 +1,45 @@
+body{
+    font-family: sans-serif;
+    background-color: aquamarine
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#miModal{
+    display: none;
+    background-color: rgba(0,0,0,.8);
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    opacity:1;
+    pointer-events:auto;
+}
+
+.modal-contenidouser{
+    background-color:white;
+    width:400px;
+    padding-bottom: 10px;
+    margin: 20% auto;
+    position: relative;
+    border-radius: 10px;
+}
+
+#modalhead{
+    background-color:cyan; 
+    border-top-left-radius: 9px; 
+    border-top-right-radius: 9px;
+}
+
+#closeBtn{
+    color: blue;
+    cursor: pointer;
+}
+
+
+
