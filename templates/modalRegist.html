@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../statics/styles/modal.css">
+    <title>Modal</title>
+    <link rel="stylesheet" href="../libs/fontawesome-free-5.15.3-web/css/all.css">
+    <script src="../libs/jquery/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <button id="crearCuenta">Registrarse</button>
+    <div id='miModal'>
+        <div class='modal-contenidouser'>
+            <div id="modalhead">
+                <span>Crear Cuenta</span>
+                <i id ="closeBtn" class="fas fa-times-circle fa-2x"></i>
+            </div>
+            <p id="modalcont">
+                <form>
+                    <label for="numcuenta">Numero de cuenta
+                        <input id="numcuenta" type="text" name="numcuenta" pattern='^((3(19|20|21))|(1(16|17|18)))\d{6}$' title="Introduce un número de cuenta válido" required>
+                    </label>
+                    <br><br>
+                    <label for="nombre">Nombre
+                        <input id="nombre" type="text" name="nombre" pattern="([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú](\s)?){2,30}" title="Ingresa tu(s) nombre(s)" required>
+                    </label>
+                    <br><br>
+                    <label for="apPaterno">Apellido paterno
+                        <input id="apPaterno" type="text" name="apPaterno" pattern="^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$" title="Introduce tu apellido paterno">
+                    </label>
+                    <br><br>
+                    <label for="apMaterno">Apellido materno
+                        <input id="apMaterno" type="text" pattern="^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$" title="Introduce tu apellido materno">
+                    </label>
+                    <br><br>
+                    <label for="correo">Correo electrónico
+                        <input id="mail" type="text">
+                    </label>
+                    <br><br>
+                    <label for="tel">Teléfono
+                        <input id="tel" type="numer" pattern="^((55|56)(\d{8}))$" title="Introduce tu número telefónico">
+                    </label>
+                    <br><br>
+                    <label for="fecha">Fecha de nacimiento
+                        <label for="dia">Día
+                            <input id="dia" name="dia" type="number" min="1" max="31">
+                        </label>
+                        <label for="mes">Mes
+                            <input id="mes" name="mes" type="number" min="1" max="12">
+                        </label>
+                        <label for="año">Año
+                            <input id="año" name="año" type="number" min="1990" max="2005">
+                        </label>
+                    </label>
+                    <br><br>
+                    <label for="cursando">Año que estas cursando
+                        <select name="año" id="cursando">
+                            <option>4to</option>
+                            <option>5to</option>
+                            <option>5to</option>
+                        </select>
+                    </label>
+                    <br><br>
+                    <label for="materias">Materias que dominas
+                        <select name="materias" id="materias">
+                            <option>lista</option>
+                        </select>
+                    </label>
+                    <br><br>
+                    <label for="horario">Horario de disponibilidad
+                        <select name="horario" id="Horario">
+                            <option>hola</option>
+                        </select>
+                    </label>
+                    <br><br>
+                    <label for="contraseña">Contraseña
+                        <input id="contraseña" name="contraseña" type="password" 
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){10,30}$" 
+                        title="Itroduce una contraseña de 8 a 10 caracteres, con al menos un caracter especial, un número, una minúscula y una mayúscula">
+                    </label>
+                    <br><br>
+                    <button type="submit">Prueba</button>
+                </form>
+            </p>
+        </div>
+    </div>
+    <script src="../dynamics/js/modal.js"></script>
+</body>
+</html>

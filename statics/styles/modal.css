@@ -1,9 +1,6 @@
 body{
     font-family: sans-serif;
-    background-color: aquamarine
-}
-
-*{
+    background-color: aquamarine;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -23,23 +20,33 @@ body{
 
 .modal-contenidouser{
     background-color:white;
-    width:400px;
+    width:max-content;
+    height: max-content;
     padding-bottom: 10px;
-    margin: 20% auto;
+    margin: 7% auto;
     position: relative;
     border-radius: 10px;
 }
 
 #modalhead{
+    display: flex;
+    align-items: center;
     background-color:cyan; 
     border-top-left-radius: 9px; 
     border-top-right-radius: 9px;
 }
 
 #closeBtn{
+    margin-left: 73%;
     color: blue;
     cursor: pointer;
 }
+
+label{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 
 
 
