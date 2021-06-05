@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     $("#crearCuenta").click(()=>{
         $("#miModal").css("display", "block");
     });
@@ -30,7 +31,7 @@ $(document).ready(function(){
         });
         peticion.done(function(resp){
             $("#HorarioHora").html(resp);
-            alert(resp);
+            //alert(resp);
         })
         peticion.fail(function(resp){
             alert("falle");
@@ -60,10 +61,10 @@ $(document).ready(function(){
 
 
         //SI NO FUNCIONA, DESCOMENTAR ESTO.
-        /*peticion.done(function(resp){
-            alert("SI FUNCIONA"+resp);
+        /*peticion.done(function(resp1){
+            alert("SI FUNCIONA"+resp1);
         })
-        peticion.fail(function(resp){
+        peticion.fail(function(resp1){
             alert("falle");
         })*/
     })

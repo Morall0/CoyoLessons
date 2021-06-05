@@ -1,7 +1,7 @@
 <?php
     include('./configDB.php');
     $conexion=conectdb();
-    $grado="";
+    
     function materia($x, $y, $conexion){
         if($y==1516)
             $materia="SELECT * FROM MATERIA WHERE id_materia BETWEEN $x AND $y OR id_materia LIKE '%E%' OR id_materia BETWEEN 2000 AND 2226";
@@ -46,13 +46,12 @@
         $hora=$_POST['dato9'];
         $contra=$_POST['dato10'];
         
-        $base="INSERT INTO Usuario VALUES($num_cuenta,'$nombre','$correo', '$tel','$nacimiento', '$grado', 0, '$contra', 'B', 'E', 'user.png')"; 
+        $base="INSERT INTO Usuario VALUES($num_cuenta,'$nombre','$correo', '$tel','$nacimiento', '$grado', 0, '$contra', 'B', 'E', 'user.png');"; 
         $respuesta2 = mysqli_query($conexion, $base);
-        
 
         //SI NO FUNCIONA, DESCOMENTAR ESTO.
         /*if($respuesta2){
-            echo $respuesta2;
+            echo "RESP JS"+$respuesta2;
         }
         else{
             //echo $respuesta2;
@@ -65,6 +64,7 @@
     else{
         echo "nada";
     }
+    mysqli_close($conexion);
 
 
 

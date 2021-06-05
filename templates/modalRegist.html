@@ -28,36 +28,38 @@
                     </label>
                     <br><br>
                     <label for="apPaterno">Apellido paterno
-                        <input id="apPaterno" type="text" name="apPaterno" placeholder="Apellido paterno" pattern="^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$" title="Introduce tu apellido paterno">
+                        <input id="apPaterno" type="text" name="apPaterno" placeholder="Apellido paterno" pattern="^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$" title="Introduce tu apellido paterno" required>
                     </label>
                     <br><br>
                     <label for="apMaterno">Apellido materno
-                        <input id="apMaterno" type="text" name="apMaterno" placeholder="Apellido materno" pattern="^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$" title="Introduce tu apellido materno">
+                        <input id="apMaterno" type="text" name="apMaterno" placeholder="Apellido materno" pattern="^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$" title="Introduce tu apellido materno" required>
                     </label>
                     <br><br>
                     <label for="correo">Correo electrónico
-                        <input id="correo" type="mail" name="correo" placeholder="Correo electrónico">
+                        <input id="correo" type="text" name="correo" placeholder="Correo electrónico" 
+                        pattern="^[\w\.\-]{4,28}@(((g|hot)mail|outlook|live)\.com|(comunidad|alumno\.enp|enp)\.unam\.mx)|\.mx$" 
+                        title="Introduce un correo válido" required>
                     </label>
                     <br><br>
                     <label for="tel">Teléfono
-                        <input id="tel" type="numer" name="tel" placeholder="Teléfono" pattern="^((55|56)(\d{8}))$" title="Introduce tu número telefónico">
+                        <input id="tel" type="numer" name="tel" placeholder="Teléfono" pattern="^((55|56)(\d{8}))$" title="Introduce tu número telefónico" required>
                     </label>
                     <br><br>
                     <label for="fecha">Fecha de nacimiento
                         <label for="dia">Día
-                            <input id="dia" name="dia" placeholder="dd" type="number" min="1" max="31">
+                            <input id="dia" name="dia" placeholder="dd" type="number" min="1" max="31" required>
                         </label>
                         <label for="mes">Mes
-                            <input id="mes" name="mes" placeholder="mm" type="number" min="1" max="12">
+                            <input id="mes" name="mes" placeholder="mm" type="number" min="1" max="12" required>
                         </label>
                         <label for="año">Año
-                            <input id="año" name="año" placeholder="YYYY" type="number" min="1990" max="2005">
+                            <input id="año" name="año" placeholder="YYYY" type="number" min="1990" max="2005" required>
                         </label>
                     </label>
                     <br><br>
                     <label for="cursando">
-                        <select name="año" id="cursando">
-                            <option selected disabled>Año que cursas actualmente</option>
+                        <select name="año" id="cursando" required>
+                            <option selected disabled hidden>Año que cursas actualmente</option>
                             <option value='C'>4to</option>
                             <option value='Q'>5to</option>
                             <option value='S'>6to</opt6on>
@@ -65,11 +67,11 @@
                     </label>
                     <br><br>
                     <label for="materias">Materias a impartir
-                        <select name="materias" id="materias"></select>
+                        <select name="materias" id="materias" required></select>
                     </label>
                     <br><br>
                     <label for="horario">Horario de disponibilidad
-                        <select name="horario" id="HorarioDia">
+                        <select name="horario" id="HorarioDia" required>
                             <option selected disabled>Día</option>
                             <option value="L">Lunes</option>
                             <option value="Ma">Martes</option>
@@ -77,16 +79,19 @@
                             <option value="J">Jueves</option>
                             <option value="V">Viernes</option>
                         </select>
-                        <select name="horario" id="HorarioHora"></select>
+                        <select name="horario" id="HorarioHora" required>
+                            <option selected disabled hidden>Hora</option>
+                        </select>
                     </label>
                     <br><br>
                     <label for="contraseña">Contraseña
                         <input id="contraseña" name="contraseña" type="password" 
                         pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!%*?&])([A-Za-z\d$#@$!%*?&]|[^ ]){10,30}$" 
-                        title="Introduce una contraseña de 10 a 20 caracteres, con al menos un caracter especial, un número, una minúscula y una mayúscula">
+                        title="Introduce una contraseña de 10 a 30 caracteres, con al menos un caracter especial, un número, una minúscula y una mayúscula" required>
+                        <p class="legenda">Mímino 10 caracteres con al menos una mayúscula, una minúscula, un numero y un caracter especial.</p>
                     </label>
                     <br><br>
-                    <button id="enviar" type="submit" >Enviar</button>
+                    <button id="enviar" type="submit">Enviar</button>
                 </form>
             </p>
         </div>
