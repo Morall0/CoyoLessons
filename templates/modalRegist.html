@@ -18,7 +18,7 @@
                 <i id ="closeBtn" class="fas fa-times-circle fa-2x"></i>
             </div>
             <p id="modalcont">
-                <form>
+                <form id="cuenta" method="POST">
                     <label for="numcuenta">Numero de cuenta
                         <input id="numcuenta" type="text" name="numcuenta" placeholder="No. Cuenta" pattern='^((3(19|20|21))|(1(16|17|18)))\d{6}$' title="Introduce un número de cuenta válido" required>
                     </label>
@@ -86,7 +86,7 @@
                         title="Introduce una contraseña de 10 a 20 caracteres, con al menos un caracter especial, un número, una minúscula y una mayúscula">
                     </label>
                     <br><br>
-                    <button id="enviar" type="submit">Enviar</button>
+                    <button id="enviar" type="submit" >Enviar</button>
                 </form>
             </p>
         </div>

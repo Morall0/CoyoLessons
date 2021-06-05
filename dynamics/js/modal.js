@@ -36,67 +36,34 @@ $(document).ready(function() {
             alert("falle");
         })
     });
-    $("#enviar").on("submit",()=>{
-        let num_cuenta=$("#numcuenta");
-        let nombre=$("#nombre");
-        let apPaterno=$("#apPaterno");
-        let apMaterno=$("#apMaterno");
-        let correo=$("#correo");
-        let tel=$("#tel");
-        let dia=$("#dia");
-        let mes=$("#mes");
-        let año=$("#año");
-        let materias=$("#materias");
+    $("#cuenta").on("submit",()=>{
+        let num_cuenta=$("#numcuenta").val();
+        let nombre=$("#nombre").val();
+        let apPaterno=$("#apPaterno").val();
+        let apMaterno=$("#apMaterno").val();
+        let correo=$("#correo").val();
+        let tel=$("#tel").val();
+        let dia=$("#dia").val();
+        let mes=$("#mes").val();
+        let año=$("#año").val();
+        let materias=$("#materias").val();
         let hora= $("#HorarioHora").val();
-        let contra=$("#contraseña")
+        let contra=$("#contraseña").val();
         let peticion=$.ajax({
-            url:"../php/consultaModal.php",
-            data:{dato3:num_cuenta, dato4:nombre, dato5:apPaterno, dato6:apMaterno, dato7: correo, dato8:tel, dato9:dia,
-                 dato10:mes, dato11:año, dato12:materias,dato13:hora, dato14:contra},
+            url:"../dynamics/php/consultaModal.php",
+            data:{dato1:cursando, dato2:dsemana, dato3:num_cuenta, dato4:nombre+" "+apPaterno+" "+apMaterno, dato5:correo, dato6:tel, dato7:año+"-"+mes+"-"+dia,
+                 dato8:materias, dato9:hora, dato10:contra},
             method:"POST"
         });
 
         peticion.done(function(resp){
-            $(".tablero").html(resp);
-        })
-        peticion.always(function(resp){
-            alert("datos enviados");
+            alert(resp);
         })
         peticion.fail(function(resp){
             alert("falle");
         })
     })
-})
-    /*
-    $("#enviar").on("submit",()=>{
-        let num_cuenta=$("#numcuenta");
-        let nombre=$("#nombre");
-        let apPaterno=$("#apPaterno");
-        let apMaterno=$("#apMaterno");
-        let nombre=$("#correo");
-        let tel=$("#tel");
-        let dia=$("#dia");
-        let mes=$("#mes");
-        let año=$("#año");
-        let cursando= $("#cursando").val();
-        let name= $(".nombre").val();
-        alert(num);
-        let peticion=$.ajax({
-            url:"../php/consultaModal.php",
-            data:{dato1:cuenta, dato2:name},
-            method:"POST"
-        });
+});
 
-        peticion.done(function(resp){
-            $(".tablero").html(resp);
-        })
-        peticion.always(function(resp){
-            alert("datos enviados");
-        })
-        peticion.fail(function(resp){
-            alert("falle");
-        })
-    })
-    */
 
 
