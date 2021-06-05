@@ -58,31 +58,35 @@
                     <label for="cursando">
                         <select name="año" id="cursando">
                             <option selected disabled>Año que cursas actualmente</option>
-                            <option>4to</option>
-                            <option>5to</option>
-                            <option>5to</option>
+                            <option value='C'>4to</option>
+                            <option value='Q'>5to</option>
+                            <option value='S'>6to</opt6on>
                         </select>
                     </label>
                     <br><br>
                     <label for="materias">Materias a impartir
-                        <select name="materias" id="materias">
-                            <option>lista</option>
-                        </select>
+                        <select name="materias" id="materias"></select>
                     </label>
                     <br><br>
                     <label for="horario">Horario de disponibilidad
-                        <select name="horario" id="Horario">
-                            <option>hola</option>
+                        <select name="horario" id="HorarioDia">
+                            <option selected disabled>Día</option>
+                            <option value="L">Lunes</option>
+                            <option value="Ma">Martes</option>
+                            <option value="Mi">Miércoles</option>
+                            <option value="J">Jueves</option>
+                            <option value="V">Viernes</option>
                         </select>
+                        <select name="horario" id="HorarioHora"></select>
                     </label>
                     <br><br>
                     <label for="contraseña">Contraseña
                         <input id="contraseña" name="contraseña" type="password" 
                         pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){10,30}$" 
-                        title="Itroduce una contraseña de 8 a 10 caracteres, con al menos un caracter especial, un número, una minúscula y una mayúscula">
+                        title="Introduce una contraseña de 10 a 20 caracteres, con al menos un caracter especial, un número, una minúscula y una mayúscula">
                     </label>
                     <br><br>
-                    <button type="submit">Prueba</button>
+                    <button id="enviar" type="submit">Enviar</button>
                 </form>
             </p>
         </div>
