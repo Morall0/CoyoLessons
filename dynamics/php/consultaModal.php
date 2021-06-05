@@ -28,8 +28,8 @@
     }
     if(isset($_POST['dato2'])){
         $horario="SELECT * FROM Hora"; 
-        $respuesta= mysqli_query($conexion, $horario);
-        while($row = mysqli_fetch_array($respuesta))
+        $respuesta1= mysqli_query($conexion, $horario);
+        while($row = mysqli_fetch_array($respuesta1))
         {
             echo "<option value=".$row[0].">".$row[1]."</option>";
         }
@@ -42,20 +42,22 @@
         $correo=$_POST['dato5'];
         $tel=$_POST['dato6'];
         $nacimiento=$_POST['dato7'];
-        $materias=$_POST['dato8'];
+        $materias= $_POST['dato8'];
         $hora=$_POST['dato9'];
         $contra=$_POST['dato10'];
- 
-        $base="INSERT INTO Usuario VALUES($num_cuenta,$nombre,$correo, $tel,$nacimiento, $grado, 0, $contra, 'B', 'E')"; 
-        $respuesta= mysqli_query($conexion, $base);
+        
+        $base="INSERT INTO Usuario VALUES($num_cuenta,'$nombre','$correo', '$tel','$nacimiento', '$grado', 0, '$contra', 'B', 'E', 'user.png')"; 
+        $respuesta2 = mysqli_query($conexion, $base);
+        
 
-        if($respuesta){
-            echo $respuesta;
+        //SI NO FUNCIONA, DESCOMENTAR ESTO.
+        /*if($respuesta2){
+            echo $respuesta2;
         }
         else{
-            echo $respuesta;
-            echo "no exit";
-        }
+            //echo $respuesta2;
+            echo "no HUBO exito";
+        }*/
 
 
 

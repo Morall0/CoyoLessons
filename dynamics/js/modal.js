@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function(){
     $("#crearCuenta").click(()=>{
         $("#miModal").css("display", "block");
     });
@@ -37,6 +37,8 @@ $(document).ready(function() {
         })
     });
     $("#cuenta").on("submit",()=>{
+        let cursando= $("#cursando").val();
+        let dsemana= $("#HorarioDia").val();
         let num_cuenta=$("#numcuenta").val();
         let nombre=$("#nombre").val();
         let apPaterno=$("#apPaterno").val();
@@ -56,12 +58,14 @@ $(document).ready(function() {
             method:"POST"
         });
 
-        peticion.done(function(resp){
-            alert(resp);
+
+        //SI NO FUNCIONA, DESCOMENTAR ESTO.
+        /*peticion.done(function(resp){
+            alert("SI FUNCIONA"+resp);
         })
         peticion.fail(function(resp){
             alert("falle");
-        })
+        })*/
     })
 });
 
