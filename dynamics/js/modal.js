@@ -19,7 +19,7 @@ $(document).ready(function(){
             $("#materias").html(resp);
         })
         peticion.fail(function(resp){
-            alert("falle");
+            alert("falle1");
         })
     });
     $("#HorarioDia").on("change",()=>{
@@ -34,7 +34,7 @@ $(document).ready(function(){
             alert(resp);
         })
         peticion.fail(function(resp){
-            alert("falle");
+            alert("falle2");
         })
     });
     $("#cuenta").on("submit",()=>{
@@ -65,7 +65,7 @@ $(document).ready(function(){
             alert(resp1);
         })
         peticion.fail(function(resp1){
-            alert("falle");
+            alert("falle3");
         })
     })
 });

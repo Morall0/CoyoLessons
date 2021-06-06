@@ -48,7 +48,7 @@
         $hora=$_POST['dato9'];
         $contra=$_POST['dato10'];
         
-        $base="INSERT INTO Usuario VALUES($num_cuenta,'$nombre','$correo', '$tel','$nacimiento', '$grado', 0, '$contra', 'B', 'E', 'user.png');"; 
+        $base="INSERT INTO Usuario VALUES($num_cuenta,'$nombre','$correo', '$tel','$nacimiento', '$grado', 0, '$contra', 'B', 'E', 'user.png')"; 
         $respuesta2 = mysqli_query($conexion, $base);
 
         //SI NO FUNCIONA, DESCOMENTAR ESTO.
