@@ -64,7 +64,9 @@ $(document).ready(()=>{
                 $("#numcuenta").attr("placeholder","Este numero de cuenta ya está registrado");
                 $("#numcuenta").addClass("placehold");
             }
-            //$("#miModal").css("display", "none");
+            else{
+                $("#miModal").css("display", "none");
+            }
         });
         
         respuestas.fail((respuesta)=>{
