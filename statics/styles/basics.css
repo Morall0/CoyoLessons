@@ -13,6 +13,8 @@
     --azul: #C5EDFE;
     --morado: #AA93DF;
     --blanco: white;
+    --azulF: #505B73;
+    --azulHover: #6175a0;
 }
 body{
     background-color: #F1EFE3;
