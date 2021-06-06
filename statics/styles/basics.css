@@ -1,0 +1,19 @@
+/*=FUENTES
+---------------------------------------------*/
+@font-face {
+    font-family:"roboto";
+    src: url("../fonts/Roboto-Light.ttf");
+}
+/*=COLORES
+---------------------------------------------*/
+:root{
+    --rosa: #F197CD;
+    --amarillo: #FEFD97;
+    --carne: #FEC9A7;
+    --azul: #C5EDFE;
+    --morado: #AA93DF;
+    --blanco: white;
+}
+body{
+    background-color: #F1EFE3;
+}
