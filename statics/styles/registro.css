@@ -27,6 +27,7 @@ body{
     position: relative;
     height: 600px;
     width: 800px;
+    border-radius: 11px;
 }
 
 #modalhead{
@@ -154,6 +155,7 @@ p{
     height: 6%;
     border-radius: 8px;
     border-color: transparent;
+    cursor: pointer;
 }
 @media screen and (max-width: 1000px){
     .modal-contenidouser{

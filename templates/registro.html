@@ -76,7 +76,7 @@
                     <br><br>
                     <label for="horario"><p id="horarios">Horario de disponibilidad</p>
                         <select name="horario" id="HorarioDia" required>
-                            <option selected disabled><p>Día</p></option>
+                            <option selected value=""><p>Día</p></option>
                             <option value="L">Lunes</option>
                             <option value="Ma">Martes</option>
                             <option value="Mi">Miércoles</option>
@@ -84,15 +84,29 @@
                             <option value="V">Viernes</option>
                         </select>
                         <select name="horario" id="HorarioHora" required>
-                            <option selected disabled hidden><p>Hora</p></option>
+                            <option selected value=""><p>Hora</p></option>
+                            <option value="1">7:50-8:40</option>
+                            <option value="2">8:40-9:30</option>
+                            <option value="3">9:30-10:20</option>
+                            <option value="4">10:20-11:10</option>
+                            <option value="5">11:10-12:00</option>
+                            <option value="6">12:00-12:50</option>
+                            <option value="7">12:50-13:40</option>
+                            <option value="8">13:40-14:30</option>
+                            <option value="9">14:30-15:20</option>
+                            <option value="10">15:20-16:10</option>
+                            <option value="11">16:10-17:00</option>
+                            <option value="12">17:00-17:50</option>
+                            <option value="13">17:50-18:40</option>
+                            <option value="14">18:40-19:30</option>
                         </select>
                     </label>
                     <br><br>
                     <label for="contraseña">
                         <input id="contraseña" name="contraseña" type="password" placeholder='Contraseña' 
-                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!%*?&])([A-Za-z\d$#@$!%*?&]|[^ ]){10,30}$" 
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!\(\)/%*?&])([A-Za-z\d$#@$!\(\)/%*?&]|[^ ]){10,30}$" 
                         title="Introduce una contraseña de 10 a 30 caracteres, con al menos un caracter especial, un número, una minúscula y una mayúscula" required>
-                        <p class="legenda"><p id="caracteres">Mímino 10 carácteres, una mayúscula, una minúscula, un número y un carácter especial</p>
+                        <p id="caracteres">Mímino 10 caracteres, una mayúscula, una minúscula, un número y un caracter especial</p>
                     </label>
                     <br><br>
                     <button id="enviar" type="submit">Crear cuenta</button>
