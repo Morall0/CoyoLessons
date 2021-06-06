@@ -1,6 +1,6 @@
 body{
     font-family: sans-serif;
-    background-color: aquamarine;
+    background-color: white;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -32,8 +32,7 @@ body{
     display: flex;
     align-items: center;
     background-color:cyan; 
-    border-top-left-radius: 9px; 
-    border-top-right-radius: 9px;
+    
 }
 
 #closeBtn{
