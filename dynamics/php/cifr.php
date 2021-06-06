@@ -1,42 +1,30 @@
 <?php
 //define("PASSWORD", "textoahashear");
-define("HASH", "sha256");   //Este HASH se hace con una longitud de 64.
-define("METHOD", "chacha20"); 
-$password = "Amazul125???";
+define("METHOD", "chacha20");   //Esto encripta.
+$password = "contraSeña9?";    //Contraseña
 
 function sal(){
     $sal='';
     $char_sal = "abcdefghijklmnopqrstuvwxyzABZDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&/()=?";
     $longS = strlen($char_sal);
-    for($i=0; $i<10; $i++)
+    for($i=0; $i<5; $i++)
     {
         $sal .= $char_sal[rand(0, $longS - 1)];
     }
     return $sal;
 }
 
-function pimienta(){
-    $pimienta='';
-    $char_pim ="abcdefghijklmnopqrstuvwxyzABZDEFGHIJKLMNOPQRSTUVWXYZ";
-    $longP = strlen($char_pim);
-    for($j=0; $j<2; $j++)
-    {
-        $pimienta .= $char_pim[rand(0, $longP -1)];
-    }
-    return $pimienta;
-}
-
 //Varibales a las que se les asigna la sal y la pimienta.
 $salt = sal();
-$pepper = pimienta();
+$pepper = rand(0, 10);
 
-echo $password.'<br>';
-$password = $password.$salt.$pepper;    //Concatenación de la sal y la pimienta.
-echo $password.'<br>';
+echo $salt.'<br>';
 
-$key = openssl_digest($password, HASH);
+$key = password_hash($password.$salt.$pepper, PASSWORD_BCRYPT);
 $iv_len = openssl_cipher_iv_length(METHOD);
 $iv = openssl_random_pseudo_bytes($iv_len);
+
+$guardar_base = $key.$salt;
 
 $cifrado = openssl_encrypt(
     "Datos que queremos encriptar",
@@ -46,8 +34,27 @@ $cifrado = openssl_encrypt(
     $iv
 );
 
-echo $key;
+echo $key.'<br>';
 
+echo $guardar_base.'<br>';
+
+$sal_bd = substr($guardar_base,-5, 5);
+
+echo $sal_bd.'<br>';
+$key_solita = substr($guardar_base, 0, -5);
+echo $key_solita.'<br>';
+
+$contador=0;
+for($i=0; $i<10; $i++){
+    if(password_verify($password.$sal_bd.$i, $key_solita)){
+        $contador ++;
+    }
+}
+if($contador == 1){
+    echo "correcta";
+}
+
+//echo strlen($key);
 
 
 ?>

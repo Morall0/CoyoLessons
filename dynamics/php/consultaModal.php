@@ -1,5 +1,5 @@
 <?php
-    include('./configDB.php');
+    include('./config.php');
     $conexion=conectdb();
     
     function materia($x, $y, $conexion){
@@ -34,6 +34,8 @@
             echo "<option value=".$row[0].">".$row[1]."</option>";
         }
     }
+
+    //Registro de usuario.
     if(isset($_POST['dato3'])){
         $grado=$_POST['dato1'];
         $dsemana=$_POST['dato2'];
@@ -50,13 +52,13 @@
         $respuesta2 = mysqli_query($conexion, $base);
 
         //SI NO FUNCIONA, DESCOMENTAR ESTO.
-        /*if($respuesta2){
-            echo "RESP JS"+$respuesta2;
+        if($respuesta2){
+            echo "<p>REGISTRO EXITOSO</p>";
         }
         else{
             //echo $respuesta2;
             echo "no HUBO exito";
-        }*/
+        }
 
 
 
@@ -64,6 +66,7 @@
     else{
         echo "nada";
     }
+
     mysqli_close($conexion);
 
 
