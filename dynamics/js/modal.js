@@ -59,7 +59,14 @@ $(document).ready(()=>{
             if(respuesta == "REGISTRO EXITOSO"){
                 alert("location");
             }
-            $("#miModal").css("display", "none");
+            if(respuesta > 0){
+                $("#numcuenta").val("");
+                $("#numcuenta").attr("placeholder","Este numero de cuenta ya está registrado");
+                $("#numcuenta").addClass("placehold");
+            }
+            else{
+                $("#miModal").css("display", "none");
+            }
         });
         
         respuestas.fail((respuesta)=>{
@@ -67,9 +74,6 @@ $(document).ready(()=>{
         });
         
     });
-
-    
-
 
 
 });

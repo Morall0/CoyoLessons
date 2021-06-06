@@ -52,23 +52,36 @@
         $dsemana=validStr($_POST['dsemana'], $conexion);
         $hora=validStr($_POST['hora'], $conexion);
         $contra=validStr($_POST['contra'], $conexion);
-        //Hasheo de contraseña
-        $salt=sal();
-        $pepper=rand(0, 10);
-        $contra=password_hash($contra.$salt.$pepper, PASSWORD_BCRYPT);
-        $contra=$contra.$salt;
 
-        $base="INSERT INTO Usuario VALUES($num_cuenta,'$nombre','$correo', '$tel','$nacimiento', '$grado', 0, '$contra', 'B', 'E', 'user.png')"; 
-        $respuesta2 = mysqli_query($conexion, $base);
 
-        //SI NO FUNCIONA, DESCOMENTAR ESTO.
-        if($respuesta2){
-            echo "REGISTRO EXITOSO";
+        $busca="SELECT num_cuenta FROM usuario WHERE num_cuenta='$num_cuenta'";
+        $res= mysqli_query($conexion, $busca);
+        $cont= mysqli_num_rows($res);
+        if($cont>0)//si hay registro
+        {
+                echo $cont;
+                
         }
-        else{
-            //echo $respuesta2;
-            echo "no HUBO exito";
+        else{//no hay registro
+            //Hasheo de contraseña
+            $salt=sal();
+            $pepper=rand(0, 10);
+            $contra=password_hash($contra.$salt.$pepper, PASSWORD_BCRYPT);
+            $contra=$contra.$salt;
+
+            $base="INSERT INTO Usuario VALUES($num_cuenta,'$nombre','$correo', '$tel','$nacimiento', '$grado', 0, '$contra', 'B', 'E', 'user.png')"; 
+            $respuesta2 = mysqli_query($conexion, $base);
+
+            //SI NO FUNCIONA, DESCOMENTAR ESTO.
+            if($respuesta2){
+                echo $cont;
+            }
+            else{
+                //echo $respuesta2;
+                echo "no HUBO exito";
+            }
         }
+        
     }
 
     mysqli_close($conexion);

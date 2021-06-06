@@ -157,6 +157,9 @@ p{
     border-color: transparent;
     cursor: pointer;
 }
+.placehold::placeholder{
+    color:red;
+}
 @media screen and (max-width: 1000px){
     .modal-contenidouser{
         height: 300px;
