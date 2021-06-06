@@ -1,5 +1,4 @@
- /* =NAV
-    -------------------------------------------------- */
+ /* =NAV -------------------------------------------------- */
 #nav a{
     display: flex;
     flex-direction: row;
@@ -12,13 +11,13 @@
 #links
 {
     position: absolute;
-    left: 65%;
+    left: 70%;
 }
 #nav{
     display: flex;
     width: 100%;
     height: 50px;
-    background-color: rebeccapurple;
+    background-color: var(--azulF);
 }
 #nav div{
     display: flex;
@@ -29,7 +28,7 @@
     padding-right: 5%;
 }
 #links div:hover{
-    background-color: rgb(150, 92, 208);
+    background-color:  var(--azulHover);
 }
 #tit
 {
@@ -50,4 +49,72 @@
 i
 {
     color: white;
+}
+ /* =PARTE ARRIBA -------------------------------------------------- */
+ #arriba
+ {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;  
+ }
+ #arriba div{
+    text-align: center;
+    width: 66%;
+    margin: 2%;
+    padding: 2%;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+#miPerfil
+{
+    background-color: var(--azul);
+}
+#misMaterias :nth-child(1), #misMaterias :nth-child(2), #misMaterias :nth-child(3)
+{
+    background-color: var(--morado);
+}
+#botones :nth-child(1), #botones :nth-child(2), #botones :nth-child(3), #botones :nth-child(4)
+{
+    background-color: var(--amarillo);
+}
+#misMaterias div, #botones div, #miPerfil div
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+h2,h4, #botones p
+{
+    text-decoration: none;
+    font-family: Roboto;
+    color: rgb(63, 63, 63);
+}
+ /* =PARTE ABAJO -------------------------------------------------- */
+ #abajo
+ {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;  
+ }
+ #abajo div{
+    text-align: center;
+    width: 100%;
+    margin: 2%;
+    padding: 2%;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+#calif :nth-child(1), #calif :nth-child(2), #calif :nth-child(3)
+{
+    background-color: var(--azul);
+}
+#horario :nth-child(1), #horario :nth-child(3)
+{
+    background-color: var(--rosa);
+}
+#horario :nth-child(2)
+{
+    background-color: var(--amarillo);
 }
