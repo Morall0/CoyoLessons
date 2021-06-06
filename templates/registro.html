@@ -22,7 +22,7 @@
             <p id="modalcont">
                 <form id="cuenta" method="POST">
                     <label for="numcuenta">Numero de cuenta
-                        <input id="numcuenta" type="text" name="numcuenta" placeholder="No. Cuenta" pattern='^((3(19|20|21))|(1(16|17|18)))\d{6}$' title="Introduce un número de cuenta válido" required>
+                        <input id="numcuenta" type="text" name="numcuenta" placeholder="No. Cuenta" pattern='^((3(19|20|21))|(1(16|17|18)))\d{6}$' title="Introduce un número de cuenta válido" autocomplete="off" required>
                     </label>
                     <br><br>
                     <label for="nombre">Nombre
@@ -88,12 +88,12 @@
                     <br><br>
                     <label for="contraseña">Contraseña
                         <input id="contraseña" name="contraseña" type="password" 
-                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!%*?&])([A-Za-z\d$#@$!%*?&]|[^ ]){10,30}$" 
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!\(\)/%=*?&])([A-Za-z\d$#@$!\(\)/%=*?&]|[^ ]){10,30}$" 
                         title="Introduce una contraseña de 10 a 30 caracteres, con al menos un caracter especial, un número, una minúscula y una mayúscula" required>
                         <p class="legenda">Mímino 10 caracteres con al menos una mayúscula, una minúscula, un numero y un caracter especial.</p>
                     </label>
                     <br><br>
-                    <button id="enviar" type="submit">Enviar</button>
+                    <button>Enviar</button>
                 </form>
             </p>
         </div>
