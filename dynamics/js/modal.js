@@ -55,6 +55,7 @@ $(document).ready(()=>{
 
         respuestas.done((respuesta)=>{
             alert("si se envian desde JS");
+            alert(respuesta);
             if(respuesta == "REGISTRO EXITOSO"){
                 alert("location");
             }

@@ -1,7 +1,17 @@
 <?php
     include('./config.php');
-    $conexion=conectdb();
+    include('./cifr.php');
+
+    $conexion=conectdb();   //Conexión con la base de datos.
     
+    //Función para validar la información ingresada.
+    function validStr($post, $connect){
+        $str= strip_tags($post);//Elimina inyecciones html y php.
+        $str= mysqli_real_escape_string($connect, $str);//Elimina inyecciones sql.
+        return $str;
+    }
+
+    //Funcion que despliega el select de materias.
     function materia($x, $y, $conexion){
         if($y==1516)
             $materia="SELECT * FROM MATERIA WHERE id_materia BETWEEN $x AND $y OR id_materia LIKE '%E%' OR id_materia BETWEEN 2000 AND 2226";
@@ -30,17 +40,24 @@
         
     //Registro de usuario.
     else if(isset($_POST['num_cuenta'])){
-        $num_cuenta=$_POST['num_cuenta'];
-        $nombre=$_POST['nombre'];
-        $correo=$_POST['correo'];
-        $tel=$_POST['tel'];
-        $nacimiento=$_POST['fechaNac'];
-        $grado=$_POST['cursando'];
-        $materias= $_POST['materias'];
-        $dsemana=$_POST['dsemana'];
-        $hora=$_POST['hora'];
-        $contra=$_POST['contra'];
-        
+        $num_cuenta= validStr($_POST['num_cuenta'], $conexion);
+        $nombre=validStr($_POST['nombre'], $conexion);
+        $correo=validStr($_POST['correo'], $conexion);
+        $correo=cifrar($correo);    //Cifrado de correo.
+        $tel=validStr($_POST['tel'], $conexion);
+        $tel=cifrar($tel);  //Cifrado de telefono.
+        $nacimiento=validStr($_POST['fechaNac'], $conexion);
+        $grado=validStr($_POST['cursando'], $conexion);
+        $materias=validStr($_POST['materias'], $conexion);
+        $dsemana=validStr($_POST['dsemana'], $conexion);
+        $hora=validStr($_POST['hora'], $conexion);
+        $contra=validStr($_POST['contra'], $conexion);
+        //Hasheo de contraseña
+        $salt=sal();
+        $pepper=rand(0, 10);
+        $contra=password_hash($contra.$salt.$pepper, PASSWORD_BCRYPT);
+        $contra=$contra.$salt;
+
         $base="INSERT INTO Usuario VALUES($num_cuenta,'$nombre','$correo', '$tel','$nacimiento', '$grado', 0, '$contra', 'B', 'E', 'user.png')"; 
         $respuesta2 = mysqli_query($conexion, $base);
 
