@@ -1,7 +1,40 @@
 <?php
-//define("PASSWORD", "textoahashear");
-define("METHOD", "chacha20");   //Esto encripta.
-$password = "contraSeña9?";    //Contraseña
+define("HASH", "sha256");//Tipo de hasheo.
+define("LLAVE","cm#oym!ola/esi#son");//Contraseña.
+define("METHOD","aes-128-cbc");//Método.
+
+function cifrar($text){
+  $key= openssl_digest(LLAVE, HASH);
+  $iv_len= openssl_cipher_iv_length(METHOD);
+  $iv= openssl_random_pseudo_bytes($iv_len);
+  $textoCifrado= openssl_encrypt(
+    $text,
+    METHOD,
+    $key,
+    OPENSSL_RAW_DATA,
+    $iv
+  );
+  $ciffWIv=base64_encode($iv.$textoCifrado);//Codificar en base 64 el texto.
+
+  return $ciffWIv;//Regresar el texto codificado.
+}
+
+function descifrar($cifradoWIv){
+  $cifradoWIv=base64_decode($cifradoWIv);//Decodificar en base 64 el texto.
+  $iv_len= openssl_cipher_iv_length(METHOD);//Definir long.
+  $iv= substr($cifradoWIv,0,$iv_len);//Sustraer de la cadena el $iv_len.
+  $cifrado = substr($cifradoWIv,$iv_len); 
+  $key= openssl_digest(LLAVE,HASH);//Guardar la clave del hasheo con la LLAVE y el HASH.
+  $desciff=openssl_decrypt(
+    $cifrado,
+    METHOD,
+    $key, //La contraseña deshasheada.
+    OPENSSL_RAW_DATA,
+    $iv
+  );
+
+  return $desciff;//Regresar la cadena descifrada.
+}
 
 function sal(){
     $sal='';
@@ -13,48 +46,4 @@ function sal(){
     }
     return $sal;
 }
-
-//Varibales a las que se les asigna la sal y la pimienta.
-$salt = sal();
-$pepper = rand(0, 10);
-
-echo $salt.'<br>';
-
-$key = password_hash($password.$salt.$pepper, PASSWORD_BCRYPT);
-$iv_len = openssl_cipher_iv_length(METHOD);
-$iv = openssl_random_pseudo_bytes($iv_len);
-
-$guardar_base = $key.$salt;
-
-$cifrado = openssl_encrypt(
-    "Datos que queremos encriptar",
-    METHOD,
-    $key,
-    OPENSSL_RAW_DATA,
-    $iv
-);
-
-echo $key.'<br>';
-
-echo $guardar_base.'<br>';
-
-$sal_bd = substr($guardar_base,-5, 5);
-
-echo $sal_bd.'<br>';
-$key_solita = substr($guardar_base, 0, -5);
-echo $key_solita.'<br>';
-
-$contador=0;
-for($i=0; $i<10; $i++){
-    if(password_verify($password.$sal_bd.$i, $key_solita)){
-        $contador ++;
-    }
-}
-if($contador == 1){
-    echo "correcta";
-}
-
-//echo strlen($key);
-
-
 ?>

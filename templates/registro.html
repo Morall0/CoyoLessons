@@ -12,6 +12,18 @@
     <title>Registro</title>
 </head>
 <body>
+    <div id="form inicio">
+        <form id="inicio">
+            <label for="numcuenta">
+                <input id="numerocuenta" type="text" name="numcuenta" placeholder="No. Cuenta" pattern='^((3(19|20|21))|(1(16|17|18)))\d{6}$' title="Introduce un número de cuenta válido" autocomplete="off" required>
+            </label>
+            <label for="contraseña">
+                <input id="contra" name="contraseña" type="password" placeholder='Contraseña' 
+                title="Introduce tu contraseña" required>
+            </label>
+            <button type="submit">Iniciar sesión</button>
+        </form>
+    </div>
     <button id="crearCuenta">Registrarse</button>
     <div id='miModal'>
         <div class='modal-contenidouser'>
@@ -22,29 +34,29 @@
             <p id="modalcont">
                 <form id="cuenta" method="POST">
                     <label for="numcuenta">
-                        <input id="numcuenta" type="text" name="numcuenta" placeholder="No. Cuenta" pattern='^((3(19|20|21))|(1(16|17|18)))\d{6}$' title="Introduce un número de cuenta válido" required>
+                        <input id="numcuenta" type="text" name="numcuenta" placeholder="No. Cuenta" pattern='^((3(19|20|21))|(1(16|17|18)))\d{6}$' title="Introduce un número de cuenta válido" autocomplete="off" required>
                     </label>
                     <br><br>
                     <label for="nombre">
-                        <input id="nombre" type="text" name="nombre" placeholder="Nombre(s)" pattern="([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú](\s)?){2,30}" title="Ingresa tu(s) nombre(s)" required>
+                        <input id="nombre" type="text" name="nombre" placeholder="Nombre(s)" pattern="([A-Za-zÑñáéíóúÁÉÍÓÚ]( )?){2,30}" title="Ingresa tu(s) nombre(s)" autocomplete="off" required>
                     </label>
                     <br><br>
                     <label for="apPaterno">
-                        <input id="apPaterno" type="text" name="apPaterno" placeholder="Apellido paterno" pattern="^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$" title="Introduce tu apellido paterno" required>
+                        <input id="apPaterno" type="text" name="apPaterno" placeholder="Apellido paterno" pattern="^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$" title="Introduce tu apellido paterno" autocomplete="off" required>
                     </label>
                     <br><br>
                     <label for="apMaterno">
-                        <input id="apMaterno" type="text" name="apMaterno" placeholder="Apellido materno" pattern="^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$" title="Introduce tu apellido materno" required>
+                        <input id="apMaterno" type="text" name="apMaterno" placeholder="Apellido materno" pattern="^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$" title="Introduce tu apellido materno" autocomplete="off" required>
                     </label>
                     <br><br>
                     <label for="correo">
                         <input id="correo" type="text" name="correo" placeholder="Correo electrónico" 
-                        pattern="^[\w\.\-]{4,28}@(((g|hot)mail|outlook|live)\.com|(comunidad|alumno\.enp|enp)\.unam\.mx)|\.mx$" 
-                        title="Introduce un correo válido" required>
+                        pattern="^[\w\.\-]{4,28}@(((g|hot)mail|outlook|live|yahoo)\.com|(comunidad|alumno\.enp|enp)\.unam\.mx)|\.mx$" 
+                        title="Introduce un correo válido" autocomplete="off" required>
                     </label>
                     <br><br>
                     <label for="tel">
-                        <input id="tel" type="numer" name="tel" placeholder="Teléfono" pattern="^((55|56)(\d{8}))$" title="Introduce tu número telefónico" required>
+                        <input id="tel" type="numer" name="tel" placeholder="Teléfono" pattern="^((55|56)(\d{8}))$" title="Introduce tu número telefónico" autocomplete="off" required>
                     </label>
                     <br><br>
                     <label for="fecha"><p id="fecha">Fecha de nacimiento</p>
@@ -61,22 +73,22 @@
                     <br><br>
                     <label for="cursando">
                         <select name="año" id="cursando" required>
-                            <option selected disabled hidden><p>Año que cursas actualmente</p></option>
+                            <option selected value="" hidden><p>Año que cursas actualmente</p></option>
                             <option value='C'>4to</option>
                             <option value='Q'>5to</option>
-                            <option value='S'>6to</opt6on>
+                            <option value='S'>6to</option>
                         </select>
                     </label>
                     <br><br>
                     <label for="materias">
                         <select name="materias" id="materias">
-                            <option selected disabled hidden><p>Materias a impartir</p></option>
+                            <option selected value="" hidden><p>Materias a impartir</p></option>
                         </select>
                     </label>
                     <br><br>
                     <label for="horario"><p id="horarios">Horario de disponibilidad</p>
                         <select name="horario" id="HorarioDia" required>
-                            <option selected disabled><p>Día</p></option>
+                            <option selected value="" hidden><p>Día</p></option>
                             <option value="L">Lunes</option>
                             <option value="Ma">Martes</option>
                             <option value="Mi">Miércoles</option>
@@ -84,15 +96,29 @@
                             <option value="V">Viernes</option>
                         </select>
                         <select name="horario" id="HorarioHora" required>
-                            <option selected disabled hidden><p>Hora</p></option>
+                            <option selected value="" hidden><p>Hora</p></option>
+                            <option value="1">7:50-8:40</option>
+                            <option value="2">8:40-9:30</option>
+                            <option value="3">9:30-10:20</option>
+                            <option value="4">10:20-11:10</option>
+                            <option value="5">11:10-12:00</option>
+                            <option value="6">12:00-12:50</option>
+                            <option value="7">12:50-13:40</option>
+                            <option value="8">13:40-14:30</option>
+                            <option value="9">14:30-15:20</option>
+                            <option value="10">15:20-16:10</option>
+                            <option value="11">16:10-17:00</option>
+                            <option value="12">17:00-17:50</option>
+                            <option value="13">17:50-18:40</option>
+                            <option value="14">18:40-19:30</option>
                         </select>
                     </label>
                     <br><br>
                     <label for="contraseña">
                         <input id="contraseña" name="contraseña" type="password" placeholder='Contraseña' 
-                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!%*?&])([A-Za-z\d$#@$!%*?&]|[^ ]){10,30}$" 
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!=\(\)/%*?&])([A-Za-z\d$#@$!=\(\)/%*?&]|[^ ]){10,30}$" 
                         title="Introduce una contraseña de 10 a 30 caracteres, con al menos un caracter especial, un número, una minúscula y una mayúscula" required>
-                        <p class="legenda"><p id="caracteres">Mímino 10 carácteres, una mayúscula, una minúscula, un número y un carácter especial</p>
+                        <p id="caracteres">Mímino 10 caracteres, una mayúscula, una minúscula, un número y un caracter especial</p>
                     </label>
                     <br><br>
                     <button id="enviar" type="submit">Crear cuenta</button>
