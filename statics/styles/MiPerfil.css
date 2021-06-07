@@ -150,23 +150,29 @@ h4{
         padding-top: 1%;
         padding-left: 29%;
     }
+    #miPerfil{
+        width: 23.5%;
+        height: 210px;
+    }
     #mi, #img{
         font-size: 14px;
 
     }
-    h4, p{
+    h4{
         padding-top: 4px;
-        font-size: 10px;
+        font-size: 12px;
     }
     #azulitos{
-        padding-top: 2px;
+        padding-top: 20px;
     }
     #calificacion,#comentarios,#cerrar{
-        width: 105%;
+        width: 153px;
         background-color: var(--azul);
         border-radius: 8px;
         text-align: center;
         font-family:"roboto";
+        height: 30px;
+        margin-top: 10px;
     }
     #medio{
         display: flex;
@@ -175,12 +181,12 @@ h4{
         align-items:flex-start;
         position: absolute;
         left: 50%;
-        bottom: 66%;
+        bottom: 70%;
     }
     #materias{
         background-color: var(--morado);
         border-radius: 8px;
-        width: 165%;
+        width: 215px;
         text-align: center;
         font-family:"roboto";
     }
@@ -209,7 +215,7 @@ h4{
     }
     #horarios{
         background-color: var(--carne);
-        width: 200%;
+        width: 180%;
         height: 35px;
         padding-top: 0%;
         border-radius: 8px;
@@ -256,19 +262,21 @@ h4{
         width: 210%;
         border-radius: 8px;
         text-align: center;
+        height: 20px;
     }
     #administrar{
         background-color: var(--amarillo);
         position: absolute;
-        left: 78.5%;
-        bottom: 15%;
+        left: 75%;
+        bottom: 17%;
         border-radius: 8px;
         text-align: center;
         font-family: 'roboto';
-        padding-top: .5%;
+        height: 23px;
     }
     #footer{
         position: relative;
+        margin-top: 140px;
     }
 }
 @media screen and (max-width: 800px){
@@ -425,6 +433,6 @@ h4{
         width: 50px;
     }
     #footer{
-        width: 337px;
+        width: 100%;
     }
 }
