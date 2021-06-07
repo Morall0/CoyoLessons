@@ -157,8 +157,11 @@ p{
     border-color: transparent;
     cursor: pointer;
 }
-.placehold::placeholder{
+.placeholdrojo::placeholder{
     color:red;
+}
+.placeholdmorado::placeholder{
+    color:blueviolet;
 }
 @media screen and (max-width: 1000px){
     .modal-contenidouser{
