@@ -8,12 +8,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="../statics/styles/basics.css">
     <link rel="stylesheet" href="../statics/styles/MiPerfil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../libs/fontawesome-free-5.15.3-web/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="../libs/jquery/jquery-3.6.0.min.js"></script>
     <title>Mi perfil</title>
 </head>
 <body>
+<<<<<<< HEAD
     <nav id="navbar" class="navbar navbar-expand-xl navbar-light"  style="background-color: #505B73;" >
         <div class="container-xxl">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,54 +54,79 @@
                 <h4>Teléfono: </h4>
                 <h4>Correo: </h4>
                 <h4>Año que cursas: </h4>
+=======
+    <div id="cont">
+        <!-- navbar -->
+        <nav class="nav">
+           <div id="tit">COYOLESSONS</div>
+                <div id="hamburguesa"><i class="fa fa-bars fa-2x"></i></div>
+                <div class="link"><a href="#firstBanner">Principal</a></div>
+                <div class="link"><a href="#features">Perfil</a></div>
+                <div class="link"><a href="#team">Administrar</a></div>
+                <div class="link"><i class="fas fa-paint-roller"></i></div>
+
+        </nav>
+         <!-- contenido -->
+        <!-- contenido -->
+        <div id="contenido">
+            <div id="izquierda">
+                <div id="miPerfil">
+                    <h2 id="mi">Mi Perfil</h2>
+                    <div id="img"><img src="../statics/img/user/user.png" alt="Foto de perfil" height="140px" width="140px" id="img2"></div>
+                    <p id="p1">Nombre:</p>
+                    <h4 id="no_cuenta">No. Cuenta:</h4>
+                    <h4 id="correo_usuario">Correo:</h4>
+                    <h4 id="cursando">Año que cursas:</h4>
+                </div>
+                <div id="azulitos">
+                    <div id="calificacion"><h4>Mi calificación</h4></div>
+                    <div id="comentarios"><h4>Comentarios</h4></div>
+                    <div id="cerrar"><h4>Cerrar sesión</h4></div>
+                </div>
+>>>>>>> 14fc4514666e6812642f21e7a7e92e56e0d86959
             </div>
-            <div id="azulitos">
-                <div id="calificacion"><h4>Mi calificación</h4></div>
-                <div id="comentarios"><h4>Comentarios</h4></div>
-                <div id="cerrar"><h4>Cerrar sesión</h4></div>
+            <div id="medio">
+                <div id="moradito">
+                    <div id="materias"><h4>Mis Materias</h4></div>
+                </div>
+                <label for="agregarm">
+                    <select name="agregarm" id="agregarm">
+                        <option selected disabled hidden><p>Agregar materia</p></option>
+                    </select>
+                </label>
+                <label for="eliminarm">
+                    <select name="eliminarm" id="eliminarm">
+                        <option selected disabled hidden><p>Eliminarm materia</p></option>
+                    </select>
+                </label>
             </div>
+            <div id="abajo">
+                <div id="horarios"><h4>Mis horarios</h></div>
+                <div id="horitas">
+                    <select name="horario" id="Horariodia" required>
+                        <option selected disabled><p>Día</p></option>
+                        <option value="L">Lunes</option>
+                        <option value="Ma">Martes</option>
+                        <option value="Mi">Miércoles</option>
+                        <option value="J">Jueves</option>
+                        <option value="V">Viernes</option>
+                    </select>
+                    <select name="horario" id="Horariohora" required>
+                        <option selected disabled hidden><p>Hora</p></option>
+                    </select>
+                </div>
+            </div>
+            <div id="derecha">
+                <div id="rosado"><p>¡Hey! Bienvenido a COYOLESSONS. Aquí podrás manejar tus horarios y las materias que puedas enseñar.</p></div>
+                <div id="amarillos">
+                    <div id="am1"><p>Mis asesorías</p></div>
+                    <div id="am2"><p>Mis clases</p></div>
+                    <div id="am3"><p>Historial de asesorías</p></div>
+                </div>
+            </div>
+            <div id="administrar"><p>Administrar</p></div>
+            <div id="footer"><hp>CRÉDITOS</hp></div>
         </div>
-        <div id="medio">
-            <div id="moradito">
-                <div id="materias"><h4>Mis Materias</h4></div>
-            </div>
-            <label for="agregarm">
-                <select name="agregarm" id="agregarm">
-                    <option selected disabled hidden><p>Agregar materia</p></option>
-                </select>
-            </label>
-            <label for="eliminarm">
-                <select name="eliminarm" id="eliminarm">
-                    <option selected disabled hidden><p>Eliminarm materia</p></option>
-                </select>
-            </label>
-        </div>
-        <div id="abajo">
-            <div id="horarios"><h4>Mis horarios</h></div>
-            <div id="horitas">
-                <select name="horario" id="Horariodia" required>
-                    <option selected disabled><p>Día</p></option>
-                    <option value="L">Lunes</option>
-                    <option value="Ma">Martes</option>
-                    <option value="Mi">Miércoles</option>
-                    <option value="J">Jueves</option>
-                    <option value="V">Viernes</option>
-                </select>
-                <select name="horario" id="Horariohora" required>
-                    <option selected disabled hidden><p>Hora</p></option>
-                </select>
-            </div>
-        </div>
-        <div id="derecha">
-            <div id="rosado"><p>¡Hey! Bienvenido a COYOLESSONS. Aquí podrás manejar tus horarios y las materias que puedas enseñar.</p></div>
-            <div id="amarillos">
-                <div id="am1"><p>Mis asesorías</p></div>
-                <div id="am2"><p>Mis clases</p></div>
-                <div id="am3"><p>Historial de asesorías</p></div>
-            </div>
-        </div>
-        <div id="administrar"><p>Administrar</p></div>
-        <div id="footer"><hp>CRÉDITOS</hp></div>
-    </div>
+    <script src="../dynamics/js/MiPerfil.js"></script>
 </body>
 </html>

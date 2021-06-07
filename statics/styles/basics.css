@@ -42,3 +42,43 @@ i
     font-family: 'roboto';
     text-align: center;
 }
+<<<<<<< HEAD
+/*=MEDIA QUERY}
+---------------------------------------------------------------------*/
+@media screen and (max-width: 1250px){
+
+    /* =NAV
+    -------------------------- */
+        #hamburguesa{
+            align-self: flex-end;
+            justify-content: center;
+            height: 50px;
+            width: 50px;
+            display: flex;
+            color: white;
+        }
+        #hamburguesa:hover{
+            background-color: transparent;
+        }
+        .nav{
+            height: 250px;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+        .nav{
+            flex-direction: column;
+        }
+        .link{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .navbarMob
+        {
+            height: 50px;
+        }
+        .barraNMob
+        {
+            display: none;
+        }
+    }
