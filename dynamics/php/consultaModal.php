@@ -33,10 +33,22 @@
         $row = mysqli_fetch_array($resp);
         if($cuenta>0)//si hay registro
         {
-                             
+            $sal = substr($row[1], -5, 5);     
+            $contra_sinsal = substr($row[1], 0, -5);
+            $cont_passwrd = 0;
+            for($i=0; $i<=10;$i++){
+                if(password_verify($contraseña.$sal.$i, $contra_sinsal))
+                    $cont_passwrd++;
+            }
+            if($cont_passwrd > 0){
+                echo "CONTRASEÑA CORRECTA"; 
+            }
+            else{
+                echo "CONTRASEÑA INCORRECTA";
+            }
         }
         else{
-            echo "no existe";
+            echo "NO EXISTE";
         }
 
     }

@@ -9,6 +9,11 @@ $(document).ready(()=>{
         return peticion;
     };
 
+    function incorrecta(elemento, mensaje){
+        $(elemento).val("");
+        $(elemento).attr("placeholder", mensaje);
+        $(elemento).addClass("placehold");
+    }
 
     function verifRegx(num_cuenta, nombre, apPaterno, apMaterno, correo, tel, contra){
         //Variables REGEX
@@ -77,13 +82,18 @@ $(document).ready(()=>{
 
         let iniciar = peticion('../dynamics/php/consultaModal.php', 'num_ini='+numero_cuenta+'&contraseña='+contraseña);
         iniciar.done((resp)=>{
-            alert(resp);
+            if(resp == "CONTRASEÑA CORRECTA")
+                alert("location");
+            else if(resp == "NO EXISTE")
+                incorrecta("#numerocuenta", "Número de cuenta no registrado");
+            else if(resp == "CONTRASEÑA INCORRECTA")
+                incorrecta("#contra", "Contraseña incorrecta"); 
         });
         iniciar.fail(()=>{
             alert("fallo");
         });
-
     })
+
     //Botones del modal (abrir y cerrar).
     $("#crearCuenta").click(()=>{
         $("#miModal").css("display", "block");
@@ -136,13 +146,11 @@ $(document).ready(()=>{
             respuestas.done((respuesta)=>{
                 alert("si se envian desde JS");
                 alert(respuesta);
-                if(respuesta > 0){
-                    $("#numcuenta").val("");
-                    $("#numcuenta").attr("placeholder","Este numero de cuenta ya está registrado");
-                    $("#numcuenta").addClass("placehold");
-                }
+                if(respuesta > 0)
+                    incorrecta("#numcuenta", "Este numero de cuenta ya está registrado");
                 else{
                     $("#miModal").css("display", "none");
+                    //alert("location");
                 }
             });
             
