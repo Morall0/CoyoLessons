@@ -1,9 +1,9 @@
 /*=FUENTES
 ---------------------------------------------*/
-@font-face {
+/*@font-face {
     font-family:"roboto";
     src: url("../fonts/Roboto-Light.ttf");
-}
+}*/
 /*=COLORES
 ---------------------------------------------*/
 :root{
@@ -18,4 +18,27 @@
 }
 body{
     background-color: #F1EFE3;
+}
+/* =NAV -------------------------------------------------- */
+.barra{
+    font-size:22px;
+    color: white;
+}
+#COYO{
+    color: white;
+    font-size:29px;
+    margin-bottom: 0%;
+}
+i
+{
+    color: white;
+}
+#footer{
+    position: absolute;
+    background-color: #505B73;
+    width: 100%;
+    bottom: 0%;
+    color: white;
+    font-family: 'roboto';
+    text-align: center;
 }

@@ -1,120 +1,430 @@
- /* =NAV -------------------------------------------------- */
-#nav a{
+ /* =PARTE IZQUIERDA*/
+#izquierda{
     display: flex;
-    flex-direction: row;
-    justify-content: end;
-    text-decoration: none;
-    font-family: Roboto;
-    color: white;
-    font-size: 1.2rem;
+    flex-wrap: nowrap;
+    flex-direction:column;
+    align-items:flex-start;
+    padding-top: 1%;
+    padding-left: 13%;
 }
-#links
-{
+#miPerfil{
+    width: 23.5%;
+    height: 350%;
+    background-color: var(--azul);
+    border-radius: 8px;
+    font-family:"roboto";
+}
+#mi, #img{
+    text-align: center;
+    font-family:"roboto";
+}
+h4{
+    padding-top: 4%;
+}
+#p1{
+    font-size: 21px;
+}
+#azulitos{
+    padding-top: 2%;
+}
+#calificacion,#comentarios,#cerrar{
+    width: 190%;
+    background-color: var(--azul);
+    border-radius: 8px;
+    text-align: center;
+    font-family:"roboto";
+}
+#medio{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction:column;
+    align-items:flex-start;
     position: absolute;
-    left: 70%;
+    left: 43%;
+    bottom: 72%;
 }
-#nav{
-    display: flex;
-    width: 100%;
-    height: 50px;
-    background-color: var(--azulF);
-}
-#nav div{
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    height: 50px;
-    padding-left: 5%;
-    padding-right: 5%;
-}
-#links div:hover{
-    background-color:  var(--azulHover);
-}
-#tit
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    text-decoration: none;
-    font-family: Roboto;
-    color: white;
-    font-size: 2rem;
-}
-#log
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-}
-i
-{
-    color: white;
-}
- /* =PARTE ARRIBA -------------------------------------------------- */
- #arriba
- {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;  
- }
- #arriba div{
-    text-align: center;
-    width: 66%;
-    margin: 2%;
-    padding: 2%;
-    box-sizing: border-box;
-    border-radius: 10px;
-}
-#miPerfil
-{
-    background-color: var(--azul);
-}
-#misMaterias :nth-child(1), #misMaterias :nth-child(2), #misMaterias :nth-child(3)
-{
+#materias{
     background-color: var(--morado);
-}
-#botones :nth-child(1), #botones :nth-child(2), #botones :nth-child(3), #botones :nth-child(4)
-{
-    background-color: var(--amarillo);
-}
-#misMaterias div, #botones div, #miPerfil div
-{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-h2,h4, #botones p
-{
-    text-decoration: none;
-    font-family: Roboto;
-    color: rgb(63, 63, 63);
-}
- /* =PARTE ABAJO -------------------------------------------------- */
- #abajo
- {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;  
- }
- #abajo div{
+    border-radius: 8px;
+    width: 185%;
     text-align: center;
-    width: 100%;
-    margin: 2%;
-    padding: 2%;
-    box-sizing: border-box;
-    border-radius: 10px;
+    font-family:"roboto";
 }
-#calif :nth-child(1), #calif :nth-child(2), #calif :nth-child(3)
-{
-    background-color: var(--azul);
+#agregarm{
+    background-color: var(--morado);
+    border-radius: 8px;
+    width: 187%;
+    border-color: transparent;
 }
-#horario :nth-child(1), #horario :nth-child(3)
-{
+#eliminarm{
+    background-color: var(--morado);
+    border-radius: 8px;
+    width: 171%;
+    border-color: transparent;
+    margin-top: 5%;
+}
+#abajo{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction:column;
+    align-items:flex-start;
+    position: absolute;
+    left: 43%;
+    bottom: 10%;
+    height: 30%;
+}
+#horarios{
+    background-color: var(--carne);
+    width: 230%;
+    height: 37px;
+    border-radius: 8px;
+    text-align: center;
+    font-family:"roboto";
+}
+#horitas{
+    margin-top: 5%;
+    background-color: var(--carne);
+    width: 270%;
+    height: 100%;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction:row;
+    align-items:flex-start;
+    padding-left: 50%;
+}
+#Horariodia, #Horariohora{
+    background-color: var(--carne);
+    border-color: transparent;
+    margin-top: 5%;
+}
+#derecha{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction:column;
+    position: absolute;
+    left: 73%;
+    bottom: 42%;
+}
+#rosado{
     background-color: var(--rosa);
+    width: 60%;
+    border-radius: 8px;
+    font-family: 'roboto';
 }
-#horario :nth-child(2)
-{
+#amarillos{
+    margin-top: 6%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction:column;
+}
+#am1,#am2,#am3{
+    margin-top: 4%;
     background-color: var(--amarillo);
+    width: 60%;
+    border-radius: 8px;
+    text-align: center;
+}
+#administrar{
+    background-color: var(--amarillo);
+    position: absolute;
+    left: 69%;
+    bottom: 34%;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'roboto';
+    padding-top: .5%;
+}
+/*=ADAPTABILIDAD
+---------------------------------------------*/
+@media screen and (max-width: 1200px){
+    #contenido{
+        font-size: 11px;
+    }
+    #img2{
+        height: 33%;
+        width: 33%;
+        font-size: 7px;
+    }
+    #izquierda{
+        padding-top: 1%;
+        padding-left: 29%;
+    }
+    #mi, #img{
+        font-size: 14px;
+
+    }
+    h4, p{
+        padding-top: 4px;
+        font-size: 10px;
+    }
+    #azulitos{
+        padding-top: 2px;
+    }
+    #calificacion,#comentarios,#cerrar{
+        width: 105%;
+        background-color: var(--azul);
+        border-radius: 8px;
+        text-align: center;
+        font-family:"roboto";
+    }
+    #medio{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:column;
+        align-items:flex-start;
+        position: absolute;
+        left: 50%;
+        bottom: 66%;
+    }
+    #materias{
+        background-color: var(--morado);
+        border-radius: 8px;
+        width: 165%;
+        text-align: center;
+        font-family:"roboto";
+    }
+    #agregarm{
+        background-color: var(--morado);
+        border-radius: 8px;
+        width: 210%;
+        border-color: transparent;
+    }
+    #eliminarm{
+        background-color: var(--morado);
+        border-radius: 8px;
+        width: 192%;
+        border-color: transparent;
+        margin-top: 5%;
+    }
+    #abajo{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:column;
+        align-items:flex-start;
+        position: absolute;
+        left: 50%;
+        bottom: 3%;
+        height: 20%;
+    }
+    #horarios{
+        background-color: var(--carne);
+        width: 200%;
+        height: 35px;
+        padding-top: 0%;
+        border-radius: 8px;
+        text-align: center;
+        font-family:"roboto";
+    }
+    #horitas{
+        margin-top: 5%;
+        background-color: var(--carne);
+        width: 230%;
+        height: 80%;
+        border-radius: 8px;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:row;
+        align-items:flex-start;
+        padding-left: 50%;
+    }
+    #Horariodia, #Horariohora{
+        background-color: var(--carne);
+        border-color: transparent;
+        margin-top: 5%;
+    }
+    #derecha{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:column;
+        position: absolute;
+        left: 50%;
+        bottom: 37%;
+    }
+    #rosado{
+       display: none;
+    }
+    #amarillos{
+        margin-top: 6%;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:column;
+    }
+    #am1,#am2,#am3{
+        margin-top: 4%;
+        background-color: var(--amarillo);
+        width: 210%;
+        border-radius: 8px;
+        text-align: center;
+    }
+    #administrar{
+        background-color: var(--amarillo);
+        position: absolute;
+        left: 78.5%;
+        bottom: 15%;
+        border-radius: 8px;
+        text-align: center;
+        font-family: 'roboto';
+        padding-top: .5%;
+    }
+    #footer{
+        position: relative;
+    }
+}
+@media screen and (max-width: 800px){
+    #contenido{
+        font-size: 7px;
+        display: flex;
+        flex-direction:column;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+    #img2{
+        height: 29px;
+        width: 29px;
+        font-size: 7px;
+    }
+    #izquierda{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:column;
+        align-items:flex-start;
+        padding-top: 0px;
+        padding-left: 12px;
+    }
+    #miPerfil{
+        width: 200px;
+        height: 180px;
+        background-color: var(--azul);
+        border-radius: 8px;
+        font-family:"roboto";
+    }
+    #mi, #img{
+        font-size: 14px;
+
+    }
+    h4{
+        padding-top: 4px;
+        font-size: 10px;
+    }
+    #p1{
+        font-size: 10px;
+    }
+    #azulitos{
+        padding-top: 2px;
+    }
+    #calificacion,#comentarios,#cerrar{
+        width: 200px;
+        background-color: var(--azul);
+        border-radius: 8px;
+        text-align: center;
+        font-family:"roboto";
+    }
+    #medio{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:column;
+        position: relative;
+        align-items:flex-start;
+        left: 7px;
+        bottom: 0px;
+    }
+    #materias{
+        background-color: var(--morado);
+        border-radius: 8px;
+        width: 200px;
+        text-align: center;
+        font-family:"roboto";
+    }
+    #agregarm{
+        background-color: var(--morado);
+        border-radius: 8px;
+        width: 200px;
+        border-color: transparent;
+    }
+    #eliminarm{
+        background-color: var(--morado);
+        border-radius: 8px;
+        width: 200px;
+        border-color: transparent;
+        margin-top: 5%;
+    }
+    #abajo{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:column;
+        align-items:flex-start;
+        position: relative;
+        left: 6px;
+        bottom: 0px;
+        height: 30px;
+    }
+    #horarios{
+        background-color: var(--carne);
+        width: 150px;
+        height: 14px;
+        border-radius: 8px;
+        text-align: center;
+        font-family:"roboto";
+        margin-top: 3px;
+    }
+    #horitas{
+        margin-top: 5px;
+        background-color: var(--carne);
+        width: 200px;
+        height: 100px;
+        border-radius: 8px;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:row;
+        align-items:flex-start;
+        padding-left: 50px;
+    }
+    #Horariodia, #Horariohora{
+        background-color: var(--carne);
+        border-color: transparent;
+        margin-top: 5px;
+    }
+    #derecha{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:column;
+        align-items: flex-start;
+        position: relative;
+        left: 5.5px;
+        bottom: 0px;
+    }
+    #rosado{
+        display: none;
+    }
+    #amarillos{
+        margin-top: 9px;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:column;
+        margin-bottom: 3px;
+    }
+    #am1,#am2,#am3{
+        margin-top: 4px;
+        background-color: var(--amarillo);
+        width: 200px;
+        height: 15px;
+        border-radius: 8px;
+        text-align: center;
+    }
+    #administrar{
+        background-color: var(--amarillo);
+        position: relative;
+        left: 83px;
+        bottom: 96px;
+        border-radius: 8px;
+        text-align: center;
+        font-family: 'roboto';
+        padding-top: .5px;
+        height: 15px;
+        width: 50px;
+    }
+    #footer{
+        width: 337px;
+    }
 }
