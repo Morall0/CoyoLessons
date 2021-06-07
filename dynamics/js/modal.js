@@ -13,7 +13,7 @@ $(document).ready(()=>{
     function verifRegx(num_cuenta, nombre, apPaterno, apMaterno, correo, tel, contra){
         //Variables REGEX
         let regexNumcuenta = /^((3(19|20|21))|(1(16|17|18)))\d{6}$/;
-        let regexNombre = /([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú](\s)?){2,30}/;
+        let regexNombre = /([A-Za-zÑñáéíóúÁÉÍÓÚ]( )?){2,30}/;
         let regexApellidos = /^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$/;
         let regexCorreo = /^[\w\.\-]{4,28}@(((g|hot)mail|outlook|live|yahoo)\.com|(comunidad|alumno\.enp|enp)\.unam\.mx)|\.mx$/;
         let regexTel = /^((55|56)(\d{8}))$/;
@@ -29,9 +29,11 @@ $(document).ready(()=>{
         }
         if(regexNombre.test(nombre)==true){
             cont++;
+            console.log("condicionalNombreIF");
         }else{
-            $("#nombre").attr("pattern", "([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú](\\s)?){2,30}");
+            $("#nombre").attr("pattern", "([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]( )?){2,30}");
             $("#nombre").attr("title", "Ingresa tu(s) nombre(s)");
+            console.log("condicionalNombreELSE");
         }
         if(regexApellidos.test(apPaterno)==true){
             cont++;
