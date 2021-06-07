@@ -1,41 +1,51 @@
-/*let hamburguesa = document.getElementById('hamburguesa'); //Variable que controla boton de la aburguesa.
+$(document).ready(()=>{
 
-//Evento que detecta cuando se presiono en la hamburguesa.
-hamburguesa.addEventListener('click', ()=>{
-    let barra = document.getElementsByClassName('nav'); //div de la barra de navegación.
-    let links = document.getElementsByClassName('link');   //Variable que almacena los planetas(elementos con la clase barraN).
-
-    //Condición que determina si el dropDown esta hecho o no.
-    if(barra[0].getAttribute('style')!= null){
-        //En caso de que si, remueve los atributos para volver todo a la normalidad.
-        barra[0].removeAttribute('style');
-        for(let i=0; i<4; i++)
-        {
-            links[i].removeAttribute('style');
+    var ham=document.querySelector("#hamburguesa");
+    var barra=document.querySelectorAll(".link")
+    ham.addEventListener("click",()=>{
+        document.querySelector(".nav").classList.toggle("navbarMob");
+        for(let i=0; i< barra.length;i++){
+            barra[i].classList.toggle("barraNMob")
         }
-    }
-    else{
-        //En caso de que no, despliega el contenido en una columna.
-        barra[0].style.flexDirection= 'column';
-        barra[0].style.height = '200px';
-        barra[0].style.alignItems = 'center';
-        barra[0].style.justifyContent = 'flex-start';
-        hamburguesa.style.alignSelf = 'flex-end';
-        hamburguesa.style.paddingTop = '9px';
-        hamburguesa.style.paddingBottom = '9px';
-        for(let i=0; i<4; i++)
-        {
-            linkds[i].style.display = 'flex';
-        }
-    }
+    })
 
-});*/
+    //Funcion que nos permite hacer petiiciones.
+    function peticion(url, data=""){
+        let peticion =$.ajax({
+            url: url,
+            type: 'POST',
+            data: data
+        });
+        return peticion;
+    };
 
-var ham=document.querySelector("#hamburguesa");
-var barra=document.querySelectorAll(".link")
-ham.addEventListener("click",()=>{
-    document.querySelector(".nav").classList.toggle("navbarMob");
-    for(let i=0; i< barra.length;i++){
-        barra[i].classList.toggle("barraNMob")
-    }
+    let datos = peticion("../dynamics/php/user.php");
+    datos.done((resp)=>{
+        let array_datos = resp.split(",");
+
+        //Cambiar el valor del grado (C, Q, S).
+        array_datos[4] = (array_datos[4] == 'C')? '4to':array_datos[4];
+        array_datos[4] = (array_datos[4] == 'Q')? '5to':array_datos[4];
+        array_datos[4] = (array_datos[4] == 'S')? '6to':array_datos[4];
+
+        //Inserción de datos dentro del HTML.
+        $("#img2").attr("src", "../statics/img/user/"+array_datos[5]);
+        $("#p1").text("Nombre: "+array_datos[1]);
+        $("#no_cuenta").text("No. Cuenta: "+array_datos[0]);
+        $("#correo_usuario").text("Correo: "+array_datos[2]);
+        $("#cursando").text("Año que cursas: "+array_datos[4]);
+        //AGREGAR EL TELEFRONO
+
+        //SACAR EL AVG de las calificiones que tiene en la tabla de comentarios.
+
+    })
+    datos.fail((resp)=>{
+        let mensaje = "error al cargar los datos"
+        $("#img2").attr("src", "../statics/img/user/user.png");
+        $("#p1").text("Nombre: "+mensaje);
+        $("#no_cuenta").text("No. Cuenta: "+mensaje);
+        $("#correo_usuario").text("Correo: "+mensaje);
+        $("#cursando").text("Año que cursas: "+mensaje);
+    });
+
 })
