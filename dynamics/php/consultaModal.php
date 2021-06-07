@@ -24,8 +24,25 @@
         }
     }
 
+    if(isset($_POST['num_ini'])){
+        $num_ini= validStr($_POST['num_ini'], $conexion);
+        $contraseña=validStr($_POST['contraseña'], $conexion);
+        $indicacion="SELECT num_cuenta, contraseña FROM usuario WHERE num_cuenta='$num_ini'";
+        $resp= mysqli_query($conexion, $indicacion);
+        $cuenta= mysqli_num_rows($resp);
+        $row = mysqli_fetch_array($resp);
+        if($cuenta>0)//si hay registro
+        {
+                             
+        }
+        else{
+            echo "no existe";
+        }
+
+    }
+
     //MATERIA
-    if(isset($_POST['anio'])){
+    else if(isset($_POST['anio'])){
         $grado=$_POST['anio'];
         if($grado=='C'){
             materia(1400, 1412, $conexion);

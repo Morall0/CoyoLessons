@@ -68,7 +68,22 @@ $(document).ready(()=>{
 
         return cont;
     };
-    
+
+    //Evento que permite iniciar sesión
+    $("#inicio").on('submit', ()=>{
+        event.preventDefault();
+        let numero_cuenta=$("#numerocuenta").val();
+        let contraseña=$("#contra").val();
+
+        let iniciar = peticion('../dynamics/php/consultaModal.php', 'num_ini='+numero_cuenta+'&contraseña='+contraseña);
+        iniciar.done((resp)=>{
+            alert(resp);
+        });
+        iniciar.fail(()=>{
+            alert("fallo");
+        });
+
+    })
     //Botones del modal (abrir y cerrar).
     $("#crearCuenta").click(()=>{
         $("#miModal").css("display", "block");
@@ -77,6 +92,7 @@ $(document).ready(()=>{
     $("#closeBtn").click(()=>{
         $("#miModal").css("display", "none");
     });
+    
 
     //Petición que despliega las materias dependiendo del año.
     $("#cursando").on('change', ()=>{
@@ -140,13 +156,6 @@ $(document).ready(()=>{
 
         
     });
-    $("#inicio").on('submit', ()=>{
-        event.preventDefault();
-        let numero_cuenta=$("#numerocuenta").val();
-        let contraseña=$("#contra").val();
-        
-
-    })
 
 
 });
