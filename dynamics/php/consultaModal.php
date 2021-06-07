@@ -122,22 +122,17 @@
                     $resHorario = mysqli_query($conexion, $buscahorario);
                     if($resHorario){//Si la consulta fue exitosa...
                         $id_horario = mysqli_fetch_array($resHorario);
-                        //var_dump($id_horario);    //PRUEBA
                         //Insersion en la tabla de alumnohashorario.
                         $inserthorario="INSERT INTO alumnohashorario (num_cuenta, id_horario) VALUES ($num_cuenta, $id_horario[0])";
                         $respInHorario= mysqli_query($conexion, $inserthorario);
-                        // if($respInHorario)
-                        // {
-                        //     echo "registro exitoso en la tabla de horarios.";   //PRUEBA
-                        // }
 
                     }
-                    //Insersion en la tabla de usuariohasmateria.
+                    //Inserción en la tabla de usuariohasmateria.
                     $insertmateria="INSERT INTO usuariohasmateria (num_cuenta, id_materia) VALUES ($num_cuenta, $materias)";
                     $respInMateria=mysqli_query($conexion, $insertmateria);
-                    if($respInMateria)
+                    if($respInMateria && $respInHorario)
                     {
-                        //echo"registro exitoso en la tabla de horarios.";
+                        echo"registro exitoso en la tabla de horarios.";
                     }
 
 
