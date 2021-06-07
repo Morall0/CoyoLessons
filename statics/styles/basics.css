@@ -42,10 +42,9 @@ i
     font-family: 'roboto';
     text-align: center;
 }
-<<<<<<< HEAD
 /*=MEDIA QUERY}
 ---------------------------------------------------------------------*/
-@media screen and (max-width: 1250px){
+@media screen and (max-width: 1200px){
 
     /* =NAV
     -------------------------- */
