@@ -14,9 +14,9 @@
     //Funcion que despliega el select de materias.
     function materia($x, $y, $conexion){
         if($y==1516)
-            $materia="SELECT * FROM MATERIA WHERE id_materia BETWEEN $x AND $y OR id_materia LIKE '%E%' OR id_materia BETWEEN 2000 AND 2226";
+            $materia="SELECT * FROM materia WHERE id_materia BETWEEN $x AND $y OR id_materia LIKE '%E%' OR id_materia BETWEEN 2000 AND 2226";
         else
-            $materia="SELECT * FROM Materia WHERE id_materia BETWEEN $x AND $y OR id_materia LIKE '%E%'";
+            $materia="SELECT * FROM materia WHERE id_materia BETWEEN $x AND $y OR id_materia LIKE '%E%'";
         $respuesta= mysqli_query($conexion, $materia);
         while($row = mysqli_fetch_array($respuesta))
         {
@@ -110,12 +110,37 @@
                 $contra=password_hash($contra.$salt.$pepper, PASSWORD_BCRYPT);
                 $contra=$contra.$salt;
 
-                $base="INSERT INTO Usuario VALUES($num_cuenta,'$nombre','$correo', '$tel','$nacimiento', '$grado', 0, '$contra', 'B', 'E', 'user.png')";
+                //Insersion en la tabla de USUARIO.
+                $base="INSERT INTO usuario VALUES($num_cuenta,'$nombre','$correo', '$tel','$nacimiento', '$grado', 0, '$contra', 'B', 'E', 'user.png')";
                 $respuesta2 = mysqli_query($conexion, $base);
 
-                //
-                if($respuesta2){
-                    echo $cont; //manda el 0 de que no existía el registro
+                if($respuesta2){//Si el registro fue exitoso, se hace la insersion de los horarios y de las materias.
+                    //echo $cont; //manda el 0 de que no existía el registro PRUEBA
+
+                    //Obteniendo el ID del horario.
+                    $buscahorario= "SELECT id_horario FROM horario WHERE dia='$dsemana' AND id_hora=$hora";
+                    $resHorario = mysqli_query($conexion, $buscahorario);
+                    if($resHorario){//Si la consulta fue exitosa...
+                        $id_horario = mysqli_fetch_array($resHorario);
+                        //var_dump($id_horario);    //PRUEBA
+                        //Insersion en la tabla de alumnohashorario.
+                        $inserthorario="INSERT INTO alumnohashorario (num_cuenta, id_horario) VALUES ($num_cuenta, $id_horario[0])";
+                        $respInHorario= mysqli_query($conexion, $inserthorario);
+                        // if($respInHorario)
+                        // {
+                        //     echo "registro exitoso en la tabla de horarios.";   //PRUEBA
+                        // }
+
+                    }
+                    //Insersion en la tabla de usuariohasmateria.
+                    $insertmateria="INSERT INTO usuariohasmateria (num_cuenta, id_materia) VALUES ($num_cuenta, $materias)";
+                    $respInMateria=mysqli_query($conexion, $insertmateria);
+                    if($respInMateria)
+                    {
+                        //echo"registro exitoso en la tabla de horarios.";
+                    }
+
+
                 }
                 else{
                     //echo $respuesta2;
@@ -125,7 +150,7 @@
             //echo "Funciono";
         }
         else{//No te deja hacer la consulta
-            echo "No se realizo la consulta por las regex";
+            echo "No se realizo la consulta por las regex"; //PRUEBA
         }
     }
 
