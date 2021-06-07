@@ -122,7 +122,7 @@
                     $resHorario = mysqli_query($conexion, $buscahorario);
                     if($resHorario){//Si la consulta fue exitosa...
                         $id_horario = mysqli_fetch_array($resHorario);
-                        //Inserción en la tabla de alumnohashorario.
+                        //Insercion en la tabla de alumnohashorario.
                         $inserthorario="INSERT INTO alumnohashorario (num_cuenta, id_horario) VALUES ($num_cuenta, $id_horario[0])";
                         $respInHorario= mysqli_query($conexion, $inserthorario);
 
