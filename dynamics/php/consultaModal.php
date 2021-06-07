@@ -82,6 +82,12 @@
         $hora=validStr($_POST['hora'], $conexion);
         $contra=validStr($_POST['contra'], $conexion);
 
+        $regexNumcuenta = '/^((3(19|20|21))|(1(16|17|18)))\d{6}$/';
+        $regexNombre = '/^([A-Za-zÑñáéíóúÁÉÍÓÚ]( )?){2,30}$/';
+        $regexApellidos = '/^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$/';
+        $regexCorreo = '/^[\w\.\-]{4,28}@(((g|hot)mail|outlook|live|yahoo)\.com|(comunidad|alumno\.enp|enp)\.unam\.mx)|\.mx$/';
+        $regexTel = '/^((55|56)(\d{8}))$/';
+        $regexContra = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!=\(\)/%*?&])([A-Za-z\d$#@$!=\(\)/%*?&]|[^ ]){10,30}$/';
 
         $busca="SELECT num_cuenta FROM usuario WHERE num_cuenta='$num_cuenta'";
         $res= mysqli_query($conexion, $busca);
