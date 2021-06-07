@@ -138,6 +138,13 @@ $(document).ready(()=>{
 
         
     });
+    $("#inicio").on('submit', ()=>{
+        event.preventDefault();
+        let numero_cuenta=$("#numerocuenta").val();
+        let contraseña=$("#contra").val();
+        
+
+    })
 
 
 });

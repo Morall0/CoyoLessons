@@ -12,6 +12,18 @@
     <title>Registro</title>
 </head>
 <body>
+    <form id="inicio">
+        <label for="numcuenta">
+            <input id="numerocuenta" type="text" name="numcuenta" placeholder="No. Cuenta" pattern='^((3(19|20|21))|(1(16|17|18)))\d{6}$' title="Introduce un número de cuenta válido" autocomplete="off" required>
+        </label>
+        <label for="contraseña">
+            <input id="contra" name="contraseña" type="password" placeholder='Contraseña' 
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!=\(\)/%*?&])([A-Za-z\d$#@$!=\(\)/%*?&]|[^ ]){10,30}$" 
+            title="Introduce una contraseña de 10 a 30 caracteres, con al menos un caracter especial, un número, una minúscula y una mayúscula" required>
+            <p>Mímino 10 caracteres, una mayúscula, una minúscula, un número y un caracter especial</p>
+        </label>
+        <button type="submit">Iniciar sesión</button>
+    </form>
     <button id="crearCuenta">Registrarse</button>
     <div id='miModal'>
         <div class='modal-contenidouser'>
