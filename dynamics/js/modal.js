@@ -1,5 +1,6 @@
 $(document).ready(()=>{
-    
+
+    //Funcion que nos permite hacer petiiciones.
     function peticion(url, data=""){
         let peticion =$.ajax({
             url: url,
@@ -8,13 +9,14 @@ $(document).ready(()=>{
         });
         return peticion;
     };
-
+    //Manda un mensaje en el placeholder y le cambia el color.
     function incorrecta(elemento, mensaje, clase){
         $(elemento).val("");
         $(elemento).attr("placeholder", mensaje);
         $(elemento).addClass(clase);
     }
 
+    //Funcion que verifica que todos los datos concuerden con las RegEx.s
     function verifRegx(num_cuenta, nombre, apPaterno, apMaterno, correo, tel, contra){
         //Variables REGEX
         let regexNumcuenta = /^((3(19|20|21))|(1(16|17|18)))\d{6}$/;
@@ -27,6 +29,7 @@ $(document).ready(()=>{
 
         let cont=0;
 
+        //Si alguno de los datos no coinciden, vuelve a agregar la regex al formulario.
         if(regexNumcuenta.test(num_cuenta)){
             cont++;
         }else{
@@ -86,7 +89,7 @@ $(document).ready(()=>{
             else if(resp == "NO EXISTE")
                 incorrecta("#numerocuenta", "Número de cuenta no registrado", "placeholdrojo");
             else if(resp == "CONTRASEÑA INCORRECTA")
-                incorrecta("#contra", "Contraseña incorrecta", "placeholdrojo"); 
+                incorrecta("#contra", "Contraseña incorrecta", "placeholdrojo");
         });
         iniciar.fail(()=>{
             alert("fallo");
@@ -101,7 +104,7 @@ $(document).ready(()=>{
     $("#closeBtn").click(()=>{
         $("#miModal").css("display", "none");
     });
-    
+
 
     //Petición que despliega las materias dependiendo del año.
     $("#cursando").on('change', ()=>{
@@ -115,7 +118,7 @@ $(document).ready(()=>{
         });
     });
 
-    //Evento que manda los datos mediante ajax al momento de darle submit. 
+    //Evento que manda los datos mediante ajax al momento de darle submit al modal.
     $("#cuenta").on('submit', ()=>{
 
         event.preventDefault(); //Evita que la página se recargue al darle submit.
@@ -135,9 +138,10 @@ $(document).ready(()=>{
         let hora= $("#HorarioHora").val();
         let contra=$("#contraseña").val();
 
+        //Funcion de regex.
         let regexing = verifRegx(num_cuenta, nombre, apPaterno, apMaterno, correo, tel, contra);
 
-        if(regexing == 7){
+        if(regexing == 7){//Solo manda la petición si todas las regex son correctas.
             let respuestas = peticion('../dynamics/php/consultaModal.php', 'num_cuenta='+num_cuenta+'&nombre='
             +nombre+' '+apPaterno+' '+apMaterno+'&correo='+correo+'&tel='+tel+'&fechaNac='+año+'-'+mes+'-'+dia+
             '&cursando='+cursando+'&materias='+materias+'&dsemana='+dsemana+'&hora='+hora+'&contra='+contra);
@@ -152,16 +156,16 @@ $(document).ready(()=>{
                     //alert("location");
                 }
             });
-            
+
             respuestas.fail((respuesta)=>{
-                //alert("NO se envian desde JS");
+                alert("NO se envian desde JS");
             });
         }
         else{
             alert("Verificar que se hayan puesto correctamente en el html");
         }
 
-        
+
     });
 
 
