@@ -53,10 +53,10 @@
     flex-direction:column;
     align-items:flex-start;
     padding-top: 1%;
-    padding-left: 13%;
+    padding-left: 4%;
 }
 #miPerfil{
-    width: 23.5%;
+    width: 30%;
     height: 350%;
     background-color: var(--azul);
     border-radius: 8px;
@@ -68,6 +68,7 @@
 }
 h4{
     padding-top: 4%;
+    font-size: 16px;
 }
 #p1{
     font-size: 21px;
@@ -85,7 +86,7 @@ h4{
     width: 100%}
     
 #calificacion,#comentarios,#cerrar{
-    width: 190%;
+    width: 400%;
     background-color: var(--azul);
     border-radius: 8px;
     text-align: center;
@@ -97,28 +98,37 @@ h4{
     flex-direction:column;
     align-items:flex-start;
     position: absolute;
-    left: 43%;
-    bottom: 72%;
+    left: 45%;
+    bottom: 60%;
 }
 #materias{
     background-color: var(--morado);
     border-radius: 8px;
-    width: 185%;
+    width: 300%;
     text-align: center;
     font-family:"roboto";
+    height: 170px;
 }
 #agregarm{
     background-color: var(--morado);
     border-radius: 8px;
     width: 187%;
     border-color: transparent;
+    margin-top: 20px;
 }
 #eliminarm{
     background-color: var(--morado);
     border-radius: 8px;
-    width: 171%;
+    width: 187%;
     border-color: transparent;
     margin-top: 5%;
+}
+#aceptar{
+    background-color: var(--morado);
+    border-radius: 8px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 70%;
 }
 #abajo{
     display: flex;
@@ -160,7 +170,7 @@ h4{
     flex-wrap: nowrap;
     flex-direction:column;
     position: absolute;
-    left: 73%;
+    left: 77%;
     bottom: 42%;
 }
 #rosado{
@@ -334,7 +344,7 @@ h4{
     }
     #footer{
         position: relative;
-        margin-top: 90px;
+        padding-top: 5%;
     }
 }
 @media screen and (max-width: 800px){
@@ -494,7 +504,8 @@ h4{
         width: 50px;
     }
     #footer{
+        position: relative;
         width: 100%;
-        margin-top: 20px;
+        padding-top: 5%;
     }
 }
