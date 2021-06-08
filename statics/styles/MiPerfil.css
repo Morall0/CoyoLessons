@@ -192,6 +192,7 @@ h4{
     font-family: 'roboto';
     padding-top: .5%;
 }
+
 /*=ADAPTABILIDAD
 ---------------------------------------------*/
 @media screen and (max-width: 1200px){
@@ -207,23 +208,29 @@ h4{
         padding-top: 1%;
         padding-left: 29%;
     }
+    #miPerfil{
+        width: 23.5%;
+        height: 210px;
+    }
     #mi, #img{
         font-size: 14px;
 
     }
-    h4, p{
+    h4{
         padding-top: 4px;
-        font-size: 10px;
+        font-size: 12px;
     }
     #azulitos{
-        padding-top: 2px;
+        padding-top: 20px;
     }
     #calificacion,#comentarios,#cerrar{
-        width: 105%;
+        width: 180px;
         background-color: var(--azul);
         border-radius: 8px;
         text-align: center;
         font-family:"roboto";
+        height: 30px;
+        margin-top: 10px;
     }
     #medio{
         display: flex;
@@ -232,12 +239,12 @@ h4{
         align-items:flex-start;
         position: absolute;
         left: 50%;
-        bottom: 66%;
+        bottom: 75%;
     }
     #materias{
         background-color: var(--morado);
         border-radius: 8px;
-        width: 165%;
+        width: 215px;
         text-align: center;
         font-family:"roboto";
     }
@@ -261,12 +268,12 @@ h4{
         align-items:flex-start;
         position: absolute;
         left: 50%;
-        bottom: 3%;
+        bottom: 15%;
         height: 20%;
     }
     #horarios{
         background-color: var(--carne);
-        width: 200%;
+        width: 180%;
         height: 35px;
         padding-top: 0%;
         border-radius: 8px;
@@ -313,19 +320,21 @@ h4{
         width: 210%;
         border-radius: 8px;
         text-align: center;
+        height: 20px;
     }
     #administrar{
         background-color: var(--amarillo);
         position: absolute;
-        left: 78.5%;
-        bottom: 15%;
+        left: 70%;
+        bottom: 30%;
         border-radius: 8px;
         text-align: center;
         font-family: 'roboto';
-        padding-top: .5%;
+        height: 23px;
     }
     #footer{
         position: relative;
+        margin-top: 90px;
     }
 }
 @media screen and (max-width: 800px){
@@ -385,6 +394,7 @@ h4{
         align-items:flex-start;
         left: 7px;
         bottom: 0px;
+        margin-top: 9px;
     }
     #materias{
         background-color: var(--morado);
@@ -412,9 +422,10 @@ h4{
         flex-direction:column;
         align-items:flex-start;
         position: relative;
-        left: 6px;
+        left: 7px;
         bottom: 0px;
         height: 30px;
+        margin-top: 5px;
     }
     #horarios{
         background-color: var(--carne);
@@ -448,7 +459,7 @@ h4{
         flex-direction:column;
         align-items: flex-start;
         position: relative;
-        left: 5.5px;
+        left: 7px;
         bottom: 0px;
     }
     #rosado{
@@ -460,6 +471,7 @@ h4{
         flex-wrap: nowrap;
         flex-direction:column;
         margin-bottom: 3px;
+        left: 3px;
     }
     #am1,#am2,#am3{
         margin-top: 4px;
@@ -482,6 +494,7 @@ h4{
         width: 50px;
     }
     #footer{
-        width: 337px;
+        width: 100%;
+        margin-top: 20px;
     }
 }
