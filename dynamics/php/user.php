@@ -74,12 +74,12 @@
                 $row1[1] = ($row1[1] == 'J')? 'Jueves':$row1[1];
                 $row1[1] = ($row1[1] == 'V')? 'Viernes':$row1[1];
                 
-                echo '<div><span>'.$row1[1].'  </span><span>'.$row1[2].'</span></div>';
+                echo '<div id="horariosIn"><span>'.$row1[1].'  </span><span>'.$row1[2].'</span></div>';
             }
             
         }
     }
-    else{
+    else{ 
         header("location: ../../templates/registro.html");
     }
 
