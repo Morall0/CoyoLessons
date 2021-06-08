@@ -30,11 +30,11 @@ $(document).ready(()=>{
 
         //Inserción de datos dentro del HTML.
         $("#img2").attr("src", "../statics/img/user/"+array_datos[5]);
-        $("#p1").text("Nombre: "+array_datos[1]);
+        $("#nombre_usuario").text("Nombre: "+array_datos[1]);
         $("#no_cuenta").text("No. Cuenta: "+array_datos[0]);
+        $("#tel").text("Telefóno: "+array_datos[3]);
         $("#correo_usuario").text("Correo: "+array_datos[2]);
         $("#cursando").text("Año que cursas: "+array_datos[4]);
-        //AGREGAR EL TELEFRONO
 
         //SACAR EL AVG de las calificiones que tiene en la tabla de comentarios.
 
