@@ -92,6 +92,9 @@ h4{
     text-align: center;
     font-family:"roboto";
 }
+#cerrar{
+    cursor: pointer;
+}
 #medio{
     display: flex;
     flex-wrap: nowrap;
@@ -108,6 +111,7 @@ h4{
     text-align: center;
     font-family:"roboto";
     height: 170px;
+    overflow-y: scroll;
 }
 #agregarm{
     background-color: var(--morado);
@@ -129,6 +133,7 @@ h4{
     height: 30px;
     margin-top: 10px;
     margin-left: 70%;
+    cursor: pointer;
 }
 #abajo{
     display: flex;
@@ -261,6 +266,7 @@ h4{
         width: 215px;
         text-align: center;
         font-family:"roboto";
+        overflow-y: scroll;
     }
     #agregarm{
         background-color: var(--morado);
@@ -418,6 +424,7 @@ h4{
         width: 200px;
         text-align: center;
         font-family:"roboto";
+        overflow-y: scroll;
     }
     #agregarm{
         background-color: var(--morado);
