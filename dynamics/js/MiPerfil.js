@@ -48,4 +48,33 @@ $(document).ready(()=>{
         $("#cursando").text("Año que cursas: "+mensaje);
     });
 
+
+    let materias = peticion("../dynamics/php/user.php", 'asignaturas='+true);
+    materias.done(()=>{
+        alert("Si salió");
+    });
+    materias.fail(()=>{
+        alert("fallo asignatura");
+    });
+
+
+    let materias_select = peticion("../dynamics/php/user.php", 'materias_select='+true);
+    materias_select.done((resp)=>{
+        alert("Si salió");
+        $("#agregarm").append(resp);
+    });
+    materias_select.fail((resp)=>{
+        alert("fallo select asignatura");
+    });
+    
+    //eliminar materia
+    let eliminar_materias = peticion("../dynamics/php/user.php", 'eliminar='+true);
+    eliminar_materias.done((resp)=>{
+        alert("Si salió");
+        $("#eliminarm").append(resp);
+    });
+    eliminar_materias.fail((resp)=>{
+        alert("fallo eliminar");
+    });
+
 })
