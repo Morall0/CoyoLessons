@@ -1,7 +1,9 @@
 <?php
+    session_name("usuario");
+    session_start();
+
     include('./config.php');
     include('./cifr.php');
-
     $conexion=conectdb();   //Conexión con la base de datos.
 
     //Función para validar la información ingresada.
@@ -28,7 +30,7 @@
     if(isset($_POST['num_ini'])){
         $num_ini= validStr($_POST['num_ini'], $conexion);
         $contraseña=validStr($_POST['contraseña'], $conexion);
-        $indicacion="SELECT num_cuenta, contraseña FROM usuario WHERE num_cuenta='$num_ini'";
+        $indicacion="SELECT num_cuenta, contraseña, Tipo FROM usuario WHERE num_cuenta='$num_ini'";
         $resp= mysqli_query($conexion, $indicacion);
         $cuenta= mysqli_num_rows($resp);
         $row = mysqli_fetch_array($resp);
@@ -43,6 +45,8 @@
                     $cont_passwrd++;
             }
             if($cont_passwrd > 0){
+                    $_SESSION["tipo"]=$row[2];
+                    $_SESSION["usuario"]=$num_ini;
                 echo "CONTRASEÑA CORRECTA";
             }
             else{
@@ -101,7 +105,7 @@
             $cont= mysqli_num_rows($res);
             if($cont>0)//si hay registro
             {
-                    echo $cont;//manda 1
+                echo $cont;//manda 1
             }
             else{//si no hay registro introduce los datos a la  BD
                 //Hasheo de contraseña
@@ -132,10 +136,9 @@
                     $respInMateria=mysqli_query($conexion, $insertmateria);
                     if($respInMateria && $respInHorario)
                     {
-                        echo"registro exitoso en la tabla de horarios.";
+                        $_SESSION["usuario"]=$num_cuenta;
+                        $_SESSION["tipo"]='E';
                     }
-
-
                 }
                 else{
                     //echo $respuesta2;

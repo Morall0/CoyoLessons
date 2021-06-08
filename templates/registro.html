@@ -18,7 +18,7 @@
                 <input id="numerocuenta" type="text" name="numcuenta" placeholder="No. Cuenta" pattern='^((3(19|20|21))|(1(16|17|18)))\d{6}$' title="Introduce un número de cuenta válido" autocomplete="off" required>
             </label>
             <label for="contraseña">
-                <input id="contra" name="contraseña" type="password" placeholder='Contraseña' 
+                <input id="contra" name="contraseña" type="password" placeholder='Contraseña'
                 title="Introduce tu contraseña" required>
             </label>
             <button type="submit">Iniciar sesión</button>
@@ -50,13 +50,13 @@
                     </label>
                     <br><br>
                     <label for="correo">
-                        <input id="correo" type="text" name="correo" placeholder="Correo electrónico" 
-                        pattern="^[\w\.\-]{4,28}@(((g|hot)mail|outlook|live|yahoo)\.com|(comunidad|alumno\.enp|enp)\.unam\.mx)|\.mx$" 
+                        <input id="correo" type="text" name="correo" placeholder="Correo electrónico"
+                        pattern="^[\w\.\-]{4,28}@(((g|hot)mail|outlook|live|yahoo)\.com|(comunidad|alumno\.enp|enp)\.unam\.mx)|\.mx$"
                         title="Introduce un correo válido" autocomplete="off" required>
                     </label>
                     <br><br>
                     <label for="tel">
-                        <input id="tel" type="numer" name="tel" placeholder="Teléfono" pattern="^((55|56)(\d{8}))$" title="Introduce tu número telefónico" autocomplete="off" required>
+                        <input id="tel" type="numer" name="tel" placeholder="Teléfono" pattern="^((55|56)(\d{8}))$" title="Introduce tu número telefónico (55+ o 56+)" autocomplete="off" required>
                     </label>
                     <br><br>
                     <label for="fecha"><p id="fecha">Fecha de nacimiento</p>
@@ -115,8 +115,8 @@
                     </label>
                     <br><br>
                     <label for="contraseña">
-                        <input id="contraseña" name="contraseña" type="password" placeholder='Contraseña' 
-                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!=\(\)/%*?&])([A-Za-z\d$#@$!=\(\)/%*?&]|[^ ]){10,30}$" 
+                        <input id="contraseña" name="contraseña" type="password" placeholder='Contraseña'
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!=\(\)/%*?&])([A-Za-z\d$#@$!=\(\)/%*?&]|[^ ]){10,30}$"
                         title="Introduce una contraseña de 10 a 30 caracteres, con al menos un caracter especial, un número, una minúscula y una mayúscula" required>
                         <p id="caracteres">Mímino 10 caracteres, una mayúscula, una minúscula, un número y un caracter especial</p>
                     </label>
@@ -126,6 +126,6 @@
             </p>
         </div>
     </div>
-    <script src="../dynamics/js/modal.js"></script>
+    <script src="../dynamics/js/iniSesion.js"></script>
 </body>
 </html>
