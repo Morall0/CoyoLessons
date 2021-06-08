@@ -1,5 +1,8 @@
 $(document).ready(()=>{
-
+    let dia = $("#Horariodia");
+    let hora = $("#Horariohora");
+    dia.hide();
+    hora.hide();
     var ham=document.querySelector("#hamburguesa");
     var barra=document.querySelectorAll(".link")
     ham.addEventListener("click",()=>{
@@ -19,7 +22,7 @@ $(document).ready(()=>{
         return peticion;
     };
 
-    let datos = peticion("../dynamics/php/user.php");
+    let datos = peticion("../dynamics/php/user.php", "datos="+true);
     datos.done((resp)=>{
         let array_datos = resp.split(",");
 
@@ -48,19 +51,19 @@ $(document).ready(()=>{
         $("#cursando").text("Año que cursas: "+mensaje);
     });
 
-
+    //Peitcion que permite desplegar la materias del usuario.
     let materias = peticion("../dynamics/php/user.php", 'asignaturas='+true);
     materias.done(()=>{
-        alert("Si salió");
+        //alert("Si salió");
     });
     materias.fail(()=>{
         alert("fallo asignatura");
     });
 
-
+    //Desplegar materias en el select.
     let materias_select = peticion("../dynamics/php/user.php", 'materias_select='+true);
     materias_select.done((resp)=>{
-        alert("Si salió");
+        //alert("Si salió");
         $("#agregarm").append(resp);
     });
     materias_select.fail((resp)=>{
@@ -70,11 +73,25 @@ $(document).ready(()=>{
     //eliminar materia
     let eliminar_materias = peticion("../dynamics/php/user.php", 'eliminar='+true);
     eliminar_materias.done((resp)=>{
-        alert("Si salió");
+        //alert("Si salió");
         $("#eliminarm").append(resp);
     });
     eliminar_materias.fail((resp)=>{
         alert("fallo eliminar");
     });
 
+    //Desplegar horarios del usuario.
+    let horarios = peticion("../dynamics/php/user.php", 'horarios='+true);
+    horarios.done((resp)=>{
+        $("#horitas").append(resp);
+    });
+    horarios.fail((resp)=>{
+        alert("fallo eliminar");
+    });
+
+    let administrar = $("#administrar").on('click',()=>{
+        dia.show();
+        hora.show();
+        
+    });
 })
