@@ -1,8 +1,4 @@
 $(document).ready(()=>{
-    let dia = $("#Horariodia");
-    let hora = $("#Horariohora");
-    dia.hide();
-    hora.hide();
     var ham=document.querySelector("#hamburguesa");
     var barra=document.querySelectorAll(".link");
     ham.addEventListener("click",()=>{
@@ -81,11 +77,11 @@ $(document).ready(()=>{
 
         //Inserción de datos dentro del HTML.
         $("#img2").attr("src", "../statics/img/user/"+array_datos[5]);
-        $("#nombre_usuario").text("Nombre: "+array_datos[1]);
-        $("#no_cuenta").text("No. Cuenta: "+array_datos[0]);
-        $("#tel").text("Telefóno: "+array_datos[3]);
-        $("#correo_usuario").text("Correo: "+array_datos[2]);
-        $("#cursando").text("Año que cursas: "+array_datos[4]);
+        $("#nombre_usuario").html("<strong>Nombre: </strong>"+array_datos[1]);
+        $("#no_cuenta").html("<strong>No. Cuenta: </strong>"+array_datos[0]);
+        $("#tel").html("<strong>Telefóno: </strong>"+array_datos[3]);
+        $("#correo_usuario").html("<strong>Correo: </strong>"+array_datos[2]);
+        $("#cursando").html("<strong>Año que cursas: </strong>"+array_datos[4]);
 
         //SACAR EL AVG de las calificiones que tiene en la tabla de comentarios.
 
@@ -94,10 +90,10 @@ $(document).ready(()=>{
     datos.fail((resp)=>{
         let mensaje = "error al cargar los datos";
         $("#img2").attr("src", "../statics/img/user/user.png");
-        $("#p1").text("Nombre: "+mensaje);
-        $("#no_cuenta").text("No. Cuenta: "+mensaje);
-        $("#correo_usuario").text("Correo: "+mensaje);
-        $("#cursando").text("Año que cursas: "+mensaje);
+        $("#p1").text("<strong>Nombre: </strong>"+mensaje);
+        $("#no_cuenta").text("<strong>No. Cuenta: </strong>"+mensaje);
+        $("#correo_usuario").text("<strong>Correo: </strong>"+mensaje);
+        $("#cursando").text("<strong>Año que cursas: </strong>"+mensaje);
     });
 
     //Peiticion que permite desplegar todo lo relacionado con las materias del usuario.
@@ -110,13 +106,6 @@ $(document).ready(()=>{
     });
     horarios.fail((resp)=>{
         alert("fallo eliminar");
-    });
-
-    let administrar = $("#administrar").on('click',()=>{
-        dia.show();
-        hora.show();
-        $("#botonhor").show();
-        
     });
 
     //Evento que permite borrar o agregar materias.
@@ -132,7 +121,7 @@ $(document).ready(()=>{
             alert("no se pudo agrEli");
         });
     });
-    
+
     //Cerrar session
     $("#cerrar").click(()=>{
         let cerrar = peticion("../dynamics/php/user.php", "sesion="+true+"&cerrar="+true);
