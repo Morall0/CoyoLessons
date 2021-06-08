@@ -4,11 +4,11 @@ $(document).ready(()=>{
     dia.hide();
     hora.hide();
     var ham=document.querySelector("#hamburguesa");
-    var barra=document.querySelectorAll(".link")
+    var barra=document.querySelectorAll(".link");
     ham.addEventListener("click",()=>{
         document.querySelector(".nav").classList.toggle("navbarMob");
         for(let i=0; i< barra.length;i++){
-            barra[i].classList.toggle("barraNMob")
+            barra[i].classList.toggle("barraNMob");
         }
     })
 
@@ -22,7 +22,15 @@ $(document).ready(()=>{
         return peticion;
     };
 
-    let datos = peticion("../dynamics/php/user.php", "datos="+true);
+    let sesion = peticion("../dynamics/php/user.php", "sesion="+true);
+    sesion.done((resp)=>{
+        alert(resp);
+        if(resp=="NO HAY SESION"){
+            location = "./registro.html";
+        }
+    });
+
+    let datos = peticion("../dynamics/php/user.php", "sesion="+true+"&datos="+true);
     datos.done((resp)=>{
         let array_datos = resp.split(",");
 
@@ -41,9 +49,10 @@ $(document).ready(()=>{
 
         //SACAR EL AVG de las calificiones que tiene en la tabla de comentarios.
 
-    })
+    });
+    
     datos.fail((resp)=>{
-        let mensaje = "error al cargar los datos"
+        let mensaje = "error al cargar los datos";
         $("#img2").attr("src", "../statics/img/user/user.png");
         $("#p1").text("Nombre: "+mensaje);
         $("#no_cuenta").text("No. Cuenta: "+mensaje);
@@ -52,18 +61,18 @@ $(document).ready(()=>{
     });
 
     //Peitcion que permite desplegar la materias del usuario.
-    let materias = peticion("../dynamics/php/user.php", 'asignaturas='+true);
-    materias.done(()=>{
-        //alert("Si salió");
+    let materias = peticion("../dynamics/php/user.php", "sesion="+true+"&asignaturas="+true);
+    materias.done((resp)=>{
+        alert("Si salió");
     });
-    materias.fail(()=>{
+    materias.fail((resp)=>{
         alert("fallo asignatura");
     });
 
     //Desplegar materias en el select.
-    let materias_select = peticion("../dynamics/php/user.php", 'materias_select='+true);
+    let materias_select = peticion("../dynamics/php/user.php", "sesion="+true+"&materias_select="+true);
     materias_select.done((resp)=>{
-        //alert("Si salió");
+        alert("materias select"+resp);
         $("#agregarm").append(resp);
     });
     materias_select.fail((resp)=>{
@@ -71,9 +80,9 @@ $(document).ready(()=>{
     });
     
     //eliminar materia
-    let eliminar_materias = peticion("../dynamics/php/user.php", 'eliminar='+true);
+    let eliminar_materias = peticion("../dynamics/php/user.php", "sesion="+true+"&eliminar="+true);
     eliminar_materias.done((resp)=>{
-        //alert("Si salió");
+        alert("Si salió");
         $("#eliminarm").append(resp);
     });
     eliminar_materias.fail((resp)=>{
@@ -81,7 +90,7 @@ $(document).ready(()=>{
     });
 
     //Desplegar horarios del usuario.
-    let horarios = peticion("../dynamics/php/user.php", 'horarios='+true);
+    let horarios = peticion("../dynamics/php/user.php", "sesion="+true+"&horarios="+true);
     horarios.done((resp)=>{
         $("#horitas").append(resp);
     });
@@ -95,4 +104,16 @@ $(document).ready(()=>{
         $("#botonhor").show();
         
     });
-})
+
+    //Cerrar session
+    $("#cerrar").click(()=>{
+        let cerrar = peticion("../dynamics/php/user.php", "sesion="+true+"&cerrar="+true);
+        cerrar.done((resp)=>{
+            location = "./registro.html";
+        });
+        cerrar.fail((resp)=>{
+            alert("no funciona");
+        });
+    
+    });
+});
