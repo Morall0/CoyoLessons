@@ -18,17 +18,21 @@
     }
 
     if(isset($_SESSION["usuario"])){
-        //Consulta para obetener los datos básicos del usuario.
         $conexion = conectdb();
-        $consulta = 'SELECT num_cuenta, Nombre, Correo, Teléfono, Grado, Imagen FROM usuario WHERE num_cuenta='.$_SESSION["usuario"];
-        $respuesta = mysqli_query($conexion, $consulta);
-        $row = mysqli_fetch_array($respuesta);
+        //Consulta para obetener los datos básicos del usuario.
+        if(isset($_POST['datos']))
+        {
+            $consulta = 'SELECT num_cuenta, Nombre, Correo, Teléfono, Grado, Imagen FROM usuario WHERE num_cuenta='.$_SESSION["usuario"];
+            $respuesta = mysqli_query($conexion, $consulta);
+            $row = mysqli_fetch_array($respuesta);
+    
+            //Descifrando el correo y el telefono.
+            $row[2]=descifrar($row[2]);
+            $row[3]=descifrar($row[3]);
+    
+            echo $row[0].','.$row[1].','.$row[2].','.$row[3].','.$row[4].','.$row[5];    //Envio de los datos del usuario.
 
-        //Descifrando el correo y el telefono.
-        $row[2]=descifrar($row[2]);
-        $row[3]=descifrar($row[3]);
-
-        echo $row[0].','.$row[1].','.$row[2].','.$row[3].','.$row[4].','.$row[5];    //Envio de los datos del usuario.
+        }
 
         if(isset($_POST["asignaturas"]) || isset($_POST["eliminar"]))
         {
@@ -39,6 +43,7 @@
             {
                 if(isset($_POST["asignatura"]))
                     echo "<p>".$row[1]."</p>";
+                //Select para eliminar materias
                 if(isset($_POST["eliminar"]))
                     echo "<option value=".$row[0].">".$row[1]."</option>";
             }
@@ -54,6 +59,24 @@
             else if($row[4]=='S'){
                 materia(1400, 2226, $conexion);
             }
+        }
+
+        //Horario
+        if(isset($_POST['horarios']))
+        {
+            $horario_in= 'SELECT num_cuenta, dia, hora FROM alumnohashorario NATURAL JOIN horario NATURAL JOIN hora WHERE num_cuenta='.$_SESSION['usuario'];
+            $res_horario= mysqli_query($conexion, $horario_in);
+            while($row1 = mysqli_fetch_array($res_horario))
+            {
+                $row1[1] = ($row1[1] == 'L')? 'Lunes':$row1[1];
+                $row1[1] = ($row1[1] == 'Ma')? 'Martes':$row1[1];
+                $row1[1] = ($row1[1] == 'Mi')? 'Miércoles':$row1[1];
+                $row1[1] = ($row1[1] == 'J')? 'Jueves':$row1[1];
+                $row1[1] = ($row1[1] == 'V')? 'Viernes':$row1[1];
+                
+                echo '<div><span>'.$row1[1].'  </span><span>'.$row1[2].'</span></div>';
+            }
+            
         }
     }
     else{

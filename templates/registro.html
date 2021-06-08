@@ -12,19 +12,23 @@
     <title>Registro</title>
 </head>
 <body>
-    <div id="form inicio">
-        <form id="inicio">
-            <label for="numcuenta">
-                <input id="numerocuenta" type="text" name="numcuenta" placeholder="No. Cuenta" pattern='^((3(19|20|21))|(1(16|17|18)))\d{6}$' title="Introduce un número de cuenta válido" autocomplete="off" required>
-            </label>
-            <label for="contraseña">
-                <input id="contra" name="contraseña" type="password" placeholder='Contraseña'
-                title="Introduce tu contraseña" required>
-            </label>
-            <button type="submit">Iniciar sesión</button>
-        </form>
+    <nav class="nav">
+        <div id="tit">COYOLESSONS</div>
+     </nav>
+    <div id="forms">
+            <form id="inicio">
+                <div><h1 id="inSesion">Iniciar sesión</h1></div>
+                <label for="numcuenta">
+                    <input id="numerocuenta" type="text" name="numcuenta" placeholder="No. Cuenta" pattern='^((3(19|20|21))|(1(16|17|18)))\d{6}$' title="Introduce un número de cuenta válido" autocomplete="off" required>
+                </label>
+                <label for="contraseña">
+                    <input id="contra" name="contraseña" type="password" placeholder='Contraseña'
+                    title="Introduce tu contraseña" required>
+                </label>
+                <button type="submit">Iniciar sesión</button>
+                <button id="crearCuenta">Registrarse</button>
+            </form>
     </div>
-    <button id="crearCuenta">Registrarse</button>
     <div id='miModal'>
         <div class='modal-contenidouser'>
             <div id="modalhead">

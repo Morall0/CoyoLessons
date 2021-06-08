@@ -48,6 +48,7 @@
                     $_SESSION["tipo"]=$row[2];
                     $_SESSION["usuario"]=$num_ini;
                 echo "CONTRASEÑA CORRECTA";
+                header("location: ../../templates/registro.html");
             }
             else{
                 echo "CONTRASEÑA INCORRECTA";
@@ -138,6 +139,7 @@
                     {
                         $_SESSION["usuario"]=$num_cuenta;
                         $_SESSION["tipo"]='E';
+                        header("location: ../../templates/registro.html");
                     }
                 }
                 else{

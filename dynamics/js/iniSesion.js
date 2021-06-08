@@ -152,7 +152,7 @@ $(document).ready(()=>{
                 if(respuesta > 0)
                     incorrecta("#numcuenta", "Este numero de cuenta ya está registrado", "placeholdrojo");
                 else{
-                    $("#miModal").css("display", "none");
+                    //$("#miModal").css("display", "none");
                     //alert("location");
                 }
             });
