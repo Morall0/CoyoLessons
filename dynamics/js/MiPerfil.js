@@ -92,6 +92,7 @@ $(document).ready(()=>{
     let administrar = $("#administrar").on('click',()=>{
         dia.show();
         hora.show();
+        $("#botonhor").show();
         
     });
 })

@@ -160,6 +160,10 @@ h4{
     align-items:flex-start;
     padding-left: 50%;
 }
+#botonhor{
+    background-color: var(--carne);
+    display: none;
+}
 #Horariodia, #Horariohora{
     background-color: var(--carne);
     border-color: transparent;
