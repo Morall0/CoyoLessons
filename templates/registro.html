@@ -18,15 +18,17 @@
     <div id="forms">
             <form id="inicio">
                 <div><h1 id="inSesion">Iniciar sesión</h1></div>
-                <label for="numcuenta">
-                    <input id="numerocuenta" type="text" name="numcuenta" placeholder="No. Cuenta" pattern='^((3(19|20|21))|(1(16|17|18)))\d{6}$' title="Introduce un número de cuenta válido" autocomplete="off" required>
-                </label>
-                <label for="contraseña">
-                    <input id="contra" name="contraseña" type="password" placeholder='Contraseña'
-                    title="Introduce tu contraseña" required>
-                </label>
-                <button type="submit">Iniciar sesión</button>
-                <button id="crearCuenta">Registrarse</button>
+                <div id="labels">
+                    <label for="numcuenta">
+                        <input id="numerocuenta" type="text" name="numcuenta" placeholder="No. Cuenta" pattern='^((3(19|20|21))|(1(16|17|18)))\d{6}$' title="Introduce un número de cuenta válido" autocomplete="off" required>
+                    </label>
+                    <label for="contraseña">
+                        <input id="contra" name="contraseña" type="password" placeholder='Contraseña'
+                        title="Introduce tu contraseña" required>
+                    </label>
+                </div>
+                <button type="submit" id="botonIni">Iniciar sesión</button>
+                <p>¿No tienes una cuenta? <button id="crearCuenta">Registrarse</button></p>
             </form>
     </div>
     <div id='miModal'>

@@ -28,23 +28,26 @@ body{
 /*= ----------------- FORMS -------------------------*/
 #forms
 {
-    display: flex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 60%;
+    height: 50%;
+    /*=display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     text-decoration: none;
-    background-color: white;
     width: 50%;
-    height: 60%;
-    margin-left: 25%;
-    margin-top: 10%;
-    padding: 2%;
+    height: 90%;
+    
+    padding: 2%;*/
 }
-#inicio :nth-child(1)
+#inicio h1
 {
-    align-content:center;
-    margin-left: 20%;
-    padding: 2px;
+    text-align: center;
 }
 #numerocuenta
 {
@@ -53,22 +56,30 @@ body{
     padding: 2px;
     margin-bottom: 10px;
 }
+#labels
+{
+    text-align: center;
+}
 #contra
 {
     width: 60%;
-    height: 20%;
+    height: 100%;
     margin-bottom: 10px;
 }
 button
 {
     border: none;
 }
-#inicio :nth-child(4)
+#botonIni
 {
     background-color:#A191D9;
-    margin-left: 45%;
+    margin: center;
 }
-#inicio :nth-child(5)
+#inicio p
+{
+    text-align: center;
+}
+#crearCuenta
 {
     background-color: red;
 }
@@ -228,7 +239,6 @@ p{
 @media screen and (max-width: 1200px){
     body{
         font-family: 'roboto';
-        background-color: white;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
