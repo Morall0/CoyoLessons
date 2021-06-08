@@ -40,13 +40,19 @@
                 //Consulta para obtener las materias.
                 $materiasd_usuario='SELECT id_materia, abreviacion FROM usuariohasmateria NATURAL JOIN materia WHERE num_cuenta='.$_SESSION["usuario"];
                 $res_materias = mysqli_query($conexion, $materiasd_usuario);
+                $contar= mysqli_num_rows($res_materias);
                 while($row_asignaturas = mysqli_fetch_array($res_materias))
                 {
-                    if(isset($_POST["asignatura"]))
-                        echo "<p>".$row_asignaturas[1]."</p>";
+                    if(isset($_POST["asignaturas"]))
+                        echo "<li>".$row_asignaturas[1]."</li>";
                     //Select para eliminar materias
-                    if(isset($_POST["eliminar"]))
-                        echo "<option value=".$row_asignaturas[0].">".$row_asignaturas[1]."</option>";
+                    if(isset($_POST["eliminar"])){
+                        if($contar>1)
+                           echo "<option value=".$row_asignaturas[0].">".$row_asignaturas[1]."</option>"; 
+                        else{
+                            echo "UNA MATERIA";
+                        }
+                    }      
                 }
             }
     
@@ -83,6 +89,33 @@
                 }
                 
             }
+
+            //Agregar o eliminar materias
+            if(isset($_POST['agregarm']) || isset($_POST['eliminarm'])){
+                //Concicional que permite agregar.
+                if($_POST['agregarm'] != "")
+                {
+                    $consul_agregarm = "INSERT INTO usuariohasmateria (num_cuenta, id_materia) VALUES (".$_SESSION['usuario'].",'".$_POST['agregarm']."')";
+                    $respuestaagr = mysqli_query($conexion, $consul_agregarm);
+                    if($respuestagr){
+                        echo "SE AGREGO CORRECTAMENTE";
+                    }else {
+                        echo "NO SE PUDO AGREGAR";
+                    }
+                }
+                //Condicional que permite eliminar.
+                if($_POST['eliminarm'] != ""){
+                    $consul_eliminarm="DELETE FROM usuariohasmateria WHERE num_cuenta=".$_SESSION['usuario']." AND id_materia="."'".$_POST['eliminarm']."'";
+                    $respuestaelim = mysqli_query($conexion, $consul_eliminarm);
+                    if($respuestaelim){
+                        echo "SE ELIMINO CORRECTAMENTE";
+                    }else {
+                        echo "NO SE PUDO ELIMINAR";
+                    }
+                }
+            }
+
+            //Peticion que permite cerrar la sesion.
             if(isset($_POST["cerrar"])){
                 session_unset();
                 session_destroy();
