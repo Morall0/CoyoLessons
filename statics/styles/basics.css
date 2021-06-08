@@ -34,10 +34,11 @@ i
     color: white;
 }
 #footer{
-    position: absolute;
+    position: relative;
     background-color: #505B73;
     width: 100%;
-    bottom: 0%;
+    margin-top: 100%;
+    margin-top: 5%;
     color: white;
     font-family: 'roboto';
     text-align: center;
