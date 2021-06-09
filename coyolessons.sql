@@ -31,7 +31,7 @@ CREATE TABLE `alumnohashorario` (
   KEY `num_cuenta` (`num_cuenta`),
   CONSTRAINT `alumnohashorario_ibfk_1` FOREIGN KEY (`id_horario`) REFERENCES `horario` (`id_horario`),
   CONSTRAINT `alumnohashorario_ibfk_2` FOREIGN KEY (`num_cuenta`) REFERENCES `usuario` (`num_cuenta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `alumnohashorario` (
 
 LOCK TABLES `alumnohashorario` WRITE;
 /*!40000 ALTER TABLE `alumnohashorario` DISABLE KEYS */;
+INSERT INTO `alumnohashorario` VALUES (1,320110199,1);
 /*!40000 ALTER TABLE `alumnohashorario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,9 +89,12 @@ CREATE TABLE `asesoria` (
   `Duracion` int(3) DEFAULT NULL,
   `Tema` varchar(50) DEFAULT NULL,
   `id_materia` varchar(4) DEFAULT NULL,
+  `id_ahh` int(5) DEFAULT NULL,
   PRIMARY KEY (`id_asesoria`),
   KEY `id_materia` (`id_materia`),
-  CONSTRAINT `asesoria_ibfk_1` FOREIGN KEY (`id_materia`) REFERENCES `materia` (`id_materia`)
+  KEY `id_ahh` (`id_ahh`),
+  CONSTRAINT `asesoria_ibfk_1` FOREIGN KEY (`id_materia`) REFERENCES `materia` (`id_materia`),
+  CONSTRAINT `asesoria_ibfk_2` FOREIGN KEY (`id_ahh`) REFERENCES `alumnohashorario` (`id_ahh`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -320,6 +324,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (320110199,'Melissa Natalia Archundia Tapia','f7uGNM8joRQD5DWJXli3oGiz8X3YJc82dWq9/j92Ow+v3moToOEvrw6o7rDub+eD','X1HzLoOqhYvD+S/2Ugwuu+KcMB/TIUu3g378jfcbpOc=','2004-03-19','Q',0,'$2y$10$yKCLU8Uc9/.wrbFMHxiHXe1pnUV.aAzCHWTfZIJGG5NcFOyfwcGV2rpOOV','B','E','user.png');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,7 +344,7 @@ CREATE TABLE `usuariohasmateria` (
   KEY `id_materia` (`id_materia`),
   CONSTRAINT `usuariohasmateria_ibfk_1` FOREIGN KEY (`num_cuenta`) REFERENCES `usuario` (`num_cuenta`),
   CONSTRAINT `usuariohasmateria_ibfk_2` FOREIGN KEY (`id_materia`) REFERENCES `materia` (`id_materia`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -348,6 +353,7 @@ CREATE TABLE `usuariohasmateria` (
 
 LOCK TABLES `usuariohasmateria` WRITE;
 /*!40000 ALTER TABLE `usuariohasmateria` DISABLE KEYS */;
+INSERT INTO `usuariohasmateria` VALUES (1,320110199,'1400');
 /*!40000 ALTER TABLE `usuariohasmateria` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -360,4 +366,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-07 12:37:20
+-- Dump completed on 2021-06-09  1:09:21
