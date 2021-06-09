@@ -42,7 +42,7 @@ body{
     text-decoration: none;
     width: 50%;
     height: 90%;
-    
+
     padding: 2%;*/
 }
 #inicio h1
@@ -70,7 +70,7 @@ body{
     color: red;
 }
 .placeholdmorado::placeholder{
-    color: var(--morado); 
+    color: var(--morado);
 }
 button
 {
@@ -276,7 +276,7 @@ p{
         width: 320px;
         border-radius: 11px;
     }
-    
+
     #modalhead{
         display: flex;
         align-items: center;
@@ -284,13 +284,13 @@ p{
         height: 30px;
         border-radius: 11px;
     }
-    
+
     #closeBtn{
         margin-left: 90%;
         color: var(--carne);
         cursor: pointer;
     }
-    
+
     label{
         margin-left: 10px;
         margin-right: 10px;
@@ -425,7 +425,7 @@ p{
         width: 220px;
         border-radius: 11px;
     }
-    
+
     #modalhead{
         display: flex;
         align-items: center;
@@ -438,7 +438,7 @@ p{
         color: var(--carne);
         cursor: pointer;
     }
-    
+
     label{
         margin-left: 10px;
         margin-right: 10px;
@@ -478,7 +478,7 @@ p{
         bottom: 79.4%;
     }
     #apMaterno{
-        
+
         bottom: 73%;
     }
     #numcuenta,#tel,#correo,#contraseña{
