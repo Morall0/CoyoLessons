@@ -66,6 +66,12 @@ body{
     height: 100%;
     margin-bottom: 10px;
 }
+.placeholdrojo::placeholder{
+    color: red;
+}
+.placeholdmorado::placeholder{
+    color: var(--morado); 
+}
 button
 {
     border: none;

@@ -18,22 +18,10 @@
 }
 body{
     background-color: #F1EFE3;
+    padding: 0;
+    margin: 0;
 }
 /* =NAV -------------------------------------------------- */
-i
-{
-    color: white;
-}
-.nav a{
-    display: flex;
-    flex-direction: row;
-    /*=justify-content: end;*/
-    text-decoration: none;
-    font-family: Roboto;
-    color: white;
-    font-size: 1.2rem;
-}
-
 .nav{
     display: flex;
     width: 100%;
@@ -53,24 +41,6 @@ i
 .link:hover{
     background-color:  var(--azulHover);
 }
-.nav div#tit
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    text-decoration: none;
-    font-family: Roboto;
-    color: white;
-    font-size: 2rem;
-    align-self: center;
-    text-align: center;
-}
-#log
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-}
 #footer{
     bottom: 100%;
     font-family: "roboto";
@@ -81,6 +51,10 @@ i
     background-color: var(--azulF);
     color: white;
 }
+#hamburguesa
+{
+    display: none;
+}
 /*=MEDIA QUERY}
 ---------------------------------------------------------------------*/
 @media screen and (max-width: 1200px){
@@ -90,10 +64,11 @@ i
         #hamburguesa{
             align-self: flex-end;
             justify-content: center;
-            height: 50px;
-            width: 50px;
             display: flex;
-            color: white;
+            color: rgb(255, 255, 255);
+            position: absolute;
+            top: 0.5%;
+            right: 1%;
         }
         #hamburguesa:hover{
             background-color: transparent;
@@ -103,10 +78,10 @@ i
             align-items: center;
             font-size: 1.2rem;
         }
-        .nav{
+        .nav,.navbarMob{
             flex-direction: column;
         }
-        .link{
+        div .link{
             width: 100%;
             display: flex;
             justify-content: center;

@@ -76,16 +76,27 @@ $(document).ready(()=>{
         return cont;
     };
 
+    //Peticion que permite redireccionar en caso de que ya haya una sesion activa.    
+    let sesion = peticion("../dynamics/php/iniSesion.php", "sesionRegistro="+true);
+    sesion.done((respsesion)=>{
+        alert(respsesion+"HOLA");
+        if(respsesion=="SI HAY SESION"){
+            location = "./MiPerfil.html";
+        }
+    });
+
     //Evento que permite iniciar sesión
     $("#inicio").on('submit', ()=>{
         event.preventDefault();
         let numero_cuenta=$("#numerocuenta").val();
         let contraseña=$("#contra").val();
 
-        let iniciar = peticion('../dynamics/php/iniSesion.php', 'num_ini='+numero_cuenta+'&contraseña='+contraseña);
+        let iniciar = peticion('../dynamics/php/iniSesion.php','sesionRegistro='+true+'&num_ini='+numero_cuenta+'&contraseña='+contraseña);
         iniciar.done((resp)=>{
-            if(resp == "CONTRASEÑA CORRECTA")
-                alert("location");
+            if(resp == "CONTRASEÑA CORRECTA"){
+                location="./MiPerfil.html";
+                alert("contraseña correcta");
+            }
             else if(resp == "NO EXISTE")
                 incorrecta("#numerocuenta", "Número de cuenta no registrado", "placeholdrojo");
             else if(resp == "CONTRASEÑA INCORRECTA")
@@ -109,7 +120,7 @@ $(document).ready(()=>{
     //Petición que despliega las materias dependiendo del año.
     $("#cursando").on('change', ()=>{
         let cursando = $('#cursando').val();
-        let materias = peticion('../dynamics/php/iniSesion.php', 'anio='+cursando);
+        let materias = peticion('../dynamics/php/iniSesion.php', 'sesionRegistro='+true+'&anio='+cursando);
         materias.done((resp)=>{
             $("#materias").html(resp);
         });
@@ -142,7 +153,7 @@ $(document).ready(()=>{
         let regexing = verifRegx(num_cuenta, nombre, apPaterno, apMaterno, correo, tel, contra);
 
         if(regexing == 7){//Solo manda la petición si todas las regex son correctas.
-            let respuestas = peticion('../dynamics/php/iniSesion.php', 'num_cuenta='+num_cuenta+'&nombre='
+            let respuestas = peticion('../dynamics/php/iniSesion.php', 'sesionRegistro='+true+'&num_cuenta='+num_cuenta+'&nombre='
             +nombre+' '+apPaterno+' '+apMaterno+'&correo='+correo+'&tel='+tel+'&fechaNac='+año+'-'+mes+'-'+dia+
             '&cursando='+cursando+'&materias='+materias+'&dsemana='+dsemana+'&hora='+hora+'&contra='+contra);
 
@@ -152,8 +163,7 @@ $(document).ready(()=>{
                 if(respuesta > 0)
                     incorrecta("#numcuenta", "Este numero de cuenta ya está registrado", "placeholdrojo");
                 else{
-                    //$("#miModal").css("display", "none");
-                    //alert("location");
+                    location = "./MiPerfil.html";
                 }
             });
 
