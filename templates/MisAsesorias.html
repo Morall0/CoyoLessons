@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../statics/styles/basics.css">
+    <script src="../libs/jquery/jquery-3.6.0.min.js"></script>
+    <script src="../dynamics/js/MisAsesorias.js"></script>
+    <title>Mis asesorías</title>
+</head>
+<body>
+    <button id="botonAsesoria">Crear Asesoria</button>
+    <div id='crearA'>
+        <div class='modal-contenidouser'>
+            <div id="modalhead">
+                <span><strong>Crear Asesoría</strong></span> <!---Titulo del modal--->
+                <i id ="closeBtn" class="fas fa-times-circle fa-2x"></i>
+            </div>
+            <div id="modalcont">
+                <form id="crearAsesoria" method="POST">
+                    <label for="materias">Materias
+                        <select name="materias" id="materias">
+                            <option selected value="" hidden><p>Materias a impartir</p></option>
+                        </select>
+                    </label>
+                    <label for="tema">Tema
+                        <input type="text" id="tema" name="tema" placeholder="Tema">
+                    </label>
+                    <br><br>
+                    <label for="modalidad">Modalidad
+                        <select name="modalidad" id="modalidad">
+                            <option value="L"><p>En línea</p></option>
+                            <option value="P"><p>Presencial</p></option>
+                        </select>
+                    </label>
+                    <label>Medio
+                        <input type="text" id="medio" name="medio" placeholder="Lugar o liga">
+                    </label>
+                    <br><br>
+                    <label for="horario">Horario
+                        <select id="horario">
+                            <option value="" selected>Seleccionar horario</option>
+                        </select>
+                    </label>
+                    <label for="duracion">Duración
+                        <select id="duracion">
+                            <option value="1"><p>50 min</p></option>
+                            <option value="2"><p>100 min</p></option>
+                        </select>
+                    </label>
+                    <br><br>
+                    <label for="fecha">Fecha
+                        <input type="date" id="fecha">
+                    </label>
+                    <button type="submit" id="enviar">Enviar</button>
+                </form>
+            </div>
+        </div>   
+    </div>
+</body>
+</html>
