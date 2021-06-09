@@ -77,12 +77,11 @@ h4{
 }
 
  /* =PARTE ARRIBA -------------------------------------------------- */
- #arriba
- {
-    width: 100%}
-
+#arriba{
+    width: 100%
+}
 #calificacion,#comentarios,#cerrar{
-    width: 400%;
+    width: 380%;
     background-color: var(--azul);
     border-radius: 8px;
     text-align: center;
@@ -98,12 +97,12 @@ h4{
     align-items:flex-start;
     position: absolute;
     left: 45%;
-    bottom: 47%;
+    bottom: 310px;
 }
 #materias{
     background-color: var(--morado);
     border-radius: 8px;
-    width: 320%;
+    width: 320px;
     text-align: center;
     font-family:"roboto";
     height: 170px;
@@ -112,23 +111,27 @@ h4{
 #agregarm{
     background-color: var(--morado);
     border-radius: 8px;
-    width: 187%;
+    width: 302px;
     border-color: transparent;
-    margin-top: 20px;
+    margin-top: 11px;
 }
 #eliminarm{
     background-color: var(--morado);
     border-radius: 8px;
-    width: 187%;
+    width: 302px;
     border-color: transparent;
     margin-top: 5%;
 }
 #aceptar{
     background-color: var(--morado);
     border-radius: 8px;
-    height: 30px;
+    height: 12px;
+    width: 302px;
+    padding-bottom: 25px;
+    text-align: center;
+    padding-top: 0px;
     margin-top: 10px;
-    margin-left: 70%;
+    margin-left: 0%;
     cursor: pointer;
 }
 #abajo{
@@ -137,14 +140,14 @@ h4{
     flex-direction:column;
     align-items:flex-start;
     position: absolute;
-    left: 43%;
+    left: 45%;
     bottom: 10%;
     height: 30%;
 }
 #horarios{
     background-color: var(--carne);
-    width: 230%;
-    height: 37px;
+    width: 299px;
+    height: 50px;
     border-radius: 8px;
     text-align: center;
     font-family:"roboto";
@@ -152,23 +155,33 @@ h4{
 #horitas{
     margin-top: 5%;
     background-color: var(--carne);
-    width: 270%;
+    width: 280px;
     height: 100%;
     border-radius: 8px;
     display: flex;
     flex-wrap: nowrap;
     flex-direction:row;
     align-items:flex-start;
-    padding-left: 50%;
+    padding-left: 5%;
 }
 #botonhor{
     background-color: var(--carne);
     cursor: pointer;
+    border-radius: 8px;
 }
 #Horariodia, #Horariohora{
     background-color: var(--carne);
     border-color: transparent;
     margin-top: 5%;
+    border-radius: 8px;
+}
+#Horariohora,#botonhor{
+    margin-left: 15px;
+}
+#eliminarHorario{
+    background-color: var(--carne);
+    border-radius: 8px;
+    border-color: transparent;
 }
 #derecha{
     display: flex;
@@ -176,7 +189,7 @@ h4{
     flex-direction:column;
     position: absolute;
     left: 77%;
-    bottom: 42%;
+    bottom: 40%;
 }
 #rosado{
     background-color: var(--rosa);
@@ -212,152 +225,6 @@ h4{
 ---------------------------------------------*/
 @media screen and (max-width: 1200px){
     #contenido{
-        font-size: 11px;
-    }
-    #img2{
-        height: 33%;
-        width: 33%;
-        font-size: 7px;
-    }
-    #izquierda{
-        padding-top: 1%;
-        padding-left: 23%;
-    }
-    #miPerfil{
-        width: 32%;
-        height: 100%;
-    }
-    #mi, #img{
-        font-size: 14px;
-
-    }
-    h4{
-        padding-top: 4px;
-        font-size: 12px;
-    }
-    #azulitos{
-        padding-top: 20px;
-    }
-    #calificacion,#comentarios,#cerrar{
-        width: 360%;
-        background-color: var(--azul);
-        border-radius: 8px;
-        text-align: center;
-        font-family:"roboto";
-        height: 30px;
-        margin-top: 10px;
-    }
-    #medio{
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction:column;
-        align-items:flex-start;
-        position: absolute;
-        left: 50%;
-        bottom: 36%;
-    }
-    #materias{
-        background-color: var(--morado);
-        border-radius: 8px;
-        width: 215px;
-        text-align: center;
-        font-family:"roboto";
-        overflow-y: scroll;
-    }
-    #agregarm{
-        background-color: var(--morado);
-        border-radius: 8px;
-        width: 210%;
-        border-color: transparent;
-    }
-    #eliminarm{
-        background-color: var(--morado);
-        border-radius: 8px;
-        width: 192%;
-        border-color: transparent;
-        margin-top: 5%;
-    }
-    #aceptar{
-        margin-left: 45%;
-    }
-    #abajo{
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction:column;
-        align-items:flex-start;
-        position: absolute;
-        left: 50%;
-        bottom: 15%;
-        height: 20%;
-    }
-    #horarios{
-        background-color: var(--carne);
-        width: 180%;
-        height: 35px;
-        padding-top: 0%;
-        border-radius: 8px;
-        text-align: center;
-        font-family:"roboto";
-    }
-    #horitas{
-        margin-top: 5%;
-        background-color: var(--carne);
-        width: 230%;
-        height: 80%;
-        border-radius: 8px;
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction:row;
-        align-items:flex-start;
-        padding-left: 50%;
-        overflow-y: scroll;
-    }
-    #Horariodia, #Horariohora{
-        background-color: var(--carne);
-        border-color: transparent;
-        margin-top: 5%;
-    }
-    #derecha{
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction:column;
-        position: absolute;
-        left: 23%;
-        bottom: -3%;
-    }
-    #rosado{
-       display: none;
-    }
-    #amarillos{
-        margin-top: 6%;
-        display: flex;
-        flex-wrap: nowrap;
-        flex-direction:column;
-    }
-    #am1,#am2,#am3{
-        margin-top: 4%;
-        background-color: var(--amarillo);
-        width: 210%;
-        border-radius: 8px;
-        text-align: center;
-        height: 20px;
-    }
-    #administrar{
-        background-color: var(--amarillo);
-        position: absolute;
-        left: 70%;
-        bottom: 30%;
-        border-radius: 8px;
-        text-align: center;
-        font-family: 'roboto';
-        height: 23px;
-    }
-    #footer{
-        margin-top: 10%;
-    }
-}
-@media screen and (max-width: 800px){
-    #contenido{
         font-size: 7px;
         display: flex;
         flex-direction:column;
@@ -374,12 +241,12 @@ h4{
         flex-wrap: nowrap;
         flex-direction:column;
         align-items:flex-start;
-        padding-top: 0px;
+        padding-top: 80px;
         padding-left: 12px;
     }
     #miPerfil{
         width: 200px;
-        height: 180px;
+        height: 230px;
         background-color: var(--azul);
         border-radius: 8px;
         font-family:"roboto";
@@ -426,52 +293,80 @@ h4{
     #agregarm{
         background-color: var(--morado);
         border-radius: 8px;
-        width: 200px;
+        width: 185px;
         border-color: transparent;
     }
     #eliminarm{
         background-color: var(--morado);
         border-radius: 8px;
-        width: 200px;
+        width: 185px;
         border-color: transparent;
         margin-top: 5%;
+    }
+    #aceptar{
+        width: 185px;
+        height: 10px;
+        padding: 0px;
+        padding-bottom: 10px;
+        margin-left: 0px;
+        font-size: 11px;
     }
     #abajo{
         display: flex;
         flex-wrap: nowrap;
         flex-direction:column;
-        align-items:flex-start;
+        align-items:center;
         position: relative;
-        left: 7px;
-        bottom: 0px;
-        height: 30px;
-        margin-top: 5px;
+        left: 0%;
+        margin-top: 10px;
     }
     #horarios{
         background-color: var(--carne);
-        width: 150px;
-        height: 14px;
+        width: 185px;
+        height: 30px;
         border-radius: 8px;
         text-align: center;
         font-family:"roboto";
-        margin-top: 3px;
     }
     #horitas{
-        margin-top: 5px;
+        margin-top: 2%;
         background-color: var(--carne);
-        width: 200px;
-        height: 100px;
+        width: 185px;
+        height: 100%;
         border-radius: 8px;
         display: flex;
         flex-wrap: nowrap;
         flex-direction:row;
         align-items:flex-start;
-        padding-left: 50px;
+        padding-left: 6%;
+        font-size: 10px;
+    }
+    #mashorarios{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:column;
+        align-items:center;
+    }
+    #botonhor{
+        background-color: var(--carne);
+        cursor: pointer;
+        border-radius: 8px;
     }
     #Horariodia, #Horariohora{
         background-color: var(--carne);
         border-color: transparent;
-        margin-top: 5px;
+        margin-top: 5%;
+        border-radius: 8px;
+    }
+    #Horariohora,#botonhor, #Horariodia, #eliminarHorario{
+        margin-left: 0px;
+        width: 185px;
+        background-color: var(--carne);
+        border-color: transparent;
+        border-radius: 8px;
+    }
+    #Horariohora,#botonhor,#eliminarHorario{
+        margin-top: 10px;
     }
     #derecha{
         display: flex;
@@ -481,22 +376,221 @@ h4{
         position: relative;
         left: 7px;
         bottom: 0px;
+        margin-top: 0px;
     }
     #rosado{
-        display: none;
+        width: 200px;
+        height: 50px;
+        font-size: 10px;
+        margin-top: -470%;
     }
     #amarillos{
-        margin-top: 9px;
+        margin-top: 900px;
         display: flex;
         flex-wrap: nowrap;
         flex-direction:column;
         margin-bottom: 3px;
         left: 3px;
+        margin-bottom: 20px;
     }
     #am1,#am2,#am3{
         margin-top: 4px;
         background-color: var(--amarillo);
+        width: 185px;
+        height: 15px;
+        border-radius: 8px;
+        text-align: center;
+    }
+    #administrar{
+        background-color: var(--amarillo);
+        position: relative;
+        left: 83px;
+        bottom: 96px;
+        border-radius: 8px;
+        text-align: center;
+        font-family: 'roboto';
+        padding-top: .5px;
+        height: 15px;
+        width: 50px;
+    }
+    #footer{
+        position: relative;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 800px){
+    #contenido{
+        font-size: 7px;
+        display: flex;
+        flex-direction:column;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+    #img2{
+        height: 29px;
+        width: 29px;
+        font-size: 7px;
+    }
+    #izquierda{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:column;
+        align-items:flex-start;
+        padding-top: 0px;
+        padding-left: 12px;
+    }
+    #miPerfil{
         width: 200px;
+        height: 230px;
+        background-color: var(--azul);
+        border-radius: 8px;
+        font-family:"roboto";
+    }
+    #mi, #img{
+        font-size: 14px;
+
+    }
+    h4{
+        padding-top: 4px;
+        font-size: 10px;
+    }
+    #p1{
+        font-size: 10px;
+    }
+    #azulitos{
+        padding-top: 2px;
+    }
+    #calificacion,#comentarios,#cerrar{
+        width: 200px;
+        background-color: var(--azul);
+        border-radius: 8px;
+        text-align: center;
+        font-family:"roboto";
+    }
+    #medio{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:column;
+        position: relative;
+        align-items:flex-start;
+        left: 7px;
+        bottom: 0px;
+        margin-top: 9px;
+    }
+    #materias{
+        background-color: var(--morado);
+        border-radius: 8px;
+        width: 200px;
+        text-align: center;
+        font-family:"roboto";
+        overflow-y: scroll;
+        font-size: 12px;
+    }
+
+    #agregarm{
+        background-color: var(--morado);
+        border-radius: 8px;
+        width: 185px;
+        border-color: transparent;
+    }
+    #eliminarm{
+        background-color: var(--morado);
+        border-radius: 8px;
+        width: 185px;
+        border-color: transparent;
+        margin-top: 5%;
+    }
+    #aceptar{
+        width: 185px;
+        height: 10px;
+        padding: 0px;
+        padding-bottom: 10px;
+        margin-left: 0px;
+        font-size: 10px;
+    }
+    #abajo{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:column;
+        align-items:center;
+        position: relative;
+        left: 0%;
+        margin-top: 10px;
+    }
+    #horarios{
+        background-color: var(--carne);
+        width: 185px;
+        height: 30px;
+        border-radius: 8px;
+        text-align: center;
+        font-family:"roboto";
+    }
+    #horitas{
+        margin-top: 3%;
+        background-color: var(--carne);
+        width: 185px;
+        height: 100%;
+        border-radius: 8px;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:row;
+        align-items:flex-start;
+        padding-left: 6%;
+        font-size: 10px;
+    }
+    #mashorarios{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:column;
+        align-items:center;
+    }
+    #botonhor{
+        background-color: var(--carne);
+        cursor: pointer;
+        border-radius: 8px;
+    }
+    #Horariodia, #Horariohora{
+        background-color: var(--carne);
+        border-color: transparent;
+        margin-top: 5%;
+        border-radius: 8px;
+    }
+    #Horariohora,#botonhor, #Horariodia, #eliminarHorario{
+        margin-left: 0px;
+        width: 185px;
+        background-color: var(--carne);
+        border-color: transparent;
+        border-radius: 8px;
+    }
+    #Horariohora,#botonhor,#eliminarHorario{
+        margin-top: 10px;
+    }
+    #derecha{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:column;
+        align-items: flex-start;
+        position: relative;
+        left: 0px;
+        bottom: 0px;
+        margin-top: 0px;
+    }
+    #rosado{
+        display: none;
+    }
+    #amarillos{
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction:column;
+        margin-bottom: 3px;
+        left: 3px;
+        margin-bottom: 10px;
+    }
+    #am1,#am2,#am3{
+        margin-top: 4px;
+        background-color: var(--amarillo);
+        width: 185px;
         height: 15px;
         border-radius: 8px;
         text-align: center;
