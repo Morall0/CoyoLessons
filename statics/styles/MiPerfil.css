@@ -80,7 +80,7 @@ h4{
  #arriba
  {
     width: 100%}
-    
+
 #calificacion,#comentarios,#cerrar{
     width: 400%;
     background-color: var(--azul);
@@ -163,7 +163,7 @@ h4{
 }
 #botonhor{
     background-color: var(--carne);
-    display: none;
+    cursor: pointer;
 }
 #Horariodia, #Horariohora{
     background-color: var(--carne);
@@ -310,6 +310,7 @@ h4{
         flex-direction:row;
         align-items:flex-start;
         padding-left: 50%;
+        overflow-y: scroll;
     }
     #Horariodia, #Horariohora{
         background-color: var(--carne);

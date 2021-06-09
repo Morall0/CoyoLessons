@@ -63,10 +63,11 @@
         <div id="abajo">
             <div id="horarios"><h4>Mis horarios</h4></div>
             <div id="horitas">
+                <ul id="listaHor"></ul>
             </div>
             <div>
                 <select name="horario" id="Horariodia" class="horarioSelect" required>
-                    <option selected disabled><p>Día</p></option>
+                    <option value="" selected disabled><p>Agregar día</p></option>
                     <option value="L">Lunes</option>
                     <option value="Ma">Martes</option>
                     <option value="Mi">Miércoles</option>
@@ -74,7 +75,7 @@
                     <option value="V">Viernes</option>
                 </select>
                 <select name="horario" id="Horariohora" class="horarioSelect" required>
-                    <option selected disabled hidden><p>Hora</p></option>
+                    <option value="" selected disabled><p>Agregar hora</p></option>
                     <option value="1">7:50-8:40</option>
                     <option value="2">8:40-9:30</option>
                     <option value="3">9:30-10:20</option>
@@ -90,6 +91,9 @@
                     <option value="13">17:50-18:40</option>
                     <option value="14">18:40-19:30</option>
                 </select>
+                <select id="eliminarHorario">
+                    <option value="" selected>Eliminar horario</option>
+                </select>
                 <button id="botonhor">Aceptar</button>
             </div>
         </div>
@@ -101,7 +105,6 @@
                 <div id="am3"><p>Historial de asesorías</p></div>
             </div>
     </div>
-    <div id="administrar"><p>Administrar</p></div>
         <div id="footer"><p>CRÉDITOS</p></div>
     <script src="../dynamics/js/MiPerfil.js"></script>
 </body>
