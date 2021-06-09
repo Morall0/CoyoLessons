@@ -379,13 +379,10 @@ h4{
         margin-top: 0px;
     }
     #rosado{
-        width: 200px;
-        height: 50px;
-        font-size: 10px;
-        margin-top: -470%;
+       display: none;
     }
     #amarillos{
-        margin-top: 900px;
+        margin-top: 10px;
         display: flex;
         flex-wrap: nowrap;
         flex-direction:column;
