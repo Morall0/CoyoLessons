@@ -1,4 +1,6 @@
-$(document).ready(()=>{
+$(document).ready(function(){
+
+    let url = "../dynamics/php/admin.php";
 
     //Funcion que nos permite hacer petiiciones.
     function peticion(url, data=""){
@@ -9,6 +11,18 @@ $(document).ready(()=>{
         });
         return peticion;
     };
+
+    //Funcion que despliega los usuarios.
+    function desp_usuarios(){
+        let usuarios = peticion(url, "usuario="+true+"&usuarios="+true);
+        usuarios.done((resp)=>{
+            $("tbody").html(resp);
+        });
+        usuarios.fail((resp)=>{
+            alert("Hubo problemas");
+        });
+    }
+
     //Manda un mensaje en el placeholder y le cambia el color.
     function incorrecta(elemento, mensaje, clase){
         $(elemento).val("");
@@ -76,39 +90,34 @@ $(document).ready(()=>{
         return cont;
     };
 
-    //Peticion que permite redireccionar en caso de que ya haya una sesion activa.
-    let sesion = peticion("../dynamics/php/iniSesion.php", "sesionRegistro="+true);
-    sesion.done((respsesion)=>{
-        alert(respsesion+"HOLA");
-        if(respsesion=="SI HAY SESION"){
-            location = "./MiPerfil.html";
-        }
+    //Peticion  que permite saber si hay una sesion iniciada o si es ADMIN
+    let sesion_admin = peticion(url, "usuario="+true);
+    sesion_admin.done((resp)=>{
+        if(resp == "NO HAY SESION O NO ES ADMIN")
+            location = "../index.html";
+        else
+            alert(resp);
     });
 
-    //Evento que permite iniciar sesión
-    $("#inicio").on('submit', ()=>{
-        event.preventDefault();
-        let numero_cuenta=$("#numerocuenta").val();
-        let contraseña=$("#contra").val();
+    desp_usuarios();
 
-        let iniciar = peticion('../dynamics/php/iniSesion.php','sesionRegistro='+true+'&num_ini='+numero_cuenta+'&contraseña='+contraseña);
-        iniciar.done((resp)=>{
-            if(resp == "CONTRASEÑA CORRECTA"){
-                location="./MiPerfil.html";
-                alert("contraseña correcta");
-            }
-            else if(resp == "NO EXISTE")
-                incorrecta("#numerocuenta", "Número de cuenta no registrado", "placeholdrojo");
-            else if(resp == "CONTRASEÑA INCORRECTA")
-                incorrecta("#contra", "Contraseña incorrecta", "placeholdrojo");
+    //Evento que activa la peticion que elimina usuarios
+    let body= $(document.body);
+    $(body).on('click','.borrar', function(){
+        let boton = $(this).attr("id");
+        alert(boton);
+        let eliminar = peticion(url, "usuario="+true+"&delete="+boton);
+        eliminar.done((resp)=>{
+            alert(resp+"respuesta");
+            desp_usuarios();
         });
-        iniciar.fail(()=>{
-            alert("fallo");
+        eliminar.fail((resp)=>{
+            alert("Hubo un problema para procesar tu peticion");
         });
-    })
+    });
 
-    //Botones del modal (abrir y cerrar).
-    $("#crearCuenta").click(()=>{
+    //Botones que permite interactuar con el modal.
+    $("#crear").click(()=>{
         $("#miModal").css("display", "block");
     });
 
@@ -116,11 +125,10 @@ $(document).ready(()=>{
         $("#miModal").css("display", "none");
     });
 
-
     //Petición que despliega las materias dependiendo del año.
     $("#cursando").on('change', ()=>{
         let cursando = $('#cursando').val();
-        let materias = peticion('../dynamics/php/iniSesion.php', 'sesionRegistro='+true+'&anio='+cursando);
+        let materias = peticion(url, 'usuario='+true+'&anio='+cursando);
         materias.done((resp)=>{
             $("#materias").html(resp);
         });
@@ -153,17 +161,19 @@ $(document).ready(()=>{
         let regexing = verifRegx(num_cuenta, nombre, apPaterno, apMaterno, correo, tel, contra);
 
         if(regexing == 7){//Solo manda la petición si todas las regex son correctas.
-            let respuestas = peticion('../dynamics/php/iniSesion.php', 'sesionRegistro='+true+'&num_cuenta='+num_cuenta+'&nombre='
+            let respuestas = peticion(url, 'usuario='+true+'&num_cuenta='+num_cuenta+'&nombre='
             +nombre+' '+apPaterno+' '+apMaterno+'&correo='+correo+'&tel='+tel+'&fechaNac='+año+'-'+mes+'-'+dia+
             '&cursando='+cursando+'&materias='+materias+'&dsemana='+dsemana+'&hora='+hora+'&contra='+contra);
 
             respuestas.done((respuesta)=>{
-                alert("si se envian desde JS");
-                alert(respuesta);
+                //alert("si se envian desde JS");
                 if(respuesta > 0)
                     incorrecta("#numcuenta", "Este numero de cuenta ya está registrado", "placeholdrojo");
                 else{
-                    location = "./MiPerfil.html";
+                    alert(respuesta);
+                    $("#cuenta")[0].reset();
+                    $("#miModal").css("display", "none");
+                    desp_usuarios();
                 }
             });
 
@@ -175,6 +185,4 @@ $(document).ready(()=>{
             alert("Verificar que se hayan puesto correctamente en el html");
         }
     });
-
-
 });

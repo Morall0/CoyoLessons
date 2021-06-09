@@ -6,13 +6,6 @@
     include('./cifr.php');
     $conexion=conectdb();   //Conexión con la base de datos.
 
-    //Función para validar la información ingresada.
-    function validStr($post, $connect){
-        $str= strip_tags($post);//Elimina inyecciones html y php.
-        $str= mysqli_real_escape_string($connect, $str);//Elimina inyecciones sql.
-        return $str;
-    }
-
     //Funcion que despliega el select de materias.
     function materia($x, $y, $conexion){
         if($y==1516)
@@ -138,7 +131,7 @@
 
                             }
                             //Inserción en la tabla de usuariohasmateria.
-                            $insertmateria="INSERT INTO usuariohasmateria (num_cuenta, id_materia) VALUES ($num_cuenta, $materias)";
+                            $insertmateria="INSERT INTO usuariohasmateria (num_cuenta, id_materia) VALUES ($num_cuenta, '$materias')";
                             $respInMateria=mysqli_query($conexion, $insertmateria);
                             if($respInMateria && $respInHorario)
                             {

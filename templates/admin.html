@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="../libs/fontawesome-free-5.15.3-web/css/all.min.css">
         <script src="../libs/jquery/jquery-3.6.0.min.js" charset="utf-8"></script>
-        <script src="../dynamics/js/usuarios.js" charset="utf-8"></script>
+        <script src="../dynamics/js/admin.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="../statics/styles/basics.css">
+        <link rel="stylesheet" href="../statics/styles/admin.css">
         <title>Administrar</title>
     </head>
     <body>
@@ -19,9 +21,118 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody></tbody>
 
-            </tbody>
         </table>
+        <div id='miModal'>
+            <div class='modal-contenidouser'>
+                <div id="modalhead">
+                    <span><strong>Crear usuario</strong></span>
+                    <i id ="closeBtn" class="fas fa-times-circle fa-2x"></i>
+                </div>
+                <div id="modalcont">
+                    <form id="cuenta" method="POST">
+                        <label for="numcuenta">
+                            <input id="numcuenta" type="text" name="numcuenta" placeholder="No. Cuenta" pattern='^((3(19|20|21))|(1(16|17|18)))\d{6}$' title="Introduce un número de cuenta válido" autocomplete="off" required>
+                        </label>
+                        <br><br>
+                        <label for="nombre">
+                            <input id="nombre" type="text" name="nombre" placeholder="Nombre(s)" pattern="([A-Za-zÑñáéíóúÁÉÍÓÚ]( )?){2,30}" title="Ingresa tu(s) nombre(s)" autocomplete="off" required>
+                        </label>
+                        <br><br>
+                        <label for="apPaterno">
+                            <input id="apPaterno" type="text" name="apPaterno" placeholder="Apellido paterno" pattern="^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$" title="Introduce tu apellido paterno" autocomplete="off" required>
+                        </label>
+                        <br><br>
+                        <label for="apMaterno">
+                            <input id="apMaterno" type="text" name="apMaterno" placeholder="Apellido materno" pattern="^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$" title="Introduce tu apellido materno" autocomplete="off" required>
+                        </label>
+                        <br><br>
+                        <label for="correo">
+                            <input id="correo" type="text" name="correo" placeholder="Correo electrónico"
+                            pattern="^[\w\.\-]{4,28}@(((g|hot)mail|outlook|live|yahoo)\.com|(comunidad|alumno\.enp|enp)\.unam\.mx)|\.mx$"
+                            title="Introduce un correo válido" autocomplete="off" required>
+                        </label>
+                        <br><br>
+                        <label for="tel">
+                            <input id="tel" type="numer" name="tel" placeholder="Teléfono" pattern="^((55|56)(\d{8}))$" title="Introduce tu número telefónico (55+ o 56+)" autocomplete="off" required>
+                        </label>
+                        <br><br>
+                        <label for="fecha"><p id="fecha">Fecha de nacimiento</p>
+                            <label for="dia">
+                                <input id="dia" name="dia" placeholder="dd" type="number" min="1" max="31" required>
+                            </label>
+                            <label for="mes">
+                                <input id="mes" name="mes" placeholder="mm" type="number" min="1" max="12" required>
+                            </label>
+                            <label for="año">
+                                <input id="año" name="año" placeholder="YYYY" type="number" min="1990" max="2005" required>
+                            </label>
+                        </label>
+                        <br><br>
+                        <label for="cursando">
+                            <select name="año" id="cursando" required>
+                                <option selected value="" hidden><p>Año que cursas actualmente</p></option>
+                                <option value='C'>4to</option>
+                                <option value='Q'>5to</option>
+                                <option value='S'>6to</option>
+                            </select>
+                        </label>
+                        <br><br>
+                        <label for="materias">
+                            <select name="materias" id="materias">
+                                <option selected value="" hidden><p>Materias a impartir</p></option>
+                            </select>
+                        </label>
+                        <br><br>
+                        <label for="horario"><p id="horarios">Horario de disponibilidad</p>
+                            <select name="horario" id="HorarioDia" required>
+                                <option selected value="" hidden><p>Día</p></option>
+                                <option value="L">Lunes</option>
+                                <option value="Ma">Martes</option>
+                                <option value="Mi">Miércoles</option>
+                                <option value="J">Jueves</option>
+                                <option value="V">Viernes</option>
+                            </select>
+                            <select name="horario" id="HorarioHora" required>
+                                <option selected value="" hidden><p>Hora</p></option>
+                                <option value="1">7:50-8:40</option>
+                                <option value="2">8:40-9:30</option>
+                                <option value="3">9:30-10:20</option>
+                                <option value="4">10:20-11:10</option>
+                                <option value="5">11:10-12:00</option>
+                                <option value="6">12:00-12:50</option>
+                                <option value="7">12:50-13:40</option>
+                                <option value="8">13:40-14:30</option>
+                                <option value="9">14:30-15:20</option>
+                                <option value="10">15:20-16:10</option>
+                                <option value="11">16:10-17:00</option>
+                                <option value="12">17:00-17:50</option>
+                                <option value="13">17:50-18:40</option>
+                                <option value="14">18:40-19:30</option>
+                            </select>
+                        </label>
+                        <br><br>
+                        <label for="tipo">
+                            <select id="tipo" name="tipo">
+                                <option value="" selected>Tipo de usuario</option>
+                                <option value="A">Administrador</option>
+                                <option value="E">Alumno</option>
+                            </select>
+                        </label>
+                        <br><br>
+                        <label for="contraseña">
+                            <input id="contraseña" name="contraseña" type="password" placeholder='Contraseña'
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!=\(\)/%*?&])([A-Za-z\d$#@$!=\(\)/%*?&]|[^ ]){10,30}$"
+                            title="Introduce una contraseña de 10 a 30 caracteres, con al menos un caracter especial, un número, una minúscula y una mayúscula" required>
+                            <p id="caracteres">Mímino 10 caracteres, una mayúscula, una minúscula, un número y un caracter especial</p>
+                        </label>
+                        <br><br>
+                        <button id="enviar" type="submit">Crear cuenta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <button type="button" id="crear">Crear usuario</button>
     </body>
 </html>

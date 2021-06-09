@@ -3,6 +3,13 @@ define("HASH", "sha256");//Tipo de hasheo.
 define("LLAVE","cm#oym!ola/esi#son");//Contraseña.
 define("METHOD","aes-128-cbc");//Método.
 
+//Función para validar la información ingresada.
+function validStr($post, $connect){
+    $str= strip_tags($post);//Elimina inyecciones html y php.
+    $str= mysqli_real_escape_string($connect, $str);//Elimina inyecciones sql.
+    return $str;
+}
+
 function cifrar($text){
   $key= openssl_digest(LLAVE, HASH);
   $iv_len= openssl_cipher_iv_length(METHOD);
@@ -23,7 +30,7 @@ function descifrar($cifradoWIv){
   $cifradoWIv=base64_decode($cifradoWIv);//Decodificar en base 64 el texto.
   $iv_len= openssl_cipher_iv_length(METHOD);//Definir long.
   $iv= substr($cifradoWIv,0,$iv_len);//Sustraer de la cadena el $iv_len.
-  $cifrado = substr($cifradoWIv,$iv_len); 
+  $cifrado = substr($cifradoWIv,$iv_len);
   $key= openssl_digest(LLAVE,HASH);//Guardar la clave del hasheo con la LLAVE y el HASH.
   $desciff=openssl_decrypt(
     $cifrado,
