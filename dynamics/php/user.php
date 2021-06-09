@@ -53,7 +53,10 @@
                         echo "<li>".$row_asignaturas[2]."</li>";
                     //Select para eliminar materias
                     if(isset($_POST["eliminar"])){
-                        if($contar>1)
+                        if(isset($_POST['materiaAsesoria'])){
+                            echo "<option value=".$row_asignaturas[0].">".$row_asignaturas[2]."</option>";
+                        }
+                        if($contar>1 && !isset($_POST['materiaAsesoria'])) 
                            echo "<option value=".$row_asignaturas[0].">".$row_asignaturas[1]."</option>";
                         else{
                             echo "UNA MATERIA";
@@ -95,7 +98,7 @@
                         echo '<li>'.$row1[2]."----".$row1[3].'</li>';
                     }
                     if(isset($_POST['eliminarHorarios'])){
-                        if($contHorario>1)
+                        if($contHorario>1 || isset($_POST['horarioAsesoria']))
                             echo "<option value=".$row1[0].">".$row1[2]." ".$row1[3]."</option>";
                         else
                             echo "UN HORARIO";
