@@ -72,7 +72,7 @@
                         <br><br>
                         <label for="cursando">
                             <select name="año" id="cursando" required>
-                                <option selected value="" hidden><p>Año que cursas actualmente</p></option>
+                                <option selected value=""><p>Año que cursas actualmente</p></option>
                                 <option value='C'>4to</option>
                                 <option value='Q'>5to</option>
                                 <option value='S'>6to</option>
@@ -80,14 +80,14 @@
                         </label>
                         <br><br>
                         <label for="materias">
-                            <select name="materias" id="materias">
-                                <option selected value="" hidden><p>Materias a impartir</p></option>
+                            <select name="materias" id="materias" required>
+                                <option selected value=""><p>Materias a impartir</p></option>
                             </select>
                         </label>
                         <br><br>
                         <label for="horario"><p id="horarios">Horario de disponibilidad</p>
                             <select name="horario" id="HorarioDia" required>
-                                <option selected value="" hidden><p>Día</p></option>
+                                <option selected value=""><p>Día</p></option>
                                 <option value="L">Lunes</option>
                                 <option value="Ma">Martes</option>
                                 <option value="Mi">Miércoles</option>
@@ -95,7 +95,7 @@
                                 <option value="V">Viernes</option>
                             </select>
                             <select name="horario" id="HorarioHora" required>
-                                <option selected value="" hidden><p>Hora</p></option>
+                                <option selected value=""><p>Hora</p></option>
                                 <option value="1">7:50-8:40</option>
                                 <option value="2">8:40-9:30</option>
                                 <option value="3">9:30-10:20</option>
@@ -114,8 +114,8 @@
                         </label>
                         <br><br>
                         <label for="tipo">
-                            <select id="tipo" name="tipo">
-                                <option value="" selected>Tipo de usuario</option>
+                            <select id="tipo" name="tipo" required>
+                                <option selected value="">Tipo de usuario</option>
                                 <option value="A">Administrador</option>
                                 <option value="E">Alumno</option>
                             </select>

@@ -130,7 +130,7 @@ $(document).ready(function(){
         let cursando = $('#cursando').val();
         let materias = peticion(url, 'usuario='+true+'&anio='+cursando);
         materias.done((resp)=>{
-            $("#materias").html(resp);
+            $("#materias").html("<option selected value=''><p>Materias a impartir</p></option>"+resp);
         });
         materias.fail(()=>{
             alert("fallo");
@@ -156,6 +156,7 @@ $(document).ready(function(){
         let dsemana= $("#HorarioDia").val();
         let hora= $("#HorarioHora").val();
         let contra=$("#contraseña").val();
+        let tipo= $("#tipo").val();
 
         //Funcion de regex.
         let regexing = verifRegx(num_cuenta, nombre, apPaterno, apMaterno, correo, tel, contra);
@@ -163,7 +164,7 @@ $(document).ready(function(){
         if(regexing == 7){//Solo manda la petición si todas las regex son correctas.
             let respuestas = peticion(url, 'usuario='+true+'&num_cuenta='+num_cuenta+'&nombre='
             +nombre+' '+apPaterno+' '+apMaterno+'&correo='+correo+'&tel='+tel+'&fechaNac='+año+'-'+mes+'-'+dia+
-            '&cursando='+cursando+'&materias='+materias+'&dsemana='+dsemana+'&hora='+hora+'&contra='+contra);
+            '&cursando='+cursando+'&materias='+materias+'&dsemana='+dsemana+'&hora='+hora+'&contra='+contra+"&tipo="+tipo);
 
             respuestas.done((respuesta)=>{
                 //alert("si se envian desde JS");

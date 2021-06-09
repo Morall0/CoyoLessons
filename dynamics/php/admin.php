@@ -83,6 +83,7 @@
                 $dsemana=validStr($_POST['dsemana'], $conexion);
                 $hora=validStr($_POST['hora'], $conexion);
                 $contra=validStr($_POST['contra'], $conexion);
+                $tipo=validStr($_POST["tipo"], $conexion);
 
                 //Variables de RegEx
                 $regexNumcuenta = '/^((3(19|20|21))|(1(16|17|18)))\d{6}$/';
@@ -114,7 +115,7 @@
                         $contra=$contra.$salt;
 
                         //Insersion en la tabla de USUARIO.
-                        $base="INSERT INTO usuario VALUES($num_cuenta,'$nombre','$correo', '$tel','$nacimiento', '$grado', 0, '$contra', 'B', 'E', 'user.png')";
+                        $base="INSERT INTO usuario VALUES($num_cuenta,'$nombre','$correo', '$tel','$nacimiento', '$grado', 0, '$contra', 'B', '$tipo', 'user.png')";
                         $respuesta2 = mysqli_query($conexion, $base);
 
                         if($respuesta2){//Si el registro fue exitoso, se hace la insersion de los horarios y de las materias.
