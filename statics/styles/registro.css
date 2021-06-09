@@ -72,8 +72,9 @@ button
 }
 #botonIni
 {
-    background-color:#A191D9;
+    background-color:var(--amarillo);
     margin: center;
+    border-radius: 8px;
 }
 #inicio p
 {
@@ -81,7 +82,8 @@ button
 }
 #crearCuenta
 {
-    background-color: red;
+    background-color:var(--rosa);
+    border-radius: 8px;
 }
 /*= ----------------- MODAL -------------------------*/
 #miModal{

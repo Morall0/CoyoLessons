@@ -1,0 +1,246 @@
+/* =NAV -------------------------------------------------- */
+*{
+    font-family: 'roboto';
+}
+.nav a{
+    display: flex;
+    flex-direction: row;
+    /*=justify-content: end;*/
+    text-decoration: none;
+    font-family: Roboto;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.nav{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: space-between;
+    background-color: var(--azulF);
+}
+.link{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 50px;
+    padding-left: 5%;
+    padding-right: 5%;
+    /*=justify-self: flex-end;*/
+}
+.link:hover{
+    background-color:  var(--azulHover);
+}
+.nav div#tit
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    text-decoration: none;
+    font-family: Roboto;
+    color: white;
+    font-size: 2rem;
+    align-self: center;
+    text-align: center;
+}
+#log
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+#hamburguesa
+{
+    display: none;
+}
+ /*Búsqueda*/
+ #izquierdo{
+    display: flex;
+    flex-direction:column;
+    flex-wrap: nowrap;
+    margin-top: 20px;
+    margin-left: 540px;
+ }
+ #buscador{
+    width: 550px;
+    border-radius: 8px;
+ }
+ #buscar{
+    background-color: var(--carne);
+    border-radius: 8px;
+ }
+ #filtros{
+    margin-top: 20px;
+ }
+ #fecha,#horario,#materia,#modalidad,#medio{
+     background-color: #C4C4C4;
+     width: 107px;
+     border-radius: 8px;
+     border-color: transparent;
+ }
+ #horario,#materia,#modalidad,#medio{
+     margin-left: 20px;
+ }
+ #footer{
+    position: absolute;
+    bottom: 0%;
+    font-family: "roboto";
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    background-color: var(--azulF);
+    color: white;
+    width: 100%;
+}
+#derecho{
+    display: flex;
+    flex-direction:column;
+    flex-wrap: nowrap;
+    margin-left: 200px;
+    margin-top: 50px;
+}
+#indica{
+    background-color: var(--amarillo);
+    width: 170px;
+    border-radius: 8px;
+    padding: 10px;
+}
+table{
+    border-collapse: collapse;
+    margin: auto;
+}
+thead{
+background-color: var(--carne);
+}
+tbody{
+text-align: center;
+background-color: var(--carne);
+}
+#agendar{
+    background-color: var(--azul);
+    width: 170px;
+    border-radius: 8px;
+    margin-top: 70px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+#cancelar{
+    background-color: var(--azul);
+    width: 170px;
+    border-radius: 8px;
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+@media screen and (max-width: 1200px){
+    #izquierdo{
+        margin-left: 250px;
+        margin-top: 90px;
+    }
+    #indica{
+        display: none;
+    }
+    #derecho{
+        flex-direction:row;
+        margin-top: -220px;
+        margin-left: 360px;
+    }
+    #cancelar{
+        padding-top: 10px;
+        padding-bottom: 20px;
+        height: 55px;
+        margin-top: 71px;
+        margin-left: 20px;
+    }
+    #footer{
+        position: absolute;
+        bottom: 0%;
+        font-family: "roboto";
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        background-color: var(--azulF);
+        color: white;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 800px){
+    #izquierdo{
+        display: flex;
+        flex-direction:column;
+        flex-wrap: nowrap;
+        margin-left: 160px;
+        margin-top: 120px;
+     }
+     #buscador{
+        width: 300px;
+        border-radius: 8px;
+        height: 20px;
+     }
+     #buscar{
+        background-color: var(--carne);
+        border-radius: 8px;
+        height: 20px;
+        font-size: 12px;
+     }
+     #filtros{
+        margin-top: 10px;
+     }
+     #fecha,#horario,#materia,#modalidad,#medio{
+         background-color: #C4C4C4;
+         width: 68px;
+         border-radius: 8px;
+         border-color: transparent;
+         font-size: 10px;
+     }
+     #horario,#materia,#modalidad,#medio{
+         margin-left: 2px;
+     }
+     #footer{
+        position: absolute;
+        bottom: 0%;
+        font-family: "roboto";
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        background-color: var(--azulF);
+        color: white;
+        width: 100%;
+    }
+    #derecho{
+        display: flex;
+        flex-direction:column;
+        flex-wrap:nowrap;
+        margin-left: 150px;
+        margin-top: -230px;
+    }
+    #indica{
+        display: none;
+    }  
+    #agendar{
+        background-color: var(--azul);
+        width: 170px;
+        border-radius: 8px;
+        margin-top: 70px;
+        height: 25px;
+        text-align: center;
+        font-size: 10px;
+        padding-top: 5px;
+    }
+    #cancelar{
+        background-color: var(--azul);
+        width: 170px;
+        border-radius: 8px;
+        margin-top: 10px;
+        height: 25px;
+        text-align: center;
+        font-size: 10px;
+        padding-top: 5px;
+        margin-left: 0px;
+    }
+}

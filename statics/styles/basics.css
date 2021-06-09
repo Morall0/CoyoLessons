@@ -20,28 +20,66 @@ body{
     background-color: #F1EFE3;
 }
 /* =NAV -------------------------------------------------- */
-.barra{
-    font-size:22px;
-    color: white;
-}
-#COYO{
-    color: white;
-    font-size:29px;
-    margin-bottom: 0%;
-}
 i
 {
     color: white;
 }
-#footer{
-    position: relative;
-    background-color: #505B73;
-    width: 100%;
-    margin-top: 100%;
-    margin-top: 5%;
+.nav a{
+    display: flex;
+    flex-direction: row;
+    /*=justify-content: end;*/
+    text-decoration: none;
+    font-family: Roboto;
     color: white;
-    font-family: 'roboto';
+    font-size: 1.2rem;
+}
+
+.nav{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: space-between;
+    background-color: var(--azulF);
+}
+.link{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 50px;
+    padding-left: 5%;
+    padding-right: 5%;
+    /*=justify-self: flex-end;*/
+}
+.link:hover{
+    background-color:  var(--azulHover);
+}
+.nav div#tit
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    text-decoration: none;
+    font-family: Roboto;
+    color: white;
+    font-size: 2rem;
+    align-self: center;
     text-align: center;
+}
+#log
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+#footer{
+    bottom: 100%;
+    font-family: "roboto";
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    background-color: var(--azulF);
+    color: white;
 }
 /*=MEDIA QUERY}
 ---------------------------------------------------------------------*/
