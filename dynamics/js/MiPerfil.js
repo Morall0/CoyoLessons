@@ -19,7 +19,7 @@ $(document).ready(()=>{
     };
 
     function iniMaterias(){
-        
+
         //Peitcion que permite desplegar la materias del usuario.
         let materias = peticion("../dynamics/php/user.php", "sesion="+true+"&asignaturas="+true);
         materias.done((resp)=>{
@@ -38,24 +38,47 @@ $(document).ready(()=>{
         materias_select.fail((resp)=>{
             alert("fallo select asignatura");
         });
-        
+
         //eliminar materia
         let eliminar_materias = peticion("../dynamics/php/user.php", "sesion="+true+"&eliminar="+true);
         eliminar_materias.done((resp)=>{
-            alert(resp);
+            //alert(resp);
             if(resp=="UNA MATERIA")
                 $("#eliminarm").hide();
             else{
                 $("#eliminarm").show();
                 $("#eliminarm").html("<option id='opcionTitulo2' value='' selected><p>Eliminar materia</p></option>"+resp);
             }
-                
+
         });
         eliminar_materias.fail((resp)=>{
             alert("fallo eliminar");
         });
     }
 
+    function iniHorarios(){
+        let horarios = peticion("../dynamics/php/user.php", "sesion="+true+"&horarios="+true);
+        horarios.done((resp)=>{
+            $("#listaHor").html(resp);
+        });
+        horarios.fail((resp)=>{
+            alert("fallo eliminar");
+        });
+
+        let eliminarHorario = peticion("../dynamics/php/user.php", "sesion="+true+"&eliminarHorarios="+true);
+        eliminarHorario.done((resp)=>{
+            if(resp=="UN HORARIO"){
+                $("#eliminarHorario").hide();
+            }
+            else{
+                $("#eliminarHorario").show();
+                $("#eliminarHorario").html("<option value='' selected>Eliminar horario</option>"+resp);
+            }
+        });
+        eliminarHorario.fail((resp)=>{
+            alert("no se elimina");
+        });
+    }
     //Peticion para redireccionar en caso de no haber una sesion activa.
     let sesion = peticion("../dynamics/php/user.php", "sesion="+true);
     sesion.done((resp)=>{
@@ -86,7 +109,7 @@ $(document).ready(()=>{
         //SACAR EL AVG de las calificiones que tiene en la tabla de comentarios.
 
     });
-    
+
     datos.fail((resp)=>{
         let mensaje = "error al cargar los datos";
         $("#img2").attr("src", "../statics/img/user/user.png");
@@ -100,13 +123,7 @@ $(document).ready(()=>{
     iniMaterias();
 
     //Desplegar horarios del usuario.
-    let horarios = peticion("../dynamics/php/user.php", "sesion="+true+"&horarios="+true);
-    horarios.done((resp)=>{
-        $("#horitas").append(resp);
-    });
-    horarios.fail((resp)=>{
-        alert("fallo eliminar");
-    });
+    iniHorarios();
 
     //Evento que permite borrar o agregar materias.
     $("#aceptar").click(()=>{
@@ -122,6 +139,23 @@ $(document).ready(()=>{
         });
     });
 
+    $("#botonhor").click(()=>{
+        let editHora = ($("#Horariohora").val() == null)? "":$("#Horariohora").val();
+        let editDia = ($("#Horariodia").val() == null)? "":$("#Horariodia").val();
+        let eliminaHor = $("#eliminarHorario").val();
+        let editarHor = peticion("../dynamics/php/user.php", "sesion="+true+"&editHora="+editHora+"&editDia="+editDia+"&eliminaHor="+eliminaHor);
+        alert(editHora+" "+editDia+" "+eliminaHor);
+        editarHor.done((resp)=>{
+            alert(resp);
+            iniHorarios();
+        });
+        editarHor.fail((resp)=>{
+            alert(resp);
+        });
+        $("#Horariohora").val("");
+        $("#Horariodia").val("");
+
+    });
     //Cerrar session
     $("#cerrar").click(()=>{
         let cerrar = peticion("../dynamics/php/user.php", "sesion="+true+"&cerrar="+true);
@@ -131,6 +165,6 @@ $(document).ready(()=>{
         cerrar.fail((resp)=>{
             alert("no funciona");
         });
-    
+
     });
 });
