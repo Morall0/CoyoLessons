@@ -164,5 +164,5 @@
     else{
         echo "algo falla en el POST sesion";
     }
-    
+
 ?>

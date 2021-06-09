@@ -6,5 +6,6 @@ $(document).ready(()=>{
         for(let i=0; i< barra.length;i++){
             barra[i].classList.toggle("barraNMob");
         }
+        
     })
 });
