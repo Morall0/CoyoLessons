@@ -3,6 +3,7 @@
     session_start();
 
     include('./config.php');
+    include('./cifr.php');
 
 
     if(isset($_POST['sesion'])){
@@ -10,20 +11,20 @@
             $conexion=conectdb();
             $usuario = $_SESSION["usuario"];
             if(isset($_POST["formAsesoria"])){
-                $materiaA=$_POST["materiaSelect"];
-                $tema=$_POST["tema"];
-                $modalidad=$_POST["modalidad"];
-                $medio=$_POST["medio"];
-                $horario=$_POST["horario"];
-                $duracion=$_POST["duracion"];
-                $fecha=$_POST["fecha"];
-                $cupo=$_POST["cupo"];
+                $materiaA=validStr($_POST["materiaSelect"],$conexion);
+                $tema=validStr($_POST["tema"],$conexion);
+                $modalidad=validStr($_POST["modalidad"],$conexion);
+                $medio=validStr($_POST["medio"],$conexion);
+                $horario=validStr($_POST["horario"],$conexion);
+                $duracion=validStr($_POST["duracion"],$conexion);
+                $fecha=validStr($_POST["fecha"], $conexion);
+                $cupo=validStr($_POST["cupo"],$conexion);
                 $i=0;
 
                 $consul_ahh="SELECT id_ahh FROM alumnohashorario WHERE num_cuenta=$usuario AND id_horario=$horario";
                 $res_id=mysqli_query($conexion, $consul_ahh);
                 $id_ahh=mysqli_fetch_array($res_id);
-                $insertAsesoria="INSERT INTO asesoria (Medio, Modalidad, Fecha, Duracion, Tema, id_materia, id_ahh,estado) VALUES ('$medio', '$modalidad', '$fecha', $duracion, '$tema', '$materiaA', ".$id_ahh[0].",'I')";
+                $insertAsesoria="INSERT INTO asesoria (Medio, Modalidad, Fecha, Duracion, Tema, id_materia, id_ahh,estado) VALUES ('$medio', '$modalidad', '$fecha', $duracion, '$tema', '$materiaA', ".$id_ahh[0].",'P')";
                 $res=mysqli_query($conexion,$insertAsesoria);
                 if($res){
 
@@ -158,7 +159,7 @@
             }
 
             if(isset($_POST["delete"])){
-                $boton=$_POST["delete"];
+                $boton=validStr($_POST["delete"],$conexion);
                 $consul_borrar="DELETE from asesoriahasalumno WHERE id_asesoria=$boton";
                 $res_borrar=mysqli_query($conexion,$consul_borrar);
                 if($res_borrar){

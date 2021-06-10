@@ -79,5 +79,41 @@ $(document).ready(()=>{
         })
     });
 
+    $(body).on('focus', '.filtro', function(){
+        let filtros = $(this).attr("id");
+        let seleccionar = peticion("./dynamics/php/index.php", "sesion="+true+"&filtro="+filtros);
+        // console.log(filtros);
+        seleccionar.done((resp)=>{
+            $(this).html("<option>Selecciona</option>"+resp);
+        })
+        seleccionar.fail((resp)=>{
+            alert("no funciona");
+        })
+    })
+    $(body).on('blur', '.filtro', function(){
+        let filtro = $(this).attr("id");
+        if(filtro=="hora"){
+            $(this).html("<option class='filtro' id='"+filtro+"'>Hora</option>");
+        }
+        else if(filtro=="Nombre"){
+            $(this).html("<option class='filtro' id='"+filtro+"'>Materia</option>");
+        }
+        else{
+            $(this).html("<option class='filtro' id='"+filtro+"'>"+filtro+"</option>");
+        }
+    })
+    $(body).on('change', '.filtro', function(){
+        let filtro = $(this).attr("id");
+        let buscando= $(this).val();
+        let buscaSelect = peticion("./dynamics/php/index.php", "sesion="+true+"&buscando="+buscando+"&filtrobusq="+filtro);
+        buscaSelect.done((resp)=>{
+            $(".resultados").html(resp);
+            alert(resp);
+        })
+        buscaSelect.fail((resp)=>{
+            alert("Falló la búsqueda");
+        })
+    })
+
 
 });
