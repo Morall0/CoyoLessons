@@ -59,7 +59,7 @@
 
             //Consulta para obtener las materias
             else if(isset($_POST['anio'])){
-                $grado=$_POST['anio'];
+                $grado=validStr($_POST['anio'],$conexion);
                 if($grado=='C'){
                     materia(1400, 1412, $conexion);
                 }

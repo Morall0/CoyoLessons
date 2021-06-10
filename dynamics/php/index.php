@@ -3,7 +3,11 @@
     session_start();
 
     include('./config.php');
-
+    include('./cifr.php');
+    function tipo($x){
+        $arregloMeli=array('P' => 'Presencial','L'=> 'En Linea');
+        return $arregloMeli[$x];
+    }
     if(isset($_POST["sesion"])){
         if(isset($_SESSION["usuario"])){
             $conexion=conectdb();
@@ -33,12 +37,30 @@
                 }
 
             }
-            elseif(isset($_POST["search"])){
-                $busq=$_POST["search"];
-                $nombre_busq="SELECT num_cuenta, Nombre FROM usuario WHERE Nombre LIKE '%$busq%'";
+            elseif(isset($_POST["filtro"])){
+                $filtro=$_POST["filtro"];
+                $consulta="SELECT DISTINCT $filtro FROM asesoria NATURAL JOIN materia NATURAL JOIN asesoriahasalumno NATURAL JOIN horario NATURAL JOIN hora GROUP BY $filtro";
+                $conexion_cons=mysqli_query($conexion,$consulta);
+                while($arr_filtro=mysqli_fetch_array($conexion_cons)){
+                    if($filtro=="Modalidad"){
+                        echo "<option val='$arr_filtro[0]'>$arr_filtro[0]</option>";
+                    }else{
+                        echo "<option val='$arr_filtro[0]'>$arr_filtro[0]</option>";
+                    }
+                }
+            }
+            elseif(isset($_POST["search"]) || isset($_POST["buscando"])){
+                if(isset($_POST["search"])){
+                    $busq=$_POST["search"];
+                    $nombre_busq="SELECT num_cuenta, Nombre FROM usuario WHERE Nombre LIKE '%$busq%'";
+                }else{
+                    $busq=$_POST["buscando"];
+                    $filtrobusq=$_POST["filtrobusq"];
+                    $nombre_busq= "SELECT num_cuenta FROM usuario WHERE num_cuenta=$usuario";
+                }
                 $conex_nombre=mysqli_query($conexion,$nombre_busq);
                 $count= mysqli_num_rows($conex_nombre);
-                if($count>0){
+                if($count>0 | isset($_POST["buscando"])){
                     echo"<br<br><table border='1'>
                         <thead>
                             <tr>
@@ -56,7 +78,14 @@
                         </thead>
                         <tbody>";
                     while($array_nombre=mysqli_fetch_array($conex_nombre)){
-                        $tabla= "SELECT id_materia, id_asesoria, Medio, Modalidad, Fecha, Tema,id_ahh,Nombre,num_cuentaAsesor,Duracion,Estado,num_cuentaAlumno FROM asesoria NATURAL JOIN materia NATURAL JOIN asesoriahasalumno WHERE num_cuentaAsesor=$array_nombre[0] GROUP BY  id_asesoria";
+                        if(isset($_POST["search"])){
+                            $tabla= "SELECT id_materia, id_asesoria, Medio, Modalidad, Fecha, Tema,id_ahh,Nombre,num_cuentaAsesor,Duracion,Estado,num_cuentaAlumno FROM asesoria NATURAL JOIN materia NATURAL JOIN asesoriahasalumno WHERE num_cuentaAsesor=$array_nombre[0] GROUP BY  id_asesoria";
+                        }
+                        if(isset($_POST["buscando"])){
+                            $filtrobusq=$_POST["filtrobusq"];
+                            $buscando=$_POST["buscando"];
+                            $tabla= "SELECT id_materia, id_asesoria, Medio, Modalidad, Fecha, Tema,id_ahh,Nombre,num_cuentaAsesor,Duracion,Estado,num_cuentaAlumno FROM asesoria NATURAL JOIN materia NATURAL JOIN asesoriahasalumno NATURAL JOIN alumnohashorario NATURAL JOIN horario NATURAL JOIN hora WHERE $filtrobusq LIKE '%$buscando%' GROUP BY id_asesoria";
+                        }
                         $restabla=mysqli_query($conexion,$tabla);
                         while($arrtabla=mysqli_fetch_array($restabla)){
                             //dia y hora
