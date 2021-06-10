@@ -26,10 +26,14 @@
         {
             //Peticion que manda la lista de usuarios.
             if(isset($_POST["usuarios"])){
-                $cons="SELECT num_cuenta, Nombre, Correo, Grado, Strike FROM usuario";
+                $cons="SELECT num_cuenta, Nombre, Correo, Grado, Strike, Tipo FROM usuario";
                 $resp= mysqli_query($conexion, $cons);
                 while($row=mysqli_fetch_array($resp)){
+                    $row[5] = ($row[5]=="E")? "Alumno":"Administrador";
+                    $row[3] = ($row[3]=="C")? "Cuarto":$row[3];
+                    $row[3] = ($row[3] =="Q")? "Quinto":"Sexto";
                     echo"<tr>
+                        <td><strong>$row[5]</strong></td>
                         <td>$row[1]</td>
                         <td>$row[0]</td>
                         <td>".descifrar($row[2])."</td>
@@ -83,6 +87,7 @@
                 $dsemana=validStr($_POST['dsemana'], $conexion);
                 $hora=validStr($_POST['hora'], $conexion);
                 $contra=validStr($_POST['contra'], $conexion);
+                $tipo=validStr($_POST["tipo"], $conexion);
 
                 //Variables de RegEx
                 $regexNumcuenta = '/^((3(19|20|21))|(1(16|17|18)))\d{6}$/';
@@ -114,7 +119,7 @@
                         $contra=$contra.$salt;
 
                         //Insersion en la tabla de USUARIO.
-                        $base="INSERT INTO usuario VALUES($num_cuenta,'$nombre','$correo', '$tel','$nacimiento', '$grado', 0, '$contra', 'B', 'E', 'user.png')";
+                        $base="INSERT INTO usuario VALUES($num_cuenta,'$nombre','$correo', '$tel','$nacimiento', '$grado', 0, '$contra', 'B', '$tipo', 'user.png')";
                         $respuesta2 = mysqli_query($conexion, $base);
 
                         if($respuesta2){//Si el registro fue exitoso, se hace la insersion de los horarios y de las materias.

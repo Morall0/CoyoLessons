@@ -85,13 +85,14 @@
 table{
     border-collapse: collapse;
     margin: auto;
+    margin-left: -10%;
 }
 thead{
-background-color: var(--carne);
+    background-color: var(--carne);
 }
 tbody{
-text-align: center;
-background-color: var(--carne);
+    text-align: center;
+    background-color: var(--carne);
 }
 #agendar{
     background-color: var(--azul);
@@ -197,7 +198,7 @@ background-color: var(--carne);
     }
     #indica{
         display: none;
-    }  
+    }
     #agendar{
         background-color: var(--azul);
         width: 170px;
@@ -219,4 +220,12 @@ background-color: var(--carne);
         padding-top: 5px;
         margin-left: 0px;
     }
+}
+.inscribirse, .desinscribirse, .lleno, .eliminar{
+    background-color: transparent;
+    border: none;
+}
+.inscribirse:hover, .desinscribirse:hover, .eliminar:hover{
+    cursor:pointer;
+    background-color: var(--azul);
 }

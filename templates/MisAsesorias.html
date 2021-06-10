@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../statics/img/Logo.png" type="image/png">
+    <link rel="stylesheet" href="../libs/fontawesome-free-5.15.3-web/css/all.css">
     <link rel="stylesheet" href="../statics/styles/basics.css">
+    <link rel="stylesheet" href="../statics/styles/registro.css">
+    <link rel="stylesheet" href="../statics/styles/MisAsesorias.css">
     <script src="../libs/jquery/jquery-3.6.0.min.js"></script>
     <script src="../dynamics/js/MisAsesorias.js"></script>
     <title>Mis asesorías</title>
 </head>
 <body>
-    <button id="botonAsesoria">Crear Asesoria</button>
-    <div id='crearA'>
+    <div id="botones">
+        <button id="regresar"><a href="../index.html">Volver</a></button>
+        <button id="botonAsesoria">Crear Asesoria</button>
+        <div id="tablasec"></div>
+    </div>
+    <div id='miModal'>
         <div class='modal-contenidouser'>
             <div id="modalhead">
                 <span><strong>Crear Asesoría</strong></span> <!---Titulo del modal--->
@@ -19,44 +27,53 @@
             </div>
             <div id="modalcont">
                 <form id="crearAsesoria" method="POST">
-                    <label for="materias">Materias
+                    <label for="materias"><p id="materias2">Materias</p>
                         <select name="materias" id="materias">
                             <option selected value="" hidden><p>Materias a impartir</p></option>
                         </select>
                     </label>
-                    <label for="tema">Tema
+                    <label for="tema"><p id="tema2">Tema</p>
                         <input type="text" id="tema" name="tema" placeholder="Tema">
                     </label>
                     <br><br>
-                    <label for="modalidad">Modalidad
+                    <label for="modalidad"><p id="modalidad2">Modalidad</p>
                         <select name="modalidad" id="modalidad">
                             <option value="L"><p>En línea</p></option>
                             <option value="P"><p>Presencial</p></option>
                         </select>
                     </label>
-                    <label>Medio
+                    <label><p id="medio2">Medio</p>
                         <input type="text" id="medio" name="medio" placeholder="Lugar o liga">
                     </label>
                     <br><br>
-                    <label for="horario">Horario
+                    <label for="horario"><p id="horario2">Horario</p>
                         <select id="horario">
                             <option value="" selected>Seleccionar horario</option>
                         </select>
                     </label>
-                    <label for="duracion">Duración
+                    <label for="cupo">
+                        <select name="cupo" id="cupo">
+                            <option selected value="" hidden>Selecciona el cupo</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </label>
+                    <label for="duracion"><p id="duracion2">Duración</p>
                         <select id="duracion">
                             <option value="1"><p>50 min</p></option>
                             <option value="2"><p>100 min</p></option>
                         </select>
                     </label>
                     <br><br>
-                    <label for="fecha">Fecha
+                    <label for="fecha"><p id="fecha2">Fecha</p>
                         <input type="date" id="fecha">
                     </label>
-                    <button type="submit" id="enviar">Enviar</button>
+                    <button type="submit" id="enviar">Agendar</button>
                 </form>
             </div>
-        </div>   
+        </div>
     </div>
-</body>
+    
+    </body>
 </html>

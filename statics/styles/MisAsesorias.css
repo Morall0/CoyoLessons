@@ -1,0 +1,92 @@
+*{
+    font-family: 'roboto';
+}
+#crearA{
+    display:none;
+}
+#regresar{
+    background-color: var(--azul);
+    border-radius: 8px;
+    height: 33px;
+    width: 100px;
+    margin-top: 1%;
+    margin-left: 2%;
+    font-size: 17px;
+}
+#botonAsesoria{
+    background-color: var(--carne);
+    border-radius: 8px;
+    height: 33px;
+    margin-top: 1%;
+    margin-left: 3%;
+    font-size: 17px;
+}
+#tablasec{
+    margin-left: -35.6%;
+    
+}
+table{
+    border-collapse: collapse;
+    margin: auto;
+}
+thead{
+    background-color: var(--amarillo);
+}
+tbody{
+    text-align: center;
+    background-color: var(--amarillo);
+}
+/*= ----------------- MODAL -------------------------*/
+#materias{
+    position: absolute;
+    left: 24%;
+    bottom: 78%;
+}
+#materias2{
+    position: absolute;
+    bottom: 83%;
+    left: 35%;
+}
+#tema{
+    position: absolute;
+    bottom: 80%;
+    left: 59%;
+}
+#tema2{
+    position: absolute;
+    bottom: 82.5%;
+    left: 59%;
+}
+@media screen and (max-width: 1200px){
+    #botones{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        margin-top: 1%;
+    }
+    #regresar{
+        height: 30px;
+        width: 100px;
+        font-size: 17px;
+    }
+    #botonAsesoria{
+        height: 30px;
+        font-size: 17px;
+    }
+    #tablasec{
+        margin-top: 10px;
+        margin-left: -27%;
+    }
+    table{
+        border-collapse: collapse;
+        margin: auto;
+    }
+    thead{
+        background-color: var(--amarillo);
+    }
+    tbody{
+        text-align: center;
+        background-color: var(--amarillo);
+    }
+}
