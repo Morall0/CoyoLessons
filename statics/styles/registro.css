@@ -200,19 +200,20 @@ p{
     bottom: 50%;
     left: 14%;
 }
-#dia,#año{
+#dia,#mes{
     bottom: 44%;
     width: 17%;
 }
 #dia{
     left: 14%;
 }
-#año{
+#mes{
     left: 33.5%;
 }
-#mes{
+#año{
     bottom: 34%;
     left: 14%;
+    width: 36.6%;
 }
 #cursando{
     width: 33%;
