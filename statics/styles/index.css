@@ -85,13 +85,14 @@
 table{
     border-collapse: collapse;
     margin: auto;
+    margin-left: -10%;
 }
 thead{
-background-color: var(--carne);
+    background-color: var(--carne);
 }
 tbody{
-text-align: center;
-background-color: var(--carne);
+    text-align: center;
+    background-color: var(--carne);
 }
 #agendar{
     background-color: var(--azul);
