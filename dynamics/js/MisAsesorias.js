@@ -75,7 +75,6 @@ $(document).ready(()=>{
         crear.fail((resp)=>{
           alert("falló el form");
         })
-
     })
     //Cargar tabla
         tabla();
