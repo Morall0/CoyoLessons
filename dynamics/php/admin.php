@@ -26,10 +26,14 @@
         {
             //Peticion que manda la lista de usuarios.
             if(isset($_POST["usuarios"])){
-                $cons="SELECT num_cuenta, Nombre, Correo, Grado, Strike FROM usuario";
+                $cons="SELECT num_cuenta, Nombre, Correo, Grado, Strike, Tipo FROM usuario";
                 $resp= mysqli_query($conexion, $cons);
                 while($row=mysqli_fetch_array($resp)){
+                    $row[5] = ($row[5]=="E")? "Alumno":"Administrador";
+                    $row[3] = ($row[3]=="C")? "Cuarto":$row[3];
+                    $row[3] = ($row[3] =="Q")? "Quinto":"Sexto";
                     echo"<tr>
+                        <td><strong>$row[5]</strong></td>
                         <td>$row[1]</td>
                         <td>$row[0]</td>
                         <td>".descifrar($row[2])."</td>

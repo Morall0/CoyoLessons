@@ -41,7 +41,18 @@
 
             }
 
-            if(isset($_POST["asignaturas"]) || isset($_POST["eliminar"]))
+            elseif(isset($_POST["foto"]) && $_POST["foto"] != ""){
+                $foto = $_POST["foto"];
+                $updt_foto="UPDATE usuario SET Imagen = '$foto' WHERE num_cuenta =".$_SESSION["usuario"];
+                $resp = mysqli_query($conexion, $updt_foto);
+                if($resp){
+                    echo "SE CAMBIO CORRECTAMENTE LA IMAGEN";
+                }else{
+                    echo "NO SE PUDO CAMBIAR LA IMAGEN";
+                }
+            }
+
+            elseif(isset($_POST["asignaturas"]) || isset($_POST["eliminar"]))
             {
                 //Consulta para obtener las materias.
                 $materiasd_usuario='SELECT id_materia, abreviacion, nombre FROM usuariohasmateria NATURAL JOIN materia WHERE num_cuenta='.$_SESSION["usuario"];
@@ -56,7 +67,7 @@
                         if(isset($_POST['materiaAsesoria'])){
                             echo "<option value=".$row_asignaturas[0].">".$row_asignaturas[2]."</option>";
                         }
-                        if($contar>1 && !isset($_POST['materiaAsesoria'])) 
+                        if($contar>1 && !isset($_POST['materiaAsesoria']))
                            echo "<option value=".$row_asignaturas[0].">".$row_asignaturas[1]."</option>";
                         else{
                             echo "UNA MATERIA";
@@ -65,7 +76,7 @@
                 }
             }
 
-            if(isset($_POST["materias_select"])){
+            elseif(isset($_POST["materias_select"])){
                 //Agregar más materias
                 $consultando = 'SELECT Grado FROM usuario WHERE num_cuenta='.$_SESSION["usuario"];
                 $resp_grado = mysqli_query($conexion, $consultando);
@@ -82,7 +93,7 @@
             }
 
             //Horario
-            if(isset($_POST['horarios']) || isset($_POST["eliminarHorarios"]))
+            elseif(isset($_POST['horarios']) || isset($_POST["eliminarHorarios"]))
             {
                 $horario_in= 'SELECT id_horario, num_cuenta, dia, hora FROM alumnohashorario NATURAL JOIN horario NATURAL JOIN hora WHERE num_cuenta='.$_SESSION['usuario'];
                 $res_horario= mysqli_query($conexion, $horario_in);
@@ -108,7 +119,7 @@
             }
 
             //Agregar o eliminar materias
-            if(isset($_POST['agregarm']) || isset($_POST['eliminarm'])){
+            elseif(isset($_POST['agregarm']) || isset($_POST['eliminarm'])){
                 //Concicional que permite agregar.
                 if($_POST['agregarm'] != "")
                 {
@@ -133,7 +144,7 @@
                 }
             }
 
-            if(isset($_POST["editHora"]) || isset($_POST["editDia"]) || isset($_POST["eliminaHor"])){
+            elseif(isset($_POST["editHora"]) || isset($_POST["editDia"]) || isset($_POST["eliminaHor"])){
                 //Condicional que permite agregar
                 if($_POST["editHora"] != "" && $_POST["editDia"] != "")
                 {
@@ -166,7 +177,7 @@
             }
 
             //Peticion que permite cerrar la sesion.
-            if(isset($_POST["cerrar"])){
+            elseif(isset($_POST["cerrar"])){
                 session_unset();
                 session_destroy();
             }

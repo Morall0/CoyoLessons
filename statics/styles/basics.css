@@ -17,9 +17,17 @@
     --azulHover: #6175a0;
 }
 body{
+    font-family: Roboto, sans-serif;
     background-color: #F1EFE3;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.placeholdrojo::placeholder{
+    color: red;
+}
+.placeholdmorado::placeholder{
+    color: var(--morado);
 }
 /* =NAV -------------------------------------------------- */
 .nav{
