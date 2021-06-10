@@ -122,8 +122,8 @@
                     <br><br>
                     <label for="contraseña">
                         <input id="contraseña" name="contraseña" type="password" placeholder='Contraseña'
-                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!=\(\)/%*?&])([A-Za-z\d$#@$!=\(\)/%*?&]|[^ ]){10,30}$"
-                        title="Introduce una contraseña de 10 a 30 caracteres, con al menos un caracter especial, un número, una minúscula y una mayúscula" required>
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#_\.\-@$!¡=\(\)/%*¿?&])([A-Za-z\d$#_\.\-@$!¡=\(\)/%*¿?&]|[^ +\\\{\}\[\]]){10,30}$"
+                        title="Introduce una contraseña de 10 a 30 caracteres, con al menos un caracter especial, un número, una minúscula y una mayúscula (No incluir {}[]+)" required>
                         <p id="caracteres">Mímino 10 caracteres, una mayúscula, una minúscula, un número y un caracter especial</p>
                     </label>
                     <br><br>

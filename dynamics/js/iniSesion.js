@@ -24,7 +24,7 @@ $(document).ready(()=>{
         let regexApellidos = /^([A-Za-zÑñáéíóúÁÉÍÓÚ]( )?){2,30}$/;
         let regexCorreo = /^[\w\.\-]{4,28}@(((g|hot)mail|outlook|live|yahoo)\.com|(comunidad|alumno\.enp|enp)\.unam\.mx)|\.mx$/;
         let regexTel = /^((55|56)(\d{8}))$/;
-        let regexContra = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!=\(\)/%*?&])([A-Za-z\d$#@$!=\(\)/%*?&]|[^ ]){10,30}$/;
+        let regexContra = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#_\.\-@$!¡=\(\)/%*¿?&])([A-Za-z\d$#_\.\-@$!¡=\(\)/%*¿?&]|[^ +\\\{\}\[\]]){10,30}$/;
         let mensaje = "Formato inválido";
 
         let cont=0;
