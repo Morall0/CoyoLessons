@@ -13,7 +13,7 @@ $(document).ready(()=>{
     function tablita(){
         let tabla = peticion("./dynamics/php/MisAsesorias.php","sesion="+true+"&todasAsesorias="+true);
         tabla.done((resp)=>{
-            $("tbody").html(resp);
+            $(".resultados").html(resp);
         })
         tabla.fail((resp)=>{
             alert(resp);
@@ -69,10 +69,10 @@ $(document).ready(()=>{
     })
     $(body).on('click','#buscar',function(){
         let search= $("#buscador").val();
-        let desins=peticion("./dynamics/php/MisAsesorias.php", "sesion="+true+"&search="+search);
+        let desins=peticion("./dynamics/php/index.php", "sesion="+true+"&search="+search);
         desins.done((resp)=>{
             console.log(resp);
-            //tablita();
+            $(".resultados").html(resp);
         })
         desins.fail((resp)=>{
             alert("No se pudo hacer la busqueda");
