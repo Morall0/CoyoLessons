@@ -220,6 +220,84 @@ h4{
     font-family: 'roboto';
     padding-top: .5%;
 }
+/*= ----------------- MODAL -------------------------*/
+#mCreditos{
+    display: none;
+    background-color: rgba(0,0,0,.8);
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    opacity:1;
+    pointer-events:auto;
+}
+
+.modal-contenidouser{
+    background-color: white;
+    width:max-content;
+    height: max-content;
+    padding-bottom: 10px;
+    margin: 2% auto;
+    position: relative;
+    height: 600px;
+    width: 800px;
+    border-radius: 11px;
+}
+
+#modalhead{
+    display: flex;
+    align-items: center;
+    background-color: var(--azul);
+    height: 50px;
+    border-radius: 11px;
+}
+
+#closeBtn{
+    margin-left: 80%;
+    color: var(--carne);
+    cursor: pointer;
+}
+#modalcont
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 15px;
+}
+.card{
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    height: 50%;
+}
+.card > div:nth-child(1){
+    width: 50%;
+    height: 50%;
+    padding:5%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+span{
+    font-family: 'roboto';
+    font-size: 18px;
+    padding-left: 5px;
+}
+
+ .card p,h4{
+    color: rgb(71, 68, 68);
+}
+.card h4
+{
+    text-align: center;
+    background-color: lightsteelblue;
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+}
+.card p
+{
+    text-align:initial;
+}
 
 /*=ADAPTABILIDAD
 ---------------------------------------------*/
@@ -414,6 +492,84 @@ h4{
         position: relative;
         width: 100%;
     }
+    /*= ----------------- MODAL -------------------------*/
+    #mCreditos{
+        display: none;
+        background-color: rgba(0,0,0,.8);
+        position:fixed;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        opacity:1;
+        pointer-events:auto;
+    }
+
+    .modal-contenidouser{
+        background-color:white;
+        width:max-content;
+        height: max-content;
+        padding-bottom: 10px;
+        margin: 2% auto;
+        position: relative;
+        height: 600px;
+        width: 800px;
+        border-radius: 11px;
+    }
+
+    #modalhead{
+        display: flex;
+        align-items: center;
+        background-color: var(--azul);
+        height: 50px;
+        border-radius: 11px;
+    }
+
+    #closeBtn{
+        margin-left: 80%;
+        color: var(--carne);
+        cursor: pointer;
+    }
+    #modalcont
+    {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-top: 15px;
+    }
+    .card{
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 100%;
+    }
+    .card > div:nth-child(1){
+        width: 50%;
+        height: 100px;
+        padding:5%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+    span{
+        font-family: 'roboto';
+        font-size: 18px;
+        padding-left: 5px;
+    }
+
+    .card p,h4{
+        color: rgb(71, 68, 68);
+    }
+    .card h4
+    {
+        text-align: center;
+        background-color: lightsteelblue;
+        border-radius: 0.5em 0.5em 0.5em 0.5em;
+    }
+    .card p
+    {
+        text-align:initial;
+    }
 }
 @media screen and (max-width: 800px){
     #contenido{
@@ -607,5 +763,10 @@ h4{
     #footer{
         position: relative;
         width: 100%;
+    }
+    #cred
+    {
+       width: 300px; 
+       color: coral;
     }
 }

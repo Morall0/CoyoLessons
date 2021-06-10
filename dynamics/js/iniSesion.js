@@ -175,6 +175,4 @@ $(document).ready(()=>{
             alert("Verificar que se hayan puesto correctamente en el html");
         }
     });
-
-
 });

@@ -165,6 +165,15 @@ $(document).ready(()=>{
         cerrar.fail((resp)=>{
             alert("no funciona");
         });
-
+        
     });
+    //Botones del modal footer (abrir y cerrar).
+    $("#cred").click(()=>{
+        $("#mCreditos").css("display", "block");
+    });
+
+    $("#closeBtn").click(()=>{
+        $("#mCreditos").css("display", "none");
+    });
+
 });
