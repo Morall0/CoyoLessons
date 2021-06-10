@@ -61,7 +61,7 @@
                 $conex_nombre=mysqli_query($conexion,$nombre_busq);
                 $count= mysqli_num_rows($conex_nombre);
                 if($count>0 | isset($_POST["buscando"])){
-                    echo"<br<br><table border='1'>
+                    echo"<br><br><table border='1'>
                         <thead>
                             <tr>
                                 <th>Materia</th>
