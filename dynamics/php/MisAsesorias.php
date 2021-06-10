@@ -3,7 +3,7 @@
     session_start();
 
     include('./config.php');
-    
+
 
     if(isset($_POST['sesion'])){
         if(isset($_SESSION['usuario'])){
@@ -49,7 +49,7 @@
             if(isset($_POST["tabla"]) || isset($_POST["todasAsesorias"])){
                 if(isset($_POST["todasAsesorias"])){
                     //Todas las asesorias
-                    $tabla= "SELECT id_materia, id_asesoria, Medio, Modalidad, Fecha, Tema,id_ahh,Nombre,num_cuentaAsesor,Duracion,Estado,num_cuentAlumno FROM asesoria NATURAL JOIN materia NATURAL JOIN asesoriahasalumno GROUP BY  id_asesoria";
+                    $tabla= "SELECT id_materia, id_asesoria, Medio, Modalidad, Fecha, Tema,id_ahh,Nombre,num_cuentaAsesor,Duracion,Estado,num_cuentaAlumno FROM asesoria NATURAL JOIN materia NATURAL JOIN asesoriahasalumno GROUP BY  id_asesoria";
                 }
                 else{
                     //solo las asesorías que da el usuario
@@ -65,7 +65,8 @@
                     $cons_nombre="SELECT nombre FROM usuario WHERE num_cuenta=".$arrtabla[8];
                     $res_nombre=mysqli_query($conexion,$cons_nombre);
                     $arr_nombre=mysqli_fetch_array($res_nombre);
-                    $cupo="SELECT COUNT(id_asesoria) FROM asesoriahasalumno WHERE id_asesoria='$arrtabla[1]'";
+                    $cupo="SELECT COUNT(*) FROM asesoriahasalumno WHERE id_asesoria=$arrtabla[1] AND COALESCE(num_cuentaAlumno) IS NULL"; //COALESCE permite contemplar valores nulos en la cosulta
+                    // $cupo="SELECT COUNT(id_asesoria) FROM asesoriahasalumno WHERE id_asesoria='$arrtabla[1]'";
                     $cupo_con=mysqli_query($conexion, $cupo);
                     $xcupo=mysqli_fetch_array($cupo_con);
                     if($arr_hor){
@@ -98,9 +99,24 @@
                             }
                             else if(isset($_POST["todasAsesorias"])){
                                 if($arrtabla[8]!=$usuario){
-                                    echo "<td>$arr_nombre[0]</td>
-                                    <td><button type='button' class='inscribirse' id='$arrtabla[1]'><i class='fas fa-marker'></i></button></td>
-                                    </tr>";
+                                    //checa si el usuario ya está inscrito
+                                    $cuantas="SELECT COUNT(num_cuentaAlumno) FROM asesoriahasalumno WHERE num_cuentaAlumno=$usuario AND id_asesoria=$arrtabla[1]";
+                                    $res_cuantas=mysqli_query($conexion,$cuantas);
+                                    $arr_cuantas=mysqli_fetch_array($res_cuantas);
+                                    echo "<td>$arr_nombre[0]</td>";
+                                    if($arr_cuantas[0]>0 && $xcupo[0]>0){
+                                        echo "<td><button type='button' class='desinscribirse' id='$arrtabla[1]'><i class='fas fa-user-check'></i></button></td>
+                                        </tr>";
+                                    }
+                                    elseif($arr_cuantas[0]==0 && $xcupo[0]>0){
+                                        echo "<td><button type='button' class='inscribirse' id='$arrtabla[1]'><i class='fas fa-marker'></i></button></td>
+                                        </tr>";
+                                    }
+                                    else{
+                                        echo "<td><button type='button' class='lleno' id='$arrtabla[1]'><i class='fas fa-ban'></i></button></td>
+                                        </tr>";
+                                    }
+
                                 }
                                 else{
                                     echo "<td>$arr_nombre[0]</td>
@@ -114,6 +130,17 @@
                         echo "no funciono la consulta de la tabla";
                     }
 
+                }
+            }
+            if(isset($_POST["search"])){
+                $busq=$_POST["search"];
+
+
+                $sql="SELECT * FROM asesoria NATURAL JOIN materia NATURAL JOIN asesoriahasalumno NATURAL JOIN usuario WHERE Nombre IN(SELECT Nombre FROM usuario WHERE Nombre LIKE '%$busq%') GROUP BY  id_asesoria";
+                echo "$sql";
+                $resp=mysqli_query($conexion,$sql);
+                while ($row=mysqli_fetch_array($resp)){
+                    print_r($row);
                 }
             }
             if(isset($_POST["delete"])){

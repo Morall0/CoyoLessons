@@ -197,7 +197,7 @@ background-color: var(--carne);
     }
     #indica{
         display: none;
-    }  
+    }
     #agendar{
         background-color: var(--azul);
         width: 170px;
@@ -219,4 +219,12 @@ background-color: var(--carne);
         padding-top: 5px;
         margin-left: 0px;
     }
+}
+.inscribirse, .desinscribirse, .lleno, .eliminar{
+    background-color: transparent;
+    border: none;
+}
+.inscribirse:hover, .desinscribirse:hover, .eliminar:hover{
+    cursor:pointer;
+    background-color: var(--azul);
 }
