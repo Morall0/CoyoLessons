@@ -17,7 +17,7 @@
             {   //CAMBIAR EL ESTADO A 'T'.
                 $consulta_asesorias= "SELECT id_asesoria, Medio, Modalidad, Fecha, Tema, id_ahh, Nombre, num_cuentaAsesor, num_cuentaAlumno 
                 FROM asesoria NATURAL JOIN materia NATURAL JOIN asesoriahasalumno WHERE num_cuentaAsesor=$usuario AND 
-                Estado = 'I' OR num_cuentaAlumno=$usuario AND Estado = 'I' GROUP BY  id_asesoria";
+                Estado = 'P' OR num_cuentaAlumno=$usuario AND Estado = 'P' GROUP BY  id_asesoria";
 
                 $res_asesorias=mysqli_query($conexion, $consulta_asesorias);
                 while($info_asesorias=mysqli_fetch_array($res_asesorias)){
@@ -53,7 +53,7 @@
 
                         //Condicional que permite poner el boton de comentar solo cuando no fuimos asesores.
                         if($info_asesorias[7] == $usuario)  //Cuando eres ascesor
-                            echo "<td><button type='button' class='misComentarios' id='$info_asesorias[0]'><i class='fas fa-chalkboard-teacher'></i></td></tr>";
+                            echo "<td><button type='button' class='misComentarios' id='$info_asesorias[0]'><i class='fas fa-chalkboard-teacher fa-2x'></i></td></tr>";
                         else 
                             echo "<td><button type='button' class='comentar' id='$info_asesorias[0]'><i class='far fa-comment-alt fa-2x'></i></button></td></tr>";
                         
