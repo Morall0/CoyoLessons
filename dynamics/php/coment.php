@@ -14,10 +14,10 @@
 
             //Consulta que obtiene las asesorias en las que ha estado el usuario.
             if(isset($_POST["asesoria"]))
-            {
+            {   //CAMBIAR EL ESTADO A 'T'.
                 $consulta_asesorias= "SELECT id_asesoria, Medio, Modalidad, Fecha, Tema, id_ahh, Nombre, num_cuentaAsesor, num_cuentaAlumno 
                 FROM asesoria NATURAL JOIN materia NATURAL JOIN asesoriahasalumno WHERE num_cuentaAsesor=$usuario AND 
-                Estado = 'T' OR num_cuentaAlumno=$usuario AND Estado = 'T' GROUP BY  id_asesoria";
+                Estado = 'I' OR num_cuentaAlumno=$usuario AND Estado = 'I' GROUP BY  id_asesoria";
 
                 $res_asesorias=mysqli_query($conexion, $consulta_asesorias);
                 while($info_asesorias=mysqli_fetch_array($res_asesorias)){
@@ -29,11 +29,7 @@
                     $cons_nombre="SELECT nombre FROM usuario WHERE num_cuenta=".$info_asesorias[7];
                     $res_nombre=mysqli_query($conexion,$cons_nombre);
                     $arr_nombre=mysqli_fetch_array($res_nombre);
-                    // //Cupo.
-                    // $cupo="SELECT COUNT(id_asesoria) FROM asesoriahasalumno WHERE id_asesoria='$info_asesorias[1]'";
-                    // $cupo_con=mysqli_query($conexion, $cupo);
-                    // $xcupo=mysqli_fetch_array($cupo_con);
-                    //echo $arr_hor."hora";
+                    
                     if($arr_hor){
 
                         $arr_hor[0] = ($arr_hor[0] == 'L')? 'Lunes':$arr_hor[0];
@@ -60,8 +56,8 @@
                             echo "<td><button type='button' class='misComentarios' id='$info_asesorias[0]'><i class='fas fa-chalkboard-teacher'></i></td></tr>";
                         else 
                             echo "<td><button type='button' class='comentar' id='$info_asesorias[0]'><i class='far fa-comment-alt fa-2x'></i></button></td></tr>";
-
-                            //echo "Hola";
+                        
+                            
                     }
                     else{
                         echo "no funciono la consulta de la tabla";
