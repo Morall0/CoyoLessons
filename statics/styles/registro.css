@@ -1,10 +1,3 @@
-body{
-    font-family: Roboto, sans-serif;
-    background-color: #F1EFE3;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 /* =NAV -------------------------------------------------- */
 .nav{
     display: flex;
@@ -65,12 +58,6 @@ body{
     width: 60%;
     height: 40px;
     margin-bottom: 10px;
-}
-.placeholdrojo::placeholder{
-    color: red;
-}
-.placeholdmorado::placeholder{
-    color: var(--morado);
 }
 button
 {

@@ -21,10 +21,10 @@ $(document).ready(()=>{
         //Variables REGEX
         let regexNumcuenta = /^((3(19|20|21))|(1(16|17|18)))\d{6}$/;
         let regexNombre = /^([A-Za-zÑñáéíóúÁÉÍÓÚ]( )?){2,30}$/;
-        let regexApellidos = /^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$/;
+        let regexApellidos = /^([A-Za-zÑñáéíóúÁÉÍÓÚ]( )?){2,30}$/;
         let regexCorreo = /^[\w\.\-]{4,28}@(((g|hot)mail|outlook|live|yahoo)\.com|(comunidad|alumno\.enp|enp)\.unam\.mx)|\.mx$/;
         let regexTel = /^((55|56)(\d{8}))$/;
-        let regexContra = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!=\(\)/%*?&])([A-Za-z\d$#@$!=\(\)/%*?&]|[^ ]){10,30}$/;
+        let regexContra = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#_\.\-@$!¡=\(\)/%*¿?&])([A-Za-z\d$#_\.\-@$!¡=\(\)/%*¿?&]|[^ +\\\{\}\[\]]){10,30}$/;
         let mensaje = "Formato inválido";
 
         let cont=0;
@@ -45,13 +45,13 @@ $(document).ready(()=>{
         if(regexApellidos.test(apPaterno)){
             cont++;
         }else{
-            $("#apPaterno").attr("pattern", "^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$");
+            $("#apPaterno").attr("pattern", "([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]( )?){2,30}");
             incorrecta("#apPaterno", mensaje, "placeholdmorado");
         }
         if(regexApellidos.test(apMaterno)){
             cont++;
         }else{
-            $("#apMaterno").attr("pattern", "^([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]){2,30}$");
+            $("#apMaterno").attr("pattern", "([A-Z,a-z,Ññ,á,é,í,ó,ú,Á,É,Í,Ó,Ú]( )?){2,30}");
             incorrecta("#apMaterno", mensaje, "placeholdmorado");
         }
         if(regexCorreo.test(correo)){

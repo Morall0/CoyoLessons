@@ -89,7 +89,7 @@
                 $regexNombre = '/^([A-Za-zÑñáéíóúÁÉÍÓÚ]( )?){2,50}$/';
                 $regexCorreo = '/^[\w\.\-]{4,28}@(((g|hot)mail|outlook|live|yahoo)\.com|(comunidad|alumno\.enp|enp)\.unam\.mx)|\.mx$/';
                 $regexTel = '/^((55|56)(\d{8}))$/';
-                $regexContra = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#@$!=\(\)\/%*?&])([A-Za-z\d$#@$!=\(\)\/%*?&]|[^ ]){10,30}$/';
+                $regexContra = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$#_\.\-@$!¡=\(\)\/%*¿?&])([A-Za-z\d$#_\.\-@$!¡=\(\)\/%*¿?&]|[^ +\\\{\}\[\]]){10,30}$/';
 
                 //Verificacion de los datos con las regex.
                 if(preg_match($regexNumcuenta, $num_cuenta) && preg_match($regexNombre, $nombre) && preg_match($regexCorreo, $correo) && preg_match($regexTel, $tel) && preg_match($regexContra, $contra))
