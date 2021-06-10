@@ -12,7 +12,7 @@ $(document).ready(()=>{
     function tabla(){
         let tabla= peticion('../dynamics/php/MisAsesorias.php', 'sesion='+true+'&tabla='+true);
         tabla.done((resp)=>{
-            $("tbody").html(resp)
+            $("#tablasec").html(resp)
         })
         tabla.fail((resp)=>{
             alert("fallo tabla");
@@ -75,7 +75,6 @@ $(document).ready(()=>{
         crear.fail((resp)=>{
           alert("falló el form");
         })
-        
     })
     //Cargar tabla
         tabla();

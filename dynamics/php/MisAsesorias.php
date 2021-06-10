@@ -3,6 +3,7 @@
     session_start();
 
     include('./config.php');
+    include('./cifr.php');
 
 
     if(isset($_POST['sesion'])){
@@ -10,20 +11,20 @@
             $conexion=conectdb();
             $usuario = $_SESSION["usuario"];
             if(isset($_POST["formAsesoria"])){
-                $materiaA=$_POST["materiaSelect"];
-                $tema=$_POST["tema"];
-                $modalidad=$_POST["modalidad"];
-                $medio=$_POST["medio"];
-                $horario=$_POST["horario"];
-                $duracion=$_POST["duracion"];
-                $fecha=$_POST["fecha"];
-                $cupo=$_POST["cupo"];
+                $materiaA=validStr($_POST["materiaSelect"],$conexion);
+                $tema=validStr($_POST["tema"],$conexion);
+                $modalidad=validStr($_POST["modalidad"],$conexion);
+                $medio=validStr($_POST["medio"],$conexion);
+                $horario=validStr($_POST["horario"],$conexion);
+                $duracion=validStr($_POST["duracion"],$conexion);
+                $fecha=validStr($_POST["fecha"], $conexion);
+                $cupo=validStr($_POST["cupo"],$conexion);
                 $i=0;
 
                 $consul_ahh="SELECT id_ahh FROM alumnohashorario WHERE num_cuenta=$usuario AND id_horario=$horario";
                 $res_id=mysqli_query($conexion, $consul_ahh);
                 $id_ahh=mysqli_fetch_array($res_id);
-                $insertAsesoria="INSERT INTO asesoria (Medio, Modalidad, Fecha, Duracion, Tema, id_materia, id_ahh,estado) VALUES ('$medio', '$modalidad', '$fecha', $duracion, '$tema', '$materiaA', ".$id_ahh[0].",'I')";
+                $insertAsesoria="INSERT INTO asesoria (Medio, Modalidad, Fecha, Duracion, Tema, id_materia, id_ahh,estado) VALUES ('$medio', '$modalidad', '$fecha', $duracion, '$tema', '$materiaA', ".$id_ahh[0].",'P')";
                 $res=mysqli_query($conexion,$insertAsesoria);
                 if($res){
 
@@ -46,24 +47,37 @@
                     echo"no se inserto la asesoria";;
                 }
             }
-            if(isset($_POST["tabla"]) || isset($_POST["todasAsesorias"]) || isset($_POST["search"])){
+            if(isset($_POST["tabla"]) || isset($_POST["todasAsesorias"])){
+                echo "<br><br><table border='1'>
+                <thead>
+                <tr>
+                <th>Materia</th>
+                <th>Tema</th>
+                <th>Modalidad</th>
+                <th>Medio</th>
+                <th>Horario</th>
+                <th>Cupo</th>
+                <th>Duración</th>
+                <th>Fecha</th>";
                 if(isset($_POST["todasAsesorias"])){
-                    //Todas las asesorias
+                    //Obtiene todas las asesorias
                     $tabla= "SELECT id_materia, id_asesoria, Medio, Modalidad, Fecha, Tema,id_ahh,Nombre,num_cuentaAsesor,Duracion,Estado,num_cuentaAlumno FROM asesoria NATURAL JOIN materia NATURAL JOIN asesoriahasalumno GROUP BY  id_asesoria";
-                }
-                elseif(isset($_POST["search"])){
-                    $busq=$_POST["search"];
-                     $nombre_busq="SELECT num_cuenta, Nombre FROM usuario WHERE Nombre LIKE '%$busq%'";
-                     $conex_nombre=mysqli_query($conexion,$nombre_busq);
-                     $arr_busq=mysqli_fetch_array($conex_nombre);
-                     if($conex_nombre)
-                        $tabla= "SELECT id_materia, id_asesoria, Medio, Modalidad, Fecha, Tema,id_ahh,Nombre,num_cuentaAsesor,Duracion,Estado,num_cuentaAlumno FROM asesoria NATURAL JOIN materia NATURAL JOIN asesoriahasalumno WHERE num_cuentaAsesor=$arr_busq[0] GROUP BY  id_asesoria";
-                     else
-                         echo "No se cargó la búsqueda";
+                            echo"
+                            <th>Asesor</th>
+                            <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>";
                 }
                 elseif(isset($_POST["tabla"])){
-                    //solo las asesorías que da el usuario
+                    //Obtiene solo las asesorías que da el usuario
                     $tabla= "SELECT id_materia, id_asesoria, Medio, Modalidad, Fecha, Tema,id_ahh,Nombre,num_cuentaAsesor,Duracion,Estado FROM asesoria NATURAL JOIN materia NATURAL JOIN asesoriahasalumno WHERE num_cuentaAsesor=$usuario GROUP BY  id_asesoria";
+
+                    echo "<th>Estado</th>
+                    <th>Eliminar</th>
+                    </tr>
+                    </thead>
+                    <tbody>";
                 }
                 $restabla=mysqli_query($conexion,$tabla);
                 while($arrtabla=mysqli_fetch_array($restabla)){
@@ -107,7 +121,7 @@
                                 <td><button type='button' class='borrar' id='$arrtabla[1]'><i class='fas fa-trash-alt fa-2x'></i></button></td>
                                  </tr>";
                             }
-                            else if(isset($_POST["todasAsesorias"])|| isset($_POST["search"])){
+                            else if(isset($_POST["todasAsesorias"])){
                                 if($arrtabla[8]!=$usuario){
                                     //checa si el usuario ya está inscrito
                                     $cuantas="SELECT COUNT(num_cuentaAlumno) FROM asesoriahasalumno WHERE num_cuentaAlumno=$usuario AND id_asesoria=$arrtabla[1]";
@@ -141,20 +155,11 @@
                     }
 
                 }
+                echo "</tbody></table>";
             }
-            if(isset($_POST["search"])){
-                $busq=$_POST["search"];
 
-
-                $sql="SELECT * FROM asesoria NATURAL JOIN materia NATURAL JOIN asesoriahasalumno NATURAL JOIN usuario WHERE Nombre IN(SELECT Nombre FROM usuario WHERE Nombre LIKE '%$busq%') GROUP BY  id_asesoria";
-                echo "$sql";
-                $resp=mysqli_query($conexion,$sql);
-                while ($row=mysqli_fetch_array($resp)){
-                    print_r($row);
-                }
-            }
             if(isset($_POST["delete"])){
-                $boton=$_POST["delete"];
+                $boton=validStr($_POST["delete"],$conexion);
                 $consul_borrar="DELETE from asesoriahasalumno WHERE id_asesoria=$boton";
                 $res_borrar=mysqli_query($conexion,$consul_borrar);
                 if($res_borrar){

@@ -14,7 +14,11 @@
     <title>Mis asesorías</title>
 </head>
 <body>
-    <button id="botonAsesoria">Crear Asesoria</button>
+    <div id="botones">
+        <button id="regresar"><a href="../index.html">Volver</a></button>
+        <button id="botonAsesoria">Crear Asesoria</button>
+        <div id="tablasec"></div>
+    </div>
     <div id='miModal'>
         <div class='modal-contenidouser'>
             <div id="modalhead">
@@ -23,72 +27,53 @@
             </div>
             <div id="modalcont">
                 <form id="crearAsesoria" method="POST">
-                    <label for="materias">Materias
-                        <select name="materias" id="materias">
+                    <label for="materias"><p id="materias2">Materias</p>
+                        <select name="materias" id="materias" required>
                             <option selected value="" hidden><p>Materias a impartir</p></option>
                         </select>
                     </label>
-                    <label for="tema">Tema
-                        <input type="text" id="tema" name="tema" placeholder="Tema">
+                    <label for="tema"><p id="tema2">Tema</p>
+                        <input type="text" id="tema" name="tema" placeholder="Tema" required>
                     </label>
                     <br><br>
-                    <label for="modalidad">Modalidad
-                        <select name="modalidad" id="modalidad">
+                    <label for="modalidad"><p id="modalidad2">Modalidad</p>
+                        <select name="modalidad" id="modalidad" required>
                             <option value="L"><p>En línea</p></option>
                             <option value="P"><p>Presencial</p></option>
                         </select>
                     </label>
-                    <label>Medio
-                        <input type="text" id="medio" name="medio" placeholder="Lugar o liga">
+                    <label><p id="medio2">Medio</p>
+                        <input type="text" id="medio" name="medio" placeholder="Lugar o liga" required>
                     </label>
                     <br><br>
-                    <label for="horario">Horario
-                        <select id="horario">
+                    <label for="horario"><p id="horario2">Horario</p>
+                        <select id="horario" required>
                             <option value="" selected>Seleccionar horario</option>
                         </select>
                     </label>
                     <label for="cupo">
-                        <select name="cupo" id="cupo">
+                        <select name="cupo" id="cupo" required>
                             <option selected value="" hidden>Selecciona el cupo</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                         </select>
                     </label>
-                    <label for="duracion">Duración
-                        <select id="duracion">
+                    <label for="duracion"><p id="duracion2">Duración</p>
+                        <select id="duracion" required>
                             <option value="1"><p>50 min</p></option>
                             <option value="2"><p>100 min</p></option>
                         </select>
                     </label>
                     <br><br>
-                    <label for="fecha">Fecha
-                        <input type="date" id="fecha">
+                    <label for="fecha"><p id="fecha2">Fecha</p>
+                        <input type="date" id="fecha" required>
                     </label>
-                    <button type="submit" id="enviar">Enviar</button>
+                    <button type="submit" id="enviar">Agendar</button>
                 </form>
             </div>
         </div>
     </div>
-    <div>
-        <table border='1'>
-            <thead>
-                <tr>
-                    <th>Materia</th>
-                    <th>Tema</th>
-                    <th>Modalidad</th>
-                    <th>Medio</th>
-                    <th>Horario</th>
-                    <th>Cupo</th>
-                    <th>Duración</th>
-                    <th>Fecha</th>
-                    <th>Estado</th>
-                    <th>Eliminar</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
-
+    
     </body>
 </html>
