@@ -23,11 +23,12 @@ $(document).ready(()=>{
     });
 
     //Peticion que permite desplegar las asesorias en las que ha participado el usuario.
-    let asesorias = peticion(url, "sesion="+true+"&asesoria"+true);
+    let asesorias = peticion(url, "sesion="+true+"&asesoria="+true);
     asesorias.done((resp)=>{
-        alert(resp);
+        $("tbody").html(resp);
+        console.log(resp+"done");
     });
     asesorias.fail((resp)=>{
-        alert(resp);
+        console.log(resp+"fail");
     });
 });
