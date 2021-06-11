@@ -20,7 +20,7 @@
                     echo "NO ES ADMIN";
                 }
             }
-            
+
             if(isset($_POST["inscribirse"])){
                 //inscribir
                 $inscribir=$_POST["inscribirse"];
@@ -140,8 +140,8 @@
                                     echo "<td>$arr_nombre[0]</td>";
                                     //si ya está inscrito manda el botón de desinscribirse
                                     if($arr_cuantas[0]>0 && $xcupo[0]>0){
-                                        echo "<td><button type='button' class='desinscribirse' id='$arrtabla[1]'><i class='fas fa-user-check'></i></button></td>
-                                        </tr>";
+                                        echo "<td><button type='button' class='desinscribirse' id='$arrtabla[1]'><i class='fas fa-user-check'></i></button></td>";
+
                                     }
                                     //Si no está inscrito manda el botón de inscribirse
                                     elseif($arr_cuantas[0]==0 && $xcupo[0]>0){
