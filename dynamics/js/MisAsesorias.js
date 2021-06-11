@@ -1,4 +1,4 @@
-$(document).ready(()=>
+$(document).ready(()=>{
     //Funcion que nos permite hacer petiiciones.
     function peticion(url, data=""){
         let peticion =$.ajax({
@@ -7,15 +7,13 @@ $(document).ready(()=>
             data: data
         });
         return peticion;
-    };
+    }
 
     //Funcion que despliega la tabla.
     function tabla(){
         let tabla= peticion('../dynamics/php/MisAsesorias.php', 'sesion='+true+'&tabla='+true);
         tabla.done((resp)=>{
-            $("#tablasec").html(resp)
-        });
-        tabla.fail((resp)=>{
+            $("#tablasec").html(resp);
         });
     }
 
