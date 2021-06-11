@@ -29,14 +29,30 @@
                          <th>Medio</th>
                          <th>Horario</th>
                          <th>Fecha</th>
-                         <th>Comentar</th>
                          <th>Reportar</th>
+                         <th>Comentar</th>
                      </tr>
                  </thead>
                  <tbody>
-                    
+
                  </tbody>
              </table>
+         </div>
+         <div class="comentario">
+             <form class="" method="POST">
+                 <label for="comentario">
+                     <input type="textarea" name="comentario" id="comentario" value="">
+                     <select id="rangcalif" name="califcoment" required>
+                        <option val="" selected>Escoge Calificacion</option>
+                        <option val="1">1</option>
+                        <option val="2">2</option>
+                        <option val="3">3</option>
+                        <option val="4">4</option>
+                        <option val="5">5</option>
+                     </select>
+                 </label>
+                 <button type="submit" id="comentBtn">Comentar</button>
+             </form>
          </div>
     </body>
 </html>

@@ -27,7 +27,6 @@ $(document).ready(function(){
             $("tbody").html(resp);
         });
         usuarios.fail((resp)=>{
-            alert("Hubo problemas");
         });
     }
 
@@ -103,8 +102,6 @@ $(document).ready(function(){
     sesion_admin.done((resp)=>{
         if(resp == "NO HAY SESION O NO ES ADMIN")
             location = "../index.html";
-        else
-            alert(resp);
     });
 
     desp_usuarios();
@@ -113,14 +110,11 @@ $(document).ready(function(){
     let body= $(document.body);
     $(body).on('click','.borrar', function(){
         let boton = $(this).attr("id");
-        alert(boton);
         let eliminar = peticion(url, "usuario="+true+"&delete="+boton);
         eliminar.done((resp)=>{
-            alert(resp+"respuesta");
             desp_usuarios();
         });
         eliminar.fail((resp)=>{
-            alert("Hubo un problema para procesar tu peticion");
         });
     });
 
@@ -141,7 +135,6 @@ $(document).ready(function(){
             $("#materias").html("<option selected value=''><p>Materias a impartir</p></option>"+resp);
         });
         materias.fail(()=>{
-            alert("fallo");
         });
     });
 
@@ -175,11 +168,9 @@ $(document).ready(function(){
             '&cursando='+cursando+'&materias='+materias+'&dsemana='+dsemana+'&hora='+hora+'&contra='+contra+"&tipo="+tipo);
 
             respuestas.done((respuesta)=>{
-                //alert("si se envian desde JS");
                 if(respuesta > 0)
                     incorrecta("#numcuenta", "Este numero de cuenta ya está registrado", "placeholdrojo");
                 else{
-                    alert(respuesta);
                     $("#cuenta")[0].reset();
                     $("#miModal").css("display", "none");
                     desp_usuarios();
@@ -187,11 +178,9 @@ $(document).ready(function(){
             });
 
             respuestas.fail((respuesta)=>{
-                alert("NO se envian desde JS");
             });
         }
         else{
-            alert("Verificar que se hayan puesto correctamente en el html");
         }
     });
 });

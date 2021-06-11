@@ -26,23 +26,19 @@ $(document).ready(()=>{
             $("#listaMat").html(resp);
         });
         materias.fail((resp)=>{
-            alert("fallo asignatura");
         });
 
         //Desplegar materias en el select.
         let materias_select = peticion("../dynamics/php/user.php", "sesion="+true+"&materias_select="+true);
         materias_select.done((resp)=>{
-            //alert("materias select"+resp);
             $("#agregarm").html("<option id='opcionTitulo1' value='' selected><p>Agregar materia</p></option>"+resp);
         });
         materias_select.fail((resp)=>{
-            alert("fallo select asignatura");
         });
 
         //eliminar materia
         let eliminar_materias = peticion("../dynamics/php/user.php", "sesion="+true+"&eliminar="+true);
         eliminar_materias.done((resp)=>{
-            //alert(resp);
             if(resp=="UNA MATERIA")
                 $("#eliminarm").hide();
             else{
@@ -52,7 +48,6 @@ $(document).ready(()=>{
 
         });
         eliminar_materias.fail((resp)=>{
-            alert("fallo eliminar");
         });
     }
 
@@ -63,7 +58,6 @@ $(document).ready(()=>{
             $("#listaHor").html(resp);
         });
         horarios.fail((resp)=>{
-            alert("fallo eliminar");
         });
 
         let eliminarHorario = peticion("../dynamics/php/user.php", "sesion="+true+"&eliminarHorarios="+true);
@@ -77,7 +71,6 @@ $(document).ready(()=>{
             }
         });
         eliminarHorario.fail((resp)=>{
-            alert("no se elimina");
         });
     }
 
@@ -113,11 +106,10 @@ $(document).ready(()=>{
             $("#cursando").text("<strong>Año que cursas: </strong>"+mensaje);
         });
     }
-    
+
     //Peticion para redireccionar en caso de no haber una sesion activa.
     let sesion = peticion("../dynamics/php/user.php", "sesion="+true+"&eltipo="+true);
     sesion.done((resp)=>{
-        //alert(resp);
         if(resp=="NO HAY SESION"){
             location = "./registro.html";
         }
@@ -153,11 +145,9 @@ $(document).ready(()=>{
         let eliminarm=$("#eliminarm").val();
         let agrEli = peticion("../dynamics/php/user.php", "sesion="+true+"&agregarm="+agregarm+"&eliminarm="+eliminarm);
         agrEli.done((resp)=>{
-            alert("Se agrElio");
             iniMaterias();
         })
         agrEli.fail((resp)=>{
-            alert("no se pudo agrEli");
         });
     });
 
@@ -167,13 +157,10 @@ $(document).ready(()=>{
         let editDia = ($("#Horariodia").val() == null)? "":$("#Horariodia").val();
         let eliminaHor = $("#eliminarHorario").val();
         let editarHor = peticion("../dynamics/php/user.php", "sesion="+true+"&editHora="+editHora+"&editDia="+editDia+"&eliminaHor="+eliminaHor);
-        alert(editHora+" "+editDia+" "+eliminaHor);
         editarHor.done((resp)=>{
-            alert(resp);
             iniHorarios();
         });
         editarHor.fail((resp)=>{
-            alert(resp);
         });
         $("#Horariohora").val("");
         $("#Horariodia").val("");
@@ -187,7 +174,6 @@ $(document).ready(()=>{
             location = "./registro.html";
         });
         cerrar.fail((resp)=>{
-            alert("no funciona");
         });
 
     });

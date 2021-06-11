@@ -16,10 +16,9 @@ $(document).ready(()=>{
             $(".resultados").html(resp);
         })
         tabla.fail((resp)=>{
-            alert(resp);
         })
     }
- 
+
     //Evento que permite desplegar la nav.
     var ham=document.querySelector("#hamburguesa");
     var barra=document.querySelectorAll(".link");
@@ -58,7 +57,6 @@ $(document).ready(()=>{
             tablita();
         });
         insc.fail((resp1)=>{
-            alert("Hubo un problema para procesar tu peticion");
         });
     });
     $(body).on('click','.desinscribirse',function(){
@@ -70,7 +68,6 @@ $(document).ready(()=>{
             tablita();
         })
         desins.fail((resp)=>{
-            alert("No se pudo desinscribir");
         })
     })
     $(body).on('click','#buscar',function(){
@@ -81,7 +78,6 @@ $(document).ready(()=>{
             $(".resultados").html(resp);
         })
         desins.fail((resp)=>{
-            alert("No se pudo hacer la busqueda");
         })
     });
 
@@ -93,7 +89,6 @@ $(document).ready(()=>{
             $(this).html("<option>Selecciona</option>"+resp);
         })
         seleccionar.fail((resp)=>{
-            alert("no funciona");
         })
     })
     $(body).on('blur', '.filtro', function(){
@@ -114,25 +109,20 @@ $(document).ready(()=>{
         let buscaSelect = peticion("./dynamics/php/index.php", "sesion="+true+"&buscando="+buscando+"&filtrobusq="+filtro);
         buscaSelect.done((resp)=>{
             $(".resultados").html(resp);
-            alert(resp);
         })
         buscaSelect.fail((resp)=>{
-            alert("Falló la búsqueda");
         })
     })
     $(body).on('click','.borrar', function(){
         let boton = $(this).attr("id");
-        alert(boton);
         let eliminar = peticion("./dynamics/php/MisAsesorias.php", "sesion="+true+"&delete="+boton);
         eliminar.done((resp)=>{
-            alert(resp);
             tablita();
         });
         eliminar.fail((resp)=>{
-            alert("Hubo un problema para procesar tu peticion");
         });
     })
-    
+
      //Botones del modal footer (abrir y cerrar).
      $("#cred").click(()=>{
         $("#mCreditos").css("display", "block");
