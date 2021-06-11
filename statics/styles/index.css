@@ -69,6 +69,16 @@
     color: white;
     width: 100%;
 }
+#cred
+{
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
+    cursor:pointer;
+    border: none;
+}
 #derecho{
     display: flex;
     flex-direction:column;
@@ -112,6 +122,87 @@ tbody{
     padding-bottom: 10px;
     text-align: center;
 }
+/*= ----------------- MODAL -------------------------*/
+#mCreditos{
+    display: none;
+    background-color: rgba(0,0,0,.8);
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    opacity:1;
+    pointer-events:auto;
+}
+
+.modal-contenidouser{
+    background-color: white;
+    width:max-content;
+    height: max-content;
+    padding-bottom: 10px;
+    margin: 2% auto;
+    position: relative;
+    height: 600px;
+    width: 800px;
+    border-radius: 11px;
+}
+
+#modalhead{
+    display: flex;
+    align-items: center;
+    background-color: var(--azul);
+    height: 50px;
+    border-radius: 11px;
+}
+
+#closeBtn{
+    margin-left: 80%;
+    color: var(--carne);
+    cursor: pointer;
+}
+#modalcont
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 15px;
+}
+.card{
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    height: 50%;
+}
+.card > div:nth-child(1){
+    width: 50%;
+    height: 50%;
+    padding:5%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+span{
+    font-family: 'roboto';
+    font-size: 18px;
+    padding-left: 5px;
+}
+
+ .card p,h4{
+    color: rgb(71, 68, 68);
+}
+.card h4
+{
+    text-align: center;
+    background-color: lightsteelblue;
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+}
+.card p
+{
+    text-align:initial;
+}
+
+/*=ADAPTABILIDAD
+---------------------------------------------*/
 @media screen and (max-width: 1200px){
     #izquierdo{
         margin-left: 250px;
@@ -143,6 +234,88 @@ tbody{
         background-color: var(--azulF);
         color: white;
         width: 100%;
+    }
+     /*= ----------------- MODAL -------------------------*/
+     #mCreditos{
+        display: none;
+        background-color: rgba(0,0,0,.8);
+        position:fixed;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        opacity:1;
+        pointer-events:auto;
+    }
+
+    .modal-contenidouser{
+        background-color:white;
+        padding-bottom: 10px;
+        margin: 2% auto;
+        position: relative;
+        height: 90%;
+        width: 70%;
+        border-radius: 11px;
+        font-size: 15px;
+        overflow-y: scroll;
+    }
+
+    #modalhead{
+        display: flex;
+        align-items: center;
+        background-color: var(--azul);
+        height: 50px;
+        border-radius: 11px;
+    }
+
+    #closeBtn{
+        margin-left: 75%;
+        color: var(--carne);
+        cursor: pointer;
+    }
+    #modalcont
+    {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-top: 15px;
+    }
+    .card{
+        display: flex;
+        justify-content: space-evenly;
+        width: 50%;
+        height: 50%;
+        justify-self: center;
+    }
+    .card > div:nth-child(1){
+        width: 50%;
+        height: 15%;
+        padding:5%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        font-size: 15px;
+    }
+    span{
+        font-family: 'roboto';
+        font-size: 30px;
+        padding-left: 10px;
+    }
+
+    .card p,h4{
+        color: rgb(71, 68, 68);
+    }
+    .card h4
+    {
+        text-align: center;
+        background-color: lightsteelblue;
+        border-radius: 0.5em 0.5em 0.5em 0.5em;
+        font-size: 18px;
+    }
+    .card p
+    {
+        text-align:justify;
+        font-size: 15px;
     }
 }
 @media screen and (max-width: 800px){
@@ -219,6 +392,86 @@ tbody{
         font-size: 10px;
         padding-top: 5px;
         margin-left: 0px;
+    }
+    /*= ----------------- MODAL -------------------------*/
+    #mCreditos{
+        display: none;
+        background-color: rgba(0,0,0,.8);
+        position:fixed;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        opacity:1;
+        pointer-events:auto;
+    }
+
+    .modal-contenidouser{
+        background-color:white;
+        padding-bottom: 10px;
+        margin: 2% auto;
+        position: relative;
+        height: 90%;
+        width: 90%;
+        border-radius: 11px;
+        font-size: 15px;
+        overflow-y: scroll;
+    }
+
+    #modalhead{
+        display: flex;
+        align-items: center;
+        background-color: var(--azul);
+        height: 50px;
+        border-radius: 11px;
+    }
+
+    #closeBtn{
+        margin-left: 75%;
+        color: var(--carne);
+        cursor: pointer;
+    }
+    #modalcont
+    {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-top: 15px;
+    }
+    .card{
+        display: flex;
+        justify-content: space-evenly;
+        width: 90%;
+        height: 90%;
+        justify-self: center;
+    }
+    .card > div:nth-child(1){
+        width: 50%;
+        height: 15%;
+        padding:5%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        font-size: 15px;
+    }
+    span{
+        font-family: 'roboto';
+        font-size: 20px;
+        padding-left: 5px;
+    }
+
+    .card p,h4{
+        color: rgb(71, 68, 68);
+    }
+    .card h4
+    {
+        text-align: center;
+        background-color: lightsteelblue;
+        border-radius: 0.5em 0.5em 0.5em 0.5em;
+    }
+    .card p
+    {
+        text-align:justify;
     }
 }
 .inscribirse, .desinscribirse, .lleno, .eliminar{
