@@ -251,12 +251,9 @@ span{
         align-items: center;
         top: 0%;
     }
-    #cancelar{
-        padding-top: 10px;
-        padding-bottom: 20px;
-        height: 55px;
-        margin-top: 71px;
-        margin-left: 20px;
+    #agendar
+    {
+        color: white;
     }
     .resultados
     {
