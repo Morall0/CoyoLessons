@@ -19,7 +19,7 @@ $(document).ready(()=>{
             alert(resp);
         })
     }
-
+ 
     //Evento que permite desplegar la nav.
     var ham=document.querySelector("#hamburguesa");
     var barra=document.querySelectorAll(".link");
@@ -114,6 +114,25 @@ $(document).ready(()=>{
             alert("Falló la búsqueda");
         })
     })
+    $(body).on('click','.borrar', function(){
+        let boton = $(this).attr("id");
+        alert(boton);
+        let eliminar = peticion("./dynamics/php/MisAsesorias.php", "sesion="+true+"&delete="+boton);
+        eliminar.done((resp)=>{
+            alert(resp);
+            tablita();
+        });
+        eliminar.fail((resp)=>{
+            alert("Hubo un problema para procesar tu peticion");
+        });
+    })
+    
+     //Botones del modal footer (abrir y cerrar).
+     $("#cred").click(()=>{
+        $("#mCreditos").css("display", "block");
+    });
 
-
+    $("#closeBtn").click(()=>{
+        $("#mCreditos").css("display", "none");
+    });
 });

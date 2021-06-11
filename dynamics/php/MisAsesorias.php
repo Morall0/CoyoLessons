@@ -5,6 +5,27 @@
     include('./config.php');
     include('./cifr.php');
 
+    //Funcion que devuelve el nombre de de la materia del id indicado.
+    function nombre_materia($id, $conexion){
+        $c_materia = "SELECT Nombre FROM materia WHERE id_materia = $id";
+        $r_materia = mysqli_query($conexion, $c_materia);
+        $materia = mysqli_fetch_array($r_materia);
+        return $materia[0];
+    }
+
+    //Funcion que devuelve el dia y la hora del horario indicado.
+    function horario_asesoria($id, $conexion){
+        $c_horario = "SELECT dia, hora FROM horario NATURAL JOIN hora WHERE id_horario = $id";
+        $r_horario = mysqli_query($conexion, $c_horario);
+        $dia_hora = mysqli_fetch_array($r_horario);
+        $dia_hora[0] = ($dia_hora[0] == 'L')? "Lunes":$dia_hora[0];
+        $dia_hora[0] = ($dia_hora[0] == 'Ma')? "Martes":$dia_hora[0];
+        $dia_hora[0] = ($dia_hora[0] == 'Mi')? "Miércoles":$dia_hora[0];
+        $dia_hora[0] = ($dia_hora[0] == 'J')? "Jueves":$dia_hora[0];
+        $dia_hora[0] = ($dia_hora[0] == 'V')? "Viernes":$dia_hora[0];
+        $horarioConcat = $dia_hora[0]." ".$dia_hora[1]; 
+        return $horarioConcat;
+    }
 
     if(isset($_POST['sesion'])){
         if(isset($_SESSION['usuario'])){
@@ -37,7 +58,18 @@
                         $i++;
                     }
                     if($res1){
-                        echo "si se guardo";
+                        //Cosulta que permite obtener el nombre del asesor y el nombre de la materia.
+                        $cons_nombre = "SELECT Nombre FROM usuario WHERE num_cuenta = $usuario";
+                        $resp = mysqli_query($conexion, $cons_nombre);
+                        if($resp)
+                            $nombre = mysqli_fetch_array($resp);
+                        //Variables que tienen la informacion de la asesoria.
+                        $nombre_materia = nombre_materia($materiaA, $conexion);
+                        $dia_horario = horario_asesoria($horario, $conexion);
+                        $modalidad_string = ($modalidad == 'P')? 'Presencial':'En linea';
+
+                        //Cadena que contiene los datos para crear el canvas.
+                        echo "$nombre_materia,$tema,$modalidad_string,$medio,$dia_horario,$fecha,$cupo,$nombre[0]"; 
                     }
                     else{
                         echo "no se pudo";
@@ -46,6 +78,66 @@
                 else{
                     echo"no se inserto la asesoria";;
                 }
+            }
+            //SELECT de las posibles fechas o del estado
+            if(isset($_POST["valorhorario"])|| isset($_POST["estadoases"])){
+                date_default_timezone_set("America/Mexico_City");
+                $valorhorario=validStr($_POST["valorhorario"],$conexion);
+                $consulta_horario="SELECT dia, id_hora, hora from horario NATURAL JOIN hora WHERE id_horario=$valorhorario";
+                $conex_horario=mysqli_query($conexion,$consulta_horario);
+                $arr_fechas=mysqli_fetch_array($conex_horario);
+
+                $dias_fech=["D" => 0, "L" => 1, "Ma" => 2, "Mi" => 3, "J" => 4, "V" => 5, "S" => 6];
+                foreach($dias_fech as $llaves => $valor)
+                {
+                    if($arr_fechas[0] == $llaves)
+                    {
+                        $dia_asesoria=$valor;
+                    }
+                }
+                $m=0;
+                $dia_actual=getdate();
+                $i=$dia_actual["wday"];
+
+                while($i != $dia_asesoria || $m==0)
+                {
+                    if($i>=0 && $i<6)
+                        $i++;
+                    elseif($i==6)
+                        $i=0;
+                    $m++;
+                }
+                $date_now = date('d-m-Y');
+                $date_future = strtotime('+'.$m.' day', strtotime($date_now));//sumarle los días desde hoy
+                $date_future1 = date('d-m-Y', $date_future);
+                $date_future2 = date('Y-m-d', $date_future); //especificar el formato que quieres
+                echo "<option val='$date_future2'>".$date_future2."</option>";
+                if(isset($_POST["estadoases"])){
+                    $asesoriah=$_POST["asesoriah"];
+                    $cualestado="SELECT Estado FROM asesoria WHERE id_asesoria=$asesoriah";
+                    $conex_est=mysqli_query($conexion,$cualestado);
+                    $arr_est=mysqli_fetch_array($conex_est);
+                    if($arr_est[0]=='I'){
+                        $consul_estado="UPDATE asesoria SET estado='T' WHERE id_asesoria=$asesoriah";
+                        $conex=mysqli_query($conexion,$consul_estado);
+                    }
+                    if($arr_est[0]=='P'){
+                        if($m==7){
+                            $consul_estado="UPDATE asesoria SET estado='I' WHERE id_asesoria=$asesoriah";
+                            $conex=mysqli_query($conexion,$consul_estado);
+                            if($conex){
+                                echo "Hoy inicia tu asesoría";
+                            }
+                        }
+                        if($m<7){
+                            echo "<p>Hoy no inicia tu asesoría<p>";
+                        }
+                    }
+                    
+                }
+
+
+
             }
             if(isset($_POST["tabla"]) || isset($_POST["todasAsesorias"])){
                 echo "<br><br><table border='1'>
@@ -64,8 +156,11 @@
                     $tabla= "SELECT id_materia, id_asesoria, Medio, Modalidad, Fecha, Tema,id_ahh,Nombre,num_cuentaAsesor,Duracion,Estado,num_cuentaAlumno FROM asesoria NATURAL JOIN materia NATURAL JOIN asesoriahasalumno GROUP BY  id_asesoria";
                             echo"
                             <th>Asesor</th>
-                            <th></th>
-                            </tr>
+                            <th></th>";
+                            if($_SESSION["tipo"]=='A'){
+                                echo "<th>Eliminar</th>";
+                            }
+                            echo"</tr>
                             </thead>
                             <tbody>";
                 }
@@ -82,7 +177,7 @@
                 $restabla=mysqli_query($conexion,$tabla);
                 while($arrtabla=mysqli_fetch_array($restabla)){
                     //dia y hora
-                    $cons_hor="SELECT dia, hora FROM alumnohashorario NATURAL JOIN horario NATURAL JOIN hora WHERE id_ahh=".$arrtabla[6];
+                    $cons_hor="SELECT dia, hora, id_horario FROM alumnohashorario NATURAL JOIN horario NATURAL JOIN hora WHERE id_ahh=".$arrtabla[6];
                     $res_hor=mysqli_query($conexion,$cons_hor);
                     $arr_hor=mysqli_fetch_array($res_hor);
                     //nombre del asesor
@@ -117,8 +212,18 @@
                             <td>$arrtabla[9]</td>
                             <td>$arrtabla[4]</td>";
                             if(isset($_POST["tabla"])){
-                                echo "<td><button type='button' class='estado' id='$arrtabla[1]'><i class='fas fa-play-circle'></i></button></td>
-                                <td><button type='button' class='borrar' id='$arrtabla[1]'><i class='fas fa-trash-alt fa-2x'></i></button></td>
+                                if($arrtabla[10]=='P'){
+                                    echo "<td><button type='button' class='estado' id='$arr_hor[2]&asesoriah=$arrtabla[1]'><i class='fas fa-play'></i></button></td>";
+
+                                }
+                                else if($arrtabla[10]=='I'){
+                                    echo "<td><button type='button' class='estado $arr_hor[2]' id='$arr_hor[2]&asesoriah=$arrtabla[1]'><i class='fas fa-hourglass-half'></i></button></td>";
+                                }
+                                else if($arrtabla[10]=='T'){
+                                    echo "<td><button type='button' class='estado $arr_hor[2]' id='$arr_hor[2]&asesoriah=$arrtabla[1]'><i class='far fa-calendar-check'></i></i></button></td>";
+                                }
+
+                                echo"<td><button type='button' class='borrar' id='$arrtabla[1]'><i class='fas fa-trash-alt fa-2x'></i></button></td>
                                  </tr>";
                             }
                             else if(isset($_POST["todasAsesorias"])){
@@ -129,37 +234,36 @@
                                     $arr_cuantas=mysqli_fetch_array($res_cuantas);
                                     echo "<td>$arr_nombre[0]</td>";
                                     if($arr_cuantas[0]>0 && $xcupo[0]>0){
-                                        echo "<td><button type='button' class='desinscribirse' id='$arrtabla[1]'><i class='fas fa-user-check'></i></button></td>
-                                        </tr>";
+                                        echo "<td><button type='button' class='desinscribirse' id='$arrtabla[1]'><i class='fas fa-user-check'></i></button></td>";
                                     }
                                     elseif($arr_cuantas[0]==0 && $xcupo[0]>0){
-                                        echo "<td><button type='button' class='inscribirse' id='$arrtabla[1]'><i class='fas fa-marker'></i></button></td>
-                                        </tr>";
+                                        echo "<td><button type='button' class='inscribirse' id='$arrtabla[1]'><i class='fas fa-marker'></i></button></td>";
                                     }
                                     else{
-                                        echo "<td><button type='button' class='lleno' id='$arrtabla[1]'><i class='fas fa-ban'></i></button></td>
-                                        </tr>";
+                                        echo "<td><button type='button' class='lleno' id='$arrtabla[1]'><i class='fas fa-ban'></i></button></td>";
                                     }
 
                                 }
                                 else{
                                     echo "<td>$arr_nombre[0]</td>
-                                    <td><i class='fas fa-chalkboard-teacher'></i></td>
-                                    </tr>";
+                                    <td><i class='fas fa-chalkboard-teacher'></i></td>";
                                 }
+                                if($_SESSION["tipo"]=='A'){
+                                    echo "<td><button type='button' class='borrar' id='$arrtabla[1]'><i class='fas fa-trash-alt fa-2x'></i></button></td>";
+                                }
+                                echo"</tr>";
 
                             }
                     }
                     else{
                         echo "no funciono la consulta de la tabla";
                     }
-
                 }
                 echo "</tbody></table>";
             }
 
             if(isset($_POST["delete"])){
-                $boton=validStr($_POST["delete"],$conexion);
+                $boton=$_POST["delete"];
                 $consul_borrar="DELETE from asesoriahasalumno WHERE id_asesoria=$boton";
                 $res_borrar=mysqli_query($conexion,$consul_borrar);
                 if($res_borrar){

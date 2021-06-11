@@ -73,7 +73,11 @@
                                 <th>Duración</th>
                                 <th>Fecha</th>
                                 <th>Asesor</th>
-                                <th></th>
+                                <th></th>";
+                                if($_SESSION["tipo"]=='A'){
+                                    echo "<th>Eliminar</th>";
+                                }
+                                echo "
                             </tr>
                         </thead>
                         <tbody>";
@@ -132,20 +136,20 @@
                                     }
                                     //Si no está inscrito manda el botón de inscribirse
                                     elseif($arr_cuantas[0]==0 && $xcupo[0]>0){
-                                        echo "<td><button type='button' class='inscribirse' id='$arrtabla[1]'><i class='fas fa-marker'></i></button></td>
-                                    </tr>";
-                                    }
+                                        echo "<td><button type='button' class='inscribirse' id='$arrtabla[1]'><i class='fas fa-marker'></i></button></td>";                                    }
                                     //Si está lleno
                                     else{
-                                        echo "<td><button type='button' class='lleno' id='$arrtabla[1]'><i class='fas fa-ban'></i></button></td>
-                                        </tr>";
+                                        echo "<td><button type='button' class='lleno' id='$arrtabla[1]'><i class='fas fa-ban'></i></button></td>";
                                     }
                                 }
                                 else{
                                     echo "<td>$arr_nombre[0]</td>
-                                    <td><i class='fas fa-chalkboard-teacher'></i></td>
-                                    </tr>";
+                                    <td><i class='fas fa-chalkboard-teacher'></i></td>";
                                 }
+                                if($_SESSION["tipo"]=='A'){
+                                    echo "<td><button type='button' class='borrar' id='$arrtabla[1]'><i class='fas fa-trash-alt fa-2x'></i></button></td>";
+                                }
+                                echo "</tr>";
                             }
                             else{
                                 echo "no funciono la consulta de la tabla";

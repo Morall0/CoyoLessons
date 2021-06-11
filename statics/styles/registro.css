@@ -1,3 +1,10 @@
+body{
+    font-family: Roboto, sans-serif;
+    background-color: #F1EFE3;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 /* =NAV -------------------------------------------------- */
 .nav{
     display: flex;
@@ -58,6 +65,12 @@
     width: 60%;
     height: 40px;
     margin-bottom: 10px;
+}
+.placeholdrojo::placeholder{
+    color: red;
+}
+.placeholdmorado::placeholder{
+    color: var(--morado);
 }
 button
 {
@@ -200,7 +213,8 @@ p{
 #año{
     bottom: 34%;
     left: 14%;
-    width: 36.6%;
+    width: 36.5%;
+    padding: 2px;
 }
 #cursando{
     width: 33%;
@@ -230,11 +244,15 @@ p{
 }
 #HorarioHora{
     bottom: 21%;
-    left: 28%;
+    left: 33%;
+    width: 18.25%;
+    padding: 2px;
 }
 #HorarioDia{
     bottom: 21%;
     left: 14%;
+    width: 18.25%;
+    padding: 2px;
 }
 #enviar{
     left: 14%;
@@ -246,6 +264,7 @@ p{
     cursor: pointer;
     bottom: 70px;
 }
+/*= -------------ADAPTABILIDAD--------------------------*/
 @media screen and (max-width: 1200px){
     body{
         font-family: 'roboto';
@@ -253,32 +272,48 @@ p{
         padding: 0;
         box-sizing: border-box;
     }
+    #miModal{
+        display: none;
+        background-color: rgba(0,0,0,.8);
+        position:fixed;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        opacity:1;
+        pointer-events:auto;
+    }
     .modal-contenidouser{
         background-color:white;
-        width:max-content;
-        height: max-content;
         padding-bottom: 10px;
         margin: 2% auto;
         position: relative;
-        height:320px;
-        width: 320px;
+        height:90%;
+        width: 70%;
         border-radius: 11px;
+        overflow-y: scroll;
     }
 
     #modalhead{
         display: flex;
         align-items: center;
         background-color: var(--azul);
-        height: 30px;
+        height: 50px;
         border-radius: 11px;
     }
 
     #closeBtn{
-        margin-left: 90%;
+        margin-left: 75%;
         color: var(--carne);
         cursor: pointer;
     }
-
+    #modalcont
+    {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-top: 15px;
+    }
     label{
         margin-left: 10px;
         margin-right: 10px;
@@ -307,98 +342,126 @@ p{
     #nombre, #numcuenta, #apPaterno, #apMaterno, #correo,#mes,#año,#dia,#cursando,#HorarioHora,#contraseña,#enviar,#materias,#tel,#fecha,#HorarioDia,#horarios,#caracteres{
         position: absolute;
     }
-    #nombre, #apPaterno, #apMaterno{
-       bottom: 79%;
-       width: 30%;
-    }
     #nombre{
-        left: 16%;
+        top: 15%;
+        left: 25%;
+        width: 50%;
+        height: 5%;
+        font-size: 20px;
     }
     #apPaterno{
-        left:52%;
+        left:25%;
+        top: 25%;
+        width: 50%;
+        height: 5%;
+        font-size: 20px;
     }
     #apMaterno{
-        left:16%;
-        bottom: 69%;
-    }
-    #numcuenta,#tel{
-        bottom: 69%;
-        width: 30%;
+        left:25%;
+        top: 35%;
+        width: 50%;
+        height: 5%;
+        font-size: 20px;
     }
     #numcuenta{
-        left:52%;
+        left:25%;
+        top: 45%;
+        width: 50%;
+        height: 5%;
+        font-size: 20px;
     }
     #tel{
-        bottom: 59%;
-        left:16%;
+        left:25%;
+        top: 55%;
+        width: 50%;
+        height: 5%;
+        font-size: 20px;
     }
     #correo{
-        bottom: 59%;
-        left: 52%;
-        width: 30%;
+        left:25%;
+        top: 65%;
+        width: 50%;
+        height: 5%;
+        font-size: 20px;
     }
     #fecha{
-        bottom: 50.3%;
-        left: 32%;
-        font-size: 13px;
+        left:25%;
+        top: 70%;
+        font-size: 20px;
     }
     #dia,#año,#mes{
-        bottom: 45.4%;
-        width: 17%;
+        left:25%;
+        top: 77%;
+        width: 15%;
+        height: 3%;
+        font-size: 15px;
     }
     #dia{
-        left: 16%;
+        left: 25%;
     }
     #año{
-        left: 64.3%;
+        left: 43%;
     }
     #mes{
-        left: 40.2%;
+        left: 60%;
     }
     #cursando{
-        width: 33.2%;
-        bottom: 36%;
-        left: 52%;
+        left:25%;
+        top: 85%;
+        width: 23%;
+        height: 5%;
+        font-size: 20px;
     }
     #contraseña{
-        width: 30%;
-        bottom: 36%;
-        left: 16%;
+        left:25%;
+        top: 106%;
+        width: 50%;
+        height: 5%;
+        font-size: 20px;
     }
     #caracteres{
-        bottom: 22%;
-        width: 36%;
-        height: 11%;
-        font-size: 7px;
-        left: 16%;
+        left:25%;
+        top: 113%;
+        width: 50%;
+        height: 5%;
+        font-size: 20px;
     }
     #materias{
-        width: 33.2%;
-        bottom: 27%;
-        left: 52%;
+        left:53%;
+        top: 85%;
+        width: 23%;
+        height: 5%;
+        font-size: 20px;
     }
     #horarios{
-        bottom: 15%;
-        left: 30%;
-        font-size: 13px;
+        left:25%;
+        top: 90%;
+        font-size: 20px;
     }
     #HorarioHora{
-        bottom: 12%;
-        left: 54%;
+        left:53%;
+        top: 97%;
+        width: 23%;
+        height: 5%;
+        font-size: 15px;
     }
     #HorarioDia{
-        bottom: 12%;
-        left: 30%;
+        left:25%;
+        top: 97%;
+        width: 23%;
+        height: 5%;
+        font-size: 15px;
     }
     #enviar{
-        left: 14%;
-        width: 75%;
+        top: 130%;
+        left: 25%;
+        width: 50%;
         background-color: var(--morado);
         height: 6%;
         border-radius: 8px;
         border-color: transparent;
         cursor: pointer;
-        bottom: 10px;
+        bottom: 10%;
     }
 }
 @media screen and (max-width: 800px){
@@ -409,8 +472,8 @@ p{
         padding-bottom: 10px;
         margin: 1% auto;
         position: relative;
-        height:350px;
-        width: 220px;
+        height:70%;
+        width: 90%;
         border-radius: 11px;
     }
 

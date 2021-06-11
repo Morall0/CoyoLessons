@@ -324,3 +324,17 @@ input{
         }
     }
 }
+/*= ----------------- CANVAS -------------------------*/
+#canvas{
+    display: none;
+    height: 30%;
+    width: 50%;
+    background-color: var(--azul);
+    border-radius: 1em;
+    border: solid 5px darkslateblue;
+}
+#descargarCanvas{
+    display: none;
+    border: solid 1px brown;
+    border-radius: 1em;
+}
