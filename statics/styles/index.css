@@ -89,7 +89,7 @@
     flex-direction:column;
     flex-wrap: nowrap;
     margin-left: 200px;
-    margin-top: 50px;
+    margin-top: -400px;
 }
 #indica{
     background-color: var(--amarillo);
@@ -253,7 +253,7 @@ span{
     }
     #agendar
     {
-        color: white;
+        text
     }
     .resultados
     {

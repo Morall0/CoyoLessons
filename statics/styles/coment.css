@@ -1,3 +1,61 @@
 table{
     text-align: center;
 }
+/* =NAV -------------------------------------------------- */
+.nav a{
+    display: flex;
+    flex-direction: row;
+    /*=justify-content: end;*/
+    text-decoration: none;
+    font-family: Roboto;
+    color: white;
+    font-size: 1.2rem;
+}
+.nav div#tit
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    text-decoration: none;
+    font-family: Roboto;
+    color: white;
+    font-size: 2rem;
+    align-self: center;
+    text-align: center;
+}
+#log
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+ /* =PARTE IZQUIERDA*/
+#izquierda{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction:column;
+    align-items:flex-start;
+    padding-top: 1%;
+    padding-left: 4%;
+}
+#miPerfil{
+    width: 30%;
+    height: 350%;
+    background-color: var(--azul);
+    border-radius: 8px;
+    font-family:"roboto";
+}
+#mi, #img{
+    text-align: center;
+    font-family:"roboto";
+}
+h4{
+    padding-top: 4%;
+    font-size: 16px;
+}
+#p1{
+    font-size: 21px;
+}
+#azulitos{
+    padding-top: 2%;
+}
