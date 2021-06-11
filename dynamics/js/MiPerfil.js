@@ -56,6 +56,7 @@ $(document).ready(()=>{
         });
     }
 
+    //Funcion que inicializa los horarios.
     function iniHorarios(){
         let horarios = peticion("../dynamics/php/user.php", "sesion="+true+"&horarios="+true);
         horarios.done((resp)=>{
@@ -79,6 +80,38 @@ $(document).ready(()=>{
             alert("no se elimina");
         });
     }
+
+    //Peticion que nos permite desplegar los datos básicos del usuario.
+    function datos_usuario(){
+        let datos = peticion("../dynamics/php/user.php", "sesion="+true+"&datos="+true);
+        datos.done((resp)=>{
+            let array_datos = resp.split(",");
+
+            //Cambiar el valor del grado (C, Q, S).
+            array_datos[4] = (array_datos[4] == 'C')? '4to':array_datos[4];
+            array_datos[4] = (array_datos[4] == 'Q')? '5to':array_datos[4];
+            array_datos[4] = (array_datos[4] == 'S')? '6to':array_datos[4];
+
+            //Inserción de datos dentro del HTML.
+            $("#img2").attr("src", "../statics/img/user/"+array_datos[5]);
+            $("#nombre_usuario").html("<strong>Nombre: </strong>"+array_datos[1]);
+            $("#no_cuenta").html("<strong>No. Cuenta: </strong>"+array_datos[0]);
+            $("#tel").html("<strong>Telefóno: </strong>"+array_datos[3]);
+            $("#correo_usuario").html("<strong>Correo: </strong>"+array_datos[2]);
+            $("#cursando").html("<strong>Año que cursas: </strong>"+array_datos[4]);
+
+            //SACAR EL AVG de las calificiones que tiene en la tabla de comentarios.
+        });
+        datos.fail((resp)=>{
+            let mensaje = "error al cargar los datos";
+            $("#img2").attr("src", "../statics/img/user/user.png");
+            $("#p1").text("<strong>Nombre: </strong>"+mensaje);
+            $("#no_cuenta").text("<strong>No. Cuenta: </strong>"+mensaje);
+            $("#correo_usuario").text("<strong>Correo: </strong>"+mensaje);
+            $("#cursando").text("<strong>Año que cursas: </strong>"+mensaje);
+        });
+    }
+
     //Peticion para redireccionar en caso de no haber una sesion activa.
     let sesion = peticion("../dynamics/php/user.php", "sesion="+true);
     sesion.done((resp)=>{
@@ -88,35 +121,16 @@ $(document).ready(()=>{
         }
     });
 
-    //Peticion que nos permite desplegar los datos básicos del usuario.
-    let datos = peticion("../dynamics/php/user.php", "sesion="+true+"&datos="+true);
-    datos.done((resp)=>{
-        let array_datos = resp.split(",");
+    datos_usuario();
 
-        //Cambiar el valor del grado (C, Q, S).
-        array_datos[4] = (array_datos[4] == 'C')? '4to':array_datos[4];
-        array_datos[4] = (array_datos[4] == 'Q')? '5to':array_datos[4];
-        array_datos[4] = (array_datos[4] == 'S')? '6to':array_datos[4];
-
-        //Inserción de datos dentro del HTML.
-        $("#img2").attr("src", "../statics/img/user/"+array_datos[5]);
-        $("#nombre_usuario").html("<strong>Nombre: </strong>"+array_datos[1]);
-        $("#no_cuenta").html("<strong>No. Cuenta: </strong>"+array_datos[0]);
-        $("#tel").html("<strong>Telefóno: </strong>"+array_datos[3]);
-        $("#correo_usuario").html("<strong>Correo: </strong>"+array_datos[2]);
-        $("#cursando").html("<strong>Año que cursas: </strong>"+array_datos[4]);
-
-        //SACAR EL AVG de las calificiones que tiene en la tabla de comentarios.
-
-    });
-
-    datos.fail((resp)=>{
-        let mensaje = "error al cargar los datos";
-        $("#img2").attr("src", "../statics/img/user/user.png");
-        $("#p1").text("<strong>Nombre: </strong>"+mensaje);
-        $("#no_cuenta").text("<strong>No. Cuenta: </strong>"+mensaje);
-        $("#correo_usuario").text("<strong>Correo: </strong>"+mensaje);
-        $("#cursando").text("<strong>Año que cursas: </strong>"+mensaje);
+    //Evento que detecta cuando se personalizó la imagen.
+    $("#imagen").on("change", ()=>{
+        let direccion = $("#imagen").val();
+        //alert(direccion);
+        let cambiar_img = peticion("../dynamics/php/user.php", "sesion="+true+"&foto="+direccion);
+        cambiar_img.done((resp)=>{
+            datos_usuario();
+        });
     });
 
     //Peiticion que permite desplegar todo lo relacionado con las materias del usuario.
@@ -139,6 +153,7 @@ $(document).ready(()=>{
         });
     });
 
+    //Boton que permite borrar o agregar horaria.
     $("#botonhor").click(()=>{
         let editHora = ($("#Horariohora").val() == null)? "":$("#Horariohora").val();
         let editDia = ($("#Horariodia").val() == null)? "":$("#Horariodia").val();
@@ -156,6 +171,7 @@ $(document).ready(()=>{
         $("#Horariodia").val("");
 
     });
+
     //Cerrar session
     $("#cerrar").click(()=>{
         let cerrar = peticion("../dynamics/php/user.php", "sesion="+true+"&cerrar="+true);

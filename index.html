@@ -5,51 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./statics/img/Logo.png" type="image/png">
+    <link rel="stylesheet" href="./libs/fontawesome-free-5.15.3-web/css/all.css">
     <link rel="stylesheet" href="./statics/styles/basics.css">
     <link rel="stylesheet" href="./statics/styles/index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./libs/fontawesome-free-5.15.3-web/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="./libs/jquery/jquery-3.6.0.min.js"></script>
+    <script src="./dynamics/js/index.js"></script>
     <title>Principal</title>
 </head>
 <body>
     <nav class="nav">
         <div id="tit">COYOLESSONS</div>
              <div id="hamburguesa"><i class="fa fa-bars fa-2x"></i></div>
-             <div class="link"><a href="#firstBanner">Principal</a></div>
-             <div class="link"><a href="#features">Perfil</a></div>
-             <div class="link"><a href="#team">Administrar</a></div>
+             <div class="link"><a href="./index.html">Principal</a></div>
+             <div class="link"><a href="./templates/MiPerfil.html">Perfil</a></div>
+             <div class="link"><a href="./templates/admin.html">Administrar</a></div>
              <div class="link"><i class="fas fa-paint-roller"></i></div>
      </nav>
     <!-- contenido -->
     <div id="izquierdo">
         <div id="lupa">
-            <input type="search" id="buscador" placeholder="Buscar">
+            <input type="search" id="buscador" placeholder="Buscar por nombre del asesor">
             <input type="submit" id="buscar" value="BUSCAR">
         </div>
         <div id="filtros">
             <label for="fecha">
-                <select name="fecha" id="fecha">
+                <select name="fecha" id="Fecha" class="filtro">
                     <option selected value="" hidden><p>Fecha</p></option>
                 </select>
             <label for="horario">
-                <select name="horario" id="horario">
+                <select name="horario" id="hora" class="filtro">
                     <option selected value="" hidden><p>Horario</p></option>
                 </select>
             </label>
             <label for="materia">
-                <select name="materia" id="materia">
+                <select name="materia" id="Nombre" class="filtro">
                     <option selected value="" hidden><p>Materia</p></option>
                 </select>
             </label>
             <label for="modalidad">
-                <select name="modalidad" id="modalidad">
+                <select name="modalidad" id="Modalidad" class="filtro">
                     <option selected value="" hidden><p>Modalidad</p></option>
                 </select>
             </label>
             <label for="medio">
-                <select name="medio" id="medio">
+                <select name="medio" id="Medio" class="filtro">
                     <option selected value="" hidden><p>Medio</p></option>
                 </select>
             </label>
@@ -57,11 +56,46 @@
         <div class="resultados"></div>
     </div>
     <div id="derecho">
-        <div id="indica">Busca personas que puedan ayudarte y agenda una asesoría.</div>
+        <div id="indica">Busca opciones que puedan ayudarte y agenda una asesoría.</div>
         <div id="agendar">Agendar una asesoría</div>
         <div id="cancelar">Cancelar una asesoría</div>
     </div>
-    <div id="footer"><p>CRÉDITOS</p></div>
-    <script src="./dynamics/js/index.js"></script>
+    <div id="footer">
+        <p><button id="cred">CRÉDITOS</button></p>
+        <div id='mCreditos'>
+            <div class='modal-contenidouser'>
+                <div id="modalhead">
+                    <span><strong>Créditos</strong></span>
+                    <i id ="closeBtn" class="fas fa-times-circle fa-2x"></i>
+                </div>
+                <div id="modalcont">
+                    <div class="card">
+                        <div>
+                            <h4>Melissa Natalia Archundia Tapia</h4>
+                            <p>Programación en php, Java Script e implementación de base de datos</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div>
+                            <h4>Alexa Flores Medero Campos</h4>
+                            <p>Diseño de páginas web, maquetado en html y uso de Java Script</Script></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div>
+                            <h4>Alan Mauricio Morales López</h4>
+                            <p>Programación en php, Java Script e implementación de base de datos</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div>
+                            <h4>Janeth Irandy Reyes Herrera</h4>
+                            <p>Diseño de páginas web, maquetado en html y uso de Java Script</p>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </div>
 </body>
 </html>

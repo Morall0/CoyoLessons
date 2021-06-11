@@ -9,9 +9,22 @@ $(document).ready(()=>{
         return peticion;
     };
 
-    $("#botonAsesoria").click(()=>{
-        $("#crearA").css("display", "block");
+    function tabla(){
+        let tabla= peticion('../dynamics/php/MisAsesorias.php', 'sesion='+true+'&tabla='+true);
+        tabla.done((resp)=>{
+            $("#tablasec").html(resp)
+        })
+        tabla.fail((resp)=>{
+            alert("fallo tabla");
     })
+    }
+    //abrir y cerrar el modal
+    $("#botonAsesoria").click(()=>{
+        $("#miModal").css("display", "block");
+    });
+    $("#closeBtn").click(()=>{
+        $("#miModal").css("display", "none");
+    });
     //Para saber si hay sesión
     let sesion = peticion('../dynamics/php/user.php', 'sesion='+true);
     sesion.done((resp)=>{
@@ -28,7 +41,7 @@ $(document).ready(()=>{
         materias.fail((resp)=>{
             alert("fallaron las materias");
         })
-        
+
     })
     //Horarios
     $("#horario").on("focus",()=>{
@@ -37,12 +50,12 @@ $(document).ready(()=>{
             $("#horario").html(resp);
         })
         horario.fail((resp)=>{
-          alert("fallaron los horarios");  
+          alert("fallaron los horarios");
         })
     })
-
+    //Agregar asesorias
     $("#crearAsesoria").on("submit",()=>{
-        event.preventDefault(); 
+        event.preventDefault();
         let materiaSelect = $("#materias").val();
         let tema = $("#tema").val();
         let modalidad = $("#modalidad").val();
@@ -50,13 +63,34 @@ $(document).ready(()=>{
         let horario = $("#horario").val();
         let duracion = $("#duracion").val();
         let fecha = $("#fecha").val();
+        let cupo = $("#cupo").val();
         let crear = peticion('../dynamics/php/MisAsesorias.php', 'sesion='+true+'&formAsesoria='+true+'&materiaSelect='+materiaSelect+'&tema='+tema
-        +'&modalidad='+modalidad+'&medio='+medio+'&horario='+horario+'&duracion='+duracion+'&fecha='+fecha);
+        +'&modalidad='+modalidad+'&medio='+medio+'&horario='+horario+'&duracion='+duracion+'&fecha='+fecha+'&cupo='+cupo);
         crear.done((resp)=>{
             alert(resp);
+            tabla();
+            $("#miModal").css("display", "none");
+            $("#crearAsesoria")[0].reset();
         })
         crear.fail((resp)=>{
-          alert("falló el form");  
+          alert("falló el form");
         })
     })
-}) 
+    //Cargar tabla
+        tabla();
+    //eliminar asesoria
+    let body= $(document.body);
+    $(body).on('click','.borrar', function(){
+        let boton = $(this).attr("id");
+        alert(boton);
+        let eliminar = peticion("../dynamics/php/MisAsesorias.php", "sesion="+true+"&delete="+boton);
+        eliminar.done((resp)=>{
+            alert(resp+"respuesta");
+            tabla();
+        });
+        eliminar.fail((resp)=>{
+            alert("Hubo un problema para procesar tu peticion");
+        });
+    });
+
+})
