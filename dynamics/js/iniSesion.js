@@ -79,9 +79,9 @@ $(document).ready(()=>{
     //Peticion que permite redireccionar en caso de que ya haya una sesion activa.
     let sesion = peticion("../dynamics/php/iniSesion.php", "sesionRegistro="+true);
     sesion.done((respsesion)=>{
-        alert(respsesion+"HOLA");
+        
         if(respsesion=="SI HAY SESION"){
-            location = "./MiPerfil.html";
+            location = "../index.html";
         }
     });
 
@@ -94,8 +94,8 @@ $(document).ready(()=>{
         let iniciar = peticion('../dynamics/php/iniSesion.php','sesionRegistro='+true+'&num_ini='+numero_cuenta+'&contraseña='+contraseña);
         iniciar.done((resp)=>{
             if(resp == "CONTRASEÑA CORRECTA"){
-                location="./MiPerfil.html";
-                alert("contraseña correcta");
+                location="../index.html";
+
             }
             else if(resp == "NO EXISTE")
                 incorrecta("#numerocuenta", "Número de cuenta no registrado", "placeholdrojo");
@@ -103,7 +103,7 @@ $(document).ready(()=>{
                 incorrecta("#contra", "Contraseña incorrecta", "placeholdrojo");
         });
         iniciar.fail(()=>{
-            alert("fallo");
+            
         });
     })
 
@@ -125,7 +125,7 @@ $(document).ready(()=>{
             $("#materias").html(resp);
         });
         materias.fail(()=>{
-            alert("fallo");
+            
         });
     });
 
@@ -158,21 +158,20 @@ $(document).ready(()=>{
             '&cursando='+cursando+'&materias='+materias+'&dsemana='+dsemana+'&hora='+hora+'&contra='+contra);
 
             respuestas.done((respuesta)=>{
-                alert("si se envian desde JS");
-                alert(respuesta);
+
                 if(respuesta > 0)
                     incorrecta("#numcuenta", "Este numero de cuenta ya está registrado", "placeholdrojo");
                 else{
-                    location = "./MiPerfil.html";
+                    location = "../index.html";
                 }
             });
 
             respuestas.fail((respuesta)=>{
-                alert("NO se envian desde JS");
+                
             });
         }
         else{
-            alert("Verificar que se hayan puesto correctamente en el html");
+            
         }
     });
 });
