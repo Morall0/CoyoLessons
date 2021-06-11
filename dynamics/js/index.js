@@ -114,6 +114,12 @@ $(document).ready(()=>{
             alert("Falló la búsqueda");
         })
     })
+     //Botones del modal footer (abrir y cerrar).
+     $("#cred").click(()=>{
+        $("#mCreditos").css("display", "block");
+    });
 
-
+    $("#closeBtn").click(()=>{
+        $("#mCreditos").css("display", "none");
+    });
 });
