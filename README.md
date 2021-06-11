@@ -18,7 +18,7 @@
    * Con esto deberías contar con todos los archivos necesarios para el uso de CoyoLessons.
    
 2. Uso de base de datos:
-   * 
+   
 
 3. Guía de configuración del proyecto:
     * Una vez hecha la instalación de XAMPP y de haber clonado el repositorio correctamente, tendrás que buscar entre tus aplicaciones XAMPP y activar la opción de Apache             dandole click al botón junto a la palabra Apache. También deberás activar la opción de MySQL.  
