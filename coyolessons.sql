@@ -31,7 +31,7 @@ CREATE TABLE `alumnohashorario` (
   KEY `num_cuenta` (`num_cuenta`),
   CONSTRAINT `alumnohashorario_ibfk_1` FOREIGN KEY (`id_horario`) REFERENCES `horario` (`id_horario`),
   CONSTRAINT `alumnohashorario_ibfk_2` FOREIGN KEY (`num_cuenta`) REFERENCES `usuario` (`num_cuenta`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `alumnohashorario` (
 
 LOCK TABLES `alumnohashorario` WRITE;
 /*!40000 ALTER TABLE `alumnohashorario` DISABLE KEYS */;
-INSERT INTO `alumnohashorario` VALUES (1,320110199,1);
+INSERT INTO `alumnohashorario` VALUES (1,320110199,1),(3,320198223,71),(4,320338841,19),(20,320030772,41),(27,320030772,51),(28,116542510,51),(29,118507611,67),(30,319264372,29),(32,117880701,37),(33,319429985,36),(34,117445320,71),(35,116486201,1),(36,117524495,28),(37,320110199,35),(38,116486201,52);
 /*!40000 ALTER TABLE `alumnohashorario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,12 +90,13 @@ CREATE TABLE `asesoria` (
   `Tema` varchar(50) DEFAULT NULL,
   `id_materia` varchar(4) DEFAULT NULL,
   `id_ahh` int(5) DEFAULT NULL,
+  `Estado` enum('P','I','T') DEFAULT NULL,
   PRIMARY KEY (`id_asesoria`),
   KEY `id_materia` (`id_materia`),
   KEY `id_ahh` (`id_ahh`),
   CONSTRAINT `asesoria_ibfk_1` FOREIGN KEY (`id_materia`) REFERENCES `materia` (`id_materia`),
   CONSTRAINT `asesoria_ibfk_2` FOREIGN KEY (`id_ahh`) REFERENCES `alumnohashorario` (`id_ahh`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,6 +105,7 @@ CREATE TABLE `asesoria` (
 
 LOCK TABLES `asesoria` WRITE;
 /*!40000 ALTER TABLE `asesoria` DISABLE KEYS */;
+INSERT INTO `asesoria` VALUES (62,'A113','P','2021-06-16',2,'La mitocondria','1502',20,'P'),(63,'Laboratorio de cómputo','P','2021-06-16',1,'Husos horarios','1405',20,'P'),(64,'Salones H','P','2021-06-16',2,'Acordes abiertos','E114',37,'P'),(65,'Laboratorio de cómputo','P','2021-06-17',2,'Programacion Estructurada','2101',38,'P');
 /*!40000 ALTER TABLE `asesoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +128,7 @@ CREATE TABLE `asesoriahasalumno` (
   CONSTRAINT `asesoriahasalumno_ibfk_1` FOREIGN KEY (`id_asesoria`) REFERENCES `asesoria` (`id_asesoria`),
   CONSTRAINT `asesoriahasalumno_ibfk_2` FOREIGN KEY (`num_cuentaAsesor`) REFERENCES `usuario` (`num_cuenta`),
   CONSTRAINT `asesoriahasalumno_ibfk_3` FOREIGN KEY (`num_cuentaAlumno`) REFERENCES `usuario` (`num_cuenta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,6 +137,7 @@ CREATE TABLE `asesoriahasalumno` (
 
 LOCK TABLES `asesoriahasalumno` WRITE;
 /*!40000 ALTER TABLE `asesoriahasalumno` DISABLE KEYS */;
+INSERT INTO `asesoriahasalumno` VALUES (133,62,320030772,NULL),(134,62,320030772,NULL),(135,62,320030772,NULL),(136,63,320030772,NULL),(137,63,320030772,NULL),(138,64,320110199,NULL),(139,64,320110199,NULL),(140,65,116486201,NULL),(141,65,116486201,NULL),(142,65,116486201,NULL);
 /*!40000 ALTER TABLE `asesoriahasalumno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -324,7 +327,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (320110199,'Melissa Natalia Archundia Tapia','f7uGNM8joRQD5DWJXli3oGiz8X3YJc82dWq9/j92Ow+v3moToOEvrw6o7rDub+eD','X1HzLoOqhYvD+S/2Ugwuu+KcMB/TIUu3g378jfcbpOc=','2004-03-19','Q',0,'$2y$10$yKCLU8Uc9/.wrbFMHxiHXe1pnUV.aAzCHWTfZIJGG5NcFOyfwcGV2rpOOV','B','E','user.png');
+INSERT INTO `usuario` VALUES (116486201,'Fernanda Martínez Durán','3djeL7fHB3TforyX6L029EkY414UxyEaQtzzogJ76+p0WR2mT27xZwIGsa/XqY/x','wglH2ykcC2Xy0aT6qf/LGQ1XzgPCvZVhrjLo6ZVd7pQ=','2003-08-22','S',0,'$2y$10$tBdpDJDkdLI3FcL4bEgqQuQ97amzj4KGGkDqawcjk3FvVfybt7l8mDgw6&','B','A','user.png'),(116542510,'Franchesco Hernández Trejo','Wp2lOQRU9mM/xp9e6dMQ6EZkW94xOq/sDlEOtjYaiqkekRxC9BcYcW/I1ROqR/XF','RI4qME7egQ68GLd1cia4IOQULA1USUleEWKG+KwfNMg=','2003-09-13','S',0,'$2y$10$/O4SByBWSIGVGbaemYJj3.5fmYSDF2OF6QiLTmWf0BoPBWQnJ/9AyeqZNj','B','E','user.png'),(117445320,'Pedro Jurado Ramirez','Q5zlMA6GBld33cya77qQJtem/68EDliD3QlkKz4Z5uF0krkkOXaZZmFqUmYXj98m','wR0fb2A5P6U3qPvx6EfW81Z4uTish3e6yEL6ijr8K+8=','2004-12-31','Q',0,'$2y$10$wN6Ox4RZnQfFvmmHSohvMeb9wz42.ABSuxd9Bgzuf8yRiP8b91aaWiPZ8O','B','E','user.png'),(117524495,'Frida Villanueva Caballero','eJjdUFvyVThfohnT2UWV9P66f7LfWB6CcSHVZZS253aXZpe6WYyGfpaucZ40BxSQ','RnW2G0h0wir4yXMy8zqsG2zC+CDnksH4B/pvossK/iI=','2005-06-05','C',0,'$2y$10$UWQ5cIUruK0Z5Mf7I0siiuT/3hr52TefgEpOMVDKxDLc1ENO2rYIya!?B4','B','E','user.png'),(117880701,'Carmen Barrera Ordaz','mSC0UFPpxbkeVyC+2U87Lx04+4yIUvOUANUMG33LwSOPiBo+cYlumF7LsJ/ANouY','v6r6Y6gCKBGTsHVBMDVppayCBC+8r4/C5IusG6gw+3Q=','2004-07-05','Q',0,'$2y$10$cbmhVbatQ2s/jiTtw3TX4O.gVZ7/8guDHhbxhNTiWmL/e9D6EJdrCXWF?U','B','E','user.png'),(118507611,'Hugo Luis Pérez Balbuena','thmxIYBTcgvrSf8V51wfh/W4bY8K9qZIMFQIbZjR7j2dH19WdIYmhuSSD5a98n6X','JfgtHxm4/nSZ3Ht5JgwC4A5fHB42lUYg8cdDLb7Iw3E=','2005-12-24','C',0,'$2y$10$FmQYxuGUU.DTudc.XgpKnOC32u6R61DaRGPNbRxMxQjHar2P87gmKZaWLH','B','E','user.png'),(319264372,'Azul Islas López','h2NQKB4kewrgKSizo6z9ODo4RegPXi275zEh4XjX0vRfcdSjURtwIoS7Man6HHl/','rjWpIEXo1UVjce+lHZm5/zcb7F8oR95dvM0E/Qh0b+I=','2003-01-04','S',0,'$2y$10$z/S8tSwlDYPfpzhRVND2DOE5o3Wppu.UuXseTgm6bxS0le0n0zq2.OXe#&','B','E','user.png'),(319429985,'Melanie Fernández Padron','/DkdAo3hzWMp10khct6+k3GIu4/F8jbP5zeO6+sKNL3BuCxv4V3nMX8htWCTbUpl','HfX6FsX30CgqQphjbCwiq8vm4oyjvBiaByuNVclnTOE=','2003-03-15','S',0,'$2y$10$Z8dqfRtbPZ8tKHdZdDzFAuz3Dr38fGnlvzHMOVgd9VVd.a2qn9FEq$#i7o','B','E','user.png'),(320030772,'Alan Mauricio Morales López','8+Hd47FF+6cfSL0SgaoogIiawuCWk4lWoHQmV0Orp1Zh0E+z7LyO2mTHGrW5MOMhYy0ljHA1xwlJPb/L7N8pQQ==','WNJqwhOjbVmnHDZSyosjrfae3pjQ278IC8MTwLf02js=','2004-02-19','Q',0,'$2y$10$1s.m9wYPL6r1W0YNwbJIzO3VhvHN/R/A76RH3k66VKZTR5cLoTHyil/xK=','B','A','img5.jpg'),(320110199,'Melissa Natalia Archundia Tapia','f7uGNM8joRQD5DWJXli3oGiz8X3YJc82dWq9/j92Ow+v3moToOEvrw6o7rDub+eD','X1HzLoOqhYvD+S/2Ugwuu+KcMB/TIUu3g378jfcbpOc=','2004-03-19','Q',0,'$2y$10$yKCLU8Uc9/.wrbFMHxiHXe1pnUV.aAzCHWTfZIJGG5NcFOyfwcGV2rpOOV','B','E','img6.jpg'),(320198223,'Alexa Flores Medero Campos','tLcZGA4/PDXZ8FZgIqeiMinpEfTnga8qBxjJ1ONMrppZQATwGSa08knlggOGEdAg','yXY+zi4HnYg2DRXzVaUNX/vaVhSIeQBm83w8n0h6AWc=','2004-02-29','Q',0,'$2y$10$ayD2Oz2NQz60390.Jm/wx.2TxZyiD3dTD5DrW8jdknlsAby/tq0widhzyo','B','E','user.png'),(320338841,'Irandy Reyes Herrera','66Vu6cE9yqAT3Sj08ME8N9adfM4QvMpF1kyK4AuUSLl3c5yfoWsVSY1kIEvLKql2','jc1ZnQVp9W0C6SMy+/6jjIcTAlDz1XPSMnHQDjdhuXk=','2004-10-28','Q',0,'$2y$10$tXCG8rmsc01W8.Cn31Lece1uyuHcn5FlJMZI4FGHUUREIwMSgzbAGRyZGh','B','E','user.png');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -344,7 +347,7 @@ CREATE TABLE `usuariohasmateria` (
   KEY `id_materia` (`id_materia`),
   CONSTRAINT `usuariohasmateria_ibfk_1` FOREIGN KEY (`num_cuenta`) REFERENCES `usuario` (`num_cuenta`),
   CONSTRAINT `usuariohasmateria_ibfk_2` FOREIGN KEY (`id_materia`) REFERENCES `materia` (`id_materia`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -353,7 +356,7 @@ CREATE TABLE `usuariohasmateria` (
 
 LOCK TABLES `usuariohasmateria` WRITE;
 /*!40000 ALTER TABLE `usuariohasmateria` DISABLE KEYS */;
-INSERT INTO `usuariohasmateria` VALUES (1,320110199,'1400');
+INSERT INTO `usuariohasmateria` VALUES (1,320110199,'1400'),(4,320198223,'1500'),(5,320338841,'1501'),(28,320030772,'1410'),(29,320030772,'1405'),(30,116542510,'1500'),(31,118507611,'E101'),(32,319264372,'1502'),(34,117880701,'E104'),(35,319429985,'1703'),(36,117445320,'1508'),(37,116486201,'2101'),(38,117524495,'1404'),(39,320030772,'1502'),(40,320110199,'E114'),(41,116486201,'1502');
 /*!40000 ALTER TABLE `usuariohasmateria` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -366,4 +369,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-09  1:09:21
+-- Dump completed on 2021-06-11  0:09:07
