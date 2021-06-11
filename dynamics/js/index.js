@@ -32,10 +32,16 @@ $(document).ready(()=>{
     });
 
      //Para saber si hay sesión
-     let sesion = peticion('./dynamics/php/index.php', 'sesion='+true);
+     let sesion = peticion('./dynamics/php/index.php', 'sesion='+true+"&eltipo="+true);
      sesion.done((resp)=>{
-         if(resp=="NO HAY SESION")
+        if(resp=="NO HAY SESION")
              location = "./templates/registro.html";
+        else if(resp=="SI ES ADMIN"){
+            $("#administrar").show();
+        }
+        else if(resp=="NO ES ADMIN"){
+            $("#administrar").hide();
+        }
      })
 
      //despliega la tabla

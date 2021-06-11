@@ -81,6 +81,8 @@ $(document).ready(()=>{
         });
     }
 
+
+
     //Peticion que nos permite desplegar los datos básicos del usuario.
     function datos_usuario(){
         let datos = peticion("../dynamics/php/user.php", "sesion="+true+"&datos="+true);
@@ -111,22 +113,28 @@ $(document).ready(()=>{
             $("#cursando").text("<strong>Año que cursas: </strong>"+mensaje);
         });
     }
-
+    
     //Peticion para redireccionar en caso de no haber una sesion activa.
-    let sesion = peticion("../dynamics/php/user.php", "sesion="+true);
+    let sesion = peticion("../dynamics/php/user.php", "sesion="+true+"&eltipo="+true);
     sesion.done((resp)=>{
         //alert(resp);
         if(resp=="NO HAY SESION"){
             location = "./registro.html";
         }
+        else if(resp=="SI ES ADMIN"){
+            $("#administrar").show();
+        }
+        else if(resp=="NO ES ADMIN"){
+            $("#administrar").hide();
+        }
     });
+
 
     datos_usuario();
 
     //Evento que detecta cuando se personalizó la imagen.
     $("#imagen").on("change", ()=>{
         let direccion = $("#imagen").val();
-        //alert(direccion);
         let cambiar_img = peticion("../dynamics/php/user.php", "sesion="+true+"&foto="+direccion);
         cambiar_img.done((resp)=>{
             datos_usuario();
@@ -181,7 +189,7 @@ $(document).ready(()=>{
         cerrar.fail((resp)=>{
             alert("no funciona");
         });
-        
+
     });
     //Botones del modal footer (abrir y cerrar).
     $("#cred").click(()=>{

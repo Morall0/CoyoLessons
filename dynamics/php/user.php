@@ -24,7 +24,17 @@
     }
 
     if(isset($_POST["sesion"])){
+
+
         if(isset($_SESSION["usuario"])){
+            if(isset($_POST["eltipo"])){
+                if($_SESSION["tipo"]=='A'){
+                    echo "SI ES ADMIN";
+                }
+                else{
+                    echo "NO ES ADMIN";
+                }
+            }
             $conexion = conectdb();
             //Consulta para obetener los datos básicos del usuario.
             if(isset($_POST['datos']))
@@ -73,7 +83,7 @@
                             echo "UNA MATERIA";
                         }
                     }
-                } 
+                }
             }
 
             elseif(isset($_POST["materias_select"])){

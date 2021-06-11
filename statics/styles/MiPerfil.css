@@ -211,16 +211,6 @@ h4{
     border-radius: 8px;
     text-align: center;
 }
-#administrar{
-    background-color: var(--amarillo);
-    position: absolute;
-    left: 69%;
-    bottom: 34%;
-    border-radius: 8px;
-    text-align: center;
-    font-family: 'roboto';
-    padding-top: .5%;
-}
 #cred
 {
     font-family: Roboto, sans-serif;
@@ -487,18 +477,6 @@ span{
         border-radius: 8px;
         text-align: center;
     }
-    #administrar{
-        background-color: var(--amarillo);
-        position: relative;
-        left: 83px;
-        bottom: 96px;
-        border-radius: 8px;
-        text-align: center;
-        font-family: 'roboto';
-        padding-top: .5px;
-        height: 15px;
-        width: 50px;
-    }
     #footer{
         position: relative;
         width: 100%;
@@ -763,25 +741,14 @@ span{
         border-radius: 8px;
         text-align: center;
     }
-    #administrar{
-        background-color: var(--amarillo);
-        position: relative;
-        left: 83px;
-        bottom: 96px;
-        border-radius: 8px;
-        text-align: center;
-        font-family: 'roboto';
-        padding-top: .5px;
-        height: 15px;
-        width: 50px;
-    }
+
     #footer{
         position: relative;
         width: 100%;
     }
     #cred
     {
-       width: 300px; 
+       width: 300px;
        color: coral;
     }
     /*= ----------------- MODAL -------------------------*/

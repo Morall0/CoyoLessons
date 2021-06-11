@@ -12,6 +12,15 @@
         if(isset($_SESSION["usuario"])){
             $conexion=conectdb();
             $usuario=$_SESSION["usuario"];
+            if(isset($_POST["eltipo"])){
+                if($_SESSION["tipo"]=='A'){
+                echo "SI ES ADMIN";
+                }
+                else{
+                    echo "NO ES ADMIN";
+                }
+            }
+            
             if(isset($_POST["inscribirse"])){
                 //inscribir
                 $inscribir=$_POST["inscribirse"];
