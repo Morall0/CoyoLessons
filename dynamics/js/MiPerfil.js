@@ -183,6 +183,16 @@ $(document).ready(()=>{
         });
         
     });
+
+    //Boton que redirige al mis asesorias.
+    $("#am1").click(()=>{
+        location = "./MisAsesorias.html";
+    });
+    //Boton que redirige a la seccion de comentarios (El historial de asesorias)
+    $("#am2").click(()=>{
+        location = "./coment.html";
+    });
+
     //Botones del modal footer (abrir y cerrar).
     $("#cred").click(()=>{
         $("#mCreditos").css("display", "block");
