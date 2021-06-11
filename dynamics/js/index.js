@@ -125,7 +125,14 @@ $(document).ready(()=>{
         eliminar.fail((resp)=>{
             alert("Hubo un problema para procesar tu peticion");
         });
+    })
+    
+     //Botones del modal footer (abrir y cerrar).
+     $("#cred").click(()=>{
+        $("#mCreditos").css("display", "block");
     });
 
-
+    $("#closeBtn").click(()=>{
+        $("#mCreditos").css("display", "none");
+    });
 });
