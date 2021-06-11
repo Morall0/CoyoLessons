@@ -102,7 +102,6 @@ $(document).ready(function(){
     sesion_admin.done((resp)=>{
         if(resp == "NO HAY SESION O NO ES ADMIN")
             location = "../index.html";
-        else
     });
 
     desp_usuarios();
