@@ -5,6 +5,27 @@
     include('./config.php');
     include('./cifr.php');
 
+    //Funcion que devuelve el nombre de de la materia del id indicado.
+    function nombre_materia($id, $conexion){
+        $c_materia = "SELECT Nombre FROM materia WHERE id_materia = $id";
+        $r_materia = mysqli_query($conexion, $c_materia);
+        $materia = mysqli_fetch_array($r_materia);
+        return $materia[0];
+    }
+
+    //Funcion que devuelve el dia y la hora del horario indicado.
+    function horario_asesoria($id, $conexion){
+        $c_horario = "SELECT dia, hora FROM horario NATURAL JOIN hora WHERE id_horario = $id";
+        $r_horario = mysqli_query($conexion, $c_horario);
+        $dia_hora = mysqli_fetch_array($r_horario);
+        $dia_hora[0] = ($dia_hora[0] == 'L')? "Lunes":$dia_hora[0];
+        $dia_hora[0] = ($dia_hora[0] == 'Ma')? "Martes":$dia_hora[0];
+        $dia_hora[0] = ($dia_hora[0] == 'Mi')? "Miércoles":$dia_hora[0];
+        $dia_hora[0] = ($dia_hora[0] == 'J')? "Jueves":$dia_hora[0];
+        $dia_hora[0] = ($dia_hora[0] == 'V')? "Viernes":$dia_hora[0];
+        $horarioConcat = $dia_hora[0]." ".$dia_hora[1]; 
+        return $horarioConcat;
+    }
 
     if(isset($_POST['sesion'])){
         if(isset($_SESSION['usuario'])){
@@ -37,7 +58,18 @@
                         $i++;
                     }
                     if($res1){
-                        echo "si se guardo";
+                        //Cosulta que permite obtener el nombre del asesor y el nombre de la materia.
+                        $cons_nombre = "SELECT Nombre FROM usuario WHERE num_cuenta = $usuario";
+                        $resp = mysqli_query($conexion, $cons_nombre);
+                        if($resp)
+                            $nombre = mysqli_fetch_array($resp);
+                        //Variables que tienen la informacion de la asesoria.
+                        $nombre_materia = nombre_materia($materiaA, $conexion);
+                        $dia_horario = horario_asesoria($horario, $conexion);
+                        $modalidad_string = ($modalidad == 'P')? 'Presencial':'En linea';
+
+                        //Cadena que contiene los datos para crear el canvas.
+                        echo "$nombre_materia,$tema,$modalidad_string,$medio,$dia_horario,$fecha,$cupo,$nombre[0]"; 
                     }
                     else{
                         echo "no se pudo";
@@ -226,7 +258,6 @@
                     else{
                         echo "no funciono la consulta de la tabla";
                     }
-
                 }
                 echo "</tbody></table>";
             }
