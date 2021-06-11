@@ -85,7 +85,7 @@
 table{
     border-collapse: collapse;
     margin: auto;
-    margin-left: -10%;
+    margin-left: 0%;
 }
 thead{
     background-color: var(--carne);
