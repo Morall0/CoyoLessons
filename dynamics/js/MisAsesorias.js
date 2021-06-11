@@ -47,11 +47,24 @@ $(document).ready(()=>{
     $("#horario").on("focus",()=>{
         let horario = peticion('../dynamics/php/user.php', 'sesion='+true+'&eliminarHorarios='+true+'&horarioAsesoria='+true);
         horario.done((resp)=>{
-            $("#horario").html(resp);
+            $("#horario").html("<option selected>Elige un horario</option>"+resp);
         })
         horario.fail((resp)=>{
           alert("fallaron los horarios");
         })
+    })
+    $("#horario").on("change",()=>{
+        let valorhorario= $("#horario").val();
+        console.log(valorhorario);
+        let horariofecha = peticion('../dynamics/php/misAsesorias.php', 'sesion='+true+'&valorhorario='+valorhorario);
+        horariofecha.done((resp)=>{
+            console.log(resp);
+            $("#fecha").html(resp);
+        })
+        horariofecha.fail((resp)=>{
+          alert("fallaron las fechas de los horarios");
+        })
+
     })
     //Agregar asesorias
     $("#crearAsesoria").on("submit",()=>{
@@ -89,6 +102,18 @@ $(document).ready(()=>{
             tabla();
         });
         eliminar.fail((resp)=>{
+            alert("Hubo un problema para procesar tu peticion");
+        });
+    });
+    $(body).on('click','.estado', function(){
+        let boton = $(this).attr("id");
+        alert(boton);
+        let estado= peticion("../dynamics/php/MisAsesorias.php", "sesion="+true+"&estadoases="+boton);
+        estado.done((resp)=>{
+            //alert(resp+"respuesta");
+            //tabla();
+        });
+        estado.fail((resp)=>{
             alert("Hubo un problema para procesar tu peticion");
         });
     });

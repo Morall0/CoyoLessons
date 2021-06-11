@@ -73,7 +73,7 @@
                             echo "UNA MATERIA";
                         }
                     }
-                }
+                } 
             }
 
             elseif(isset($_POST["materias_select"])){
@@ -92,7 +92,7 @@
                 }
             }
 
-            //Horario
+            //Horario //AQUI VA
             elseif(isset($_POST['horarios']) || isset($_POST["eliminarHorarios"]))
             {
                 $horario_in= 'SELECT id_horario, num_cuenta, dia, hora FROM alumnohashorario NATURAL JOIN horario NATURAL JOIN hora WHERE num_cuenta='.$_SESSION['usuario'];

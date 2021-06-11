@@ -47,6 +47,43 @@
                     echo"no se inserto la asesoria";;
                 }
             }
+            //SELECT de las posibles fechas
+            if(isset($_POST["valorhorario"])|| isset($_POST["estadoases"])){
+                date_default_timezone_set("America/Mexico_City");
+                $valorhorario=validStr($_POST["valorhorario"],$conexion);
+                $consulta_horario="SELECT dia, id_hora, hora from horario NATURAL JOIN hora WHERE id_horario=$valorhorario";
+                $conex_horario=mysqli_query($conexion,$consulta_horario);
+                $arr_fechas=mysqli_fetch_array($conex_horario);
+
+                $dias_fech=["D" => 0, "L" => 1, "Ma" => 2, "Mi" => 3, "J" => 4, "V" => 5, "S" => 6];
+                foreach($dias_fech as $llaves => $valor)
+                {   
+                    if($arr_fechas[0] == $llaves)
+                    {
+                        $dia_asesoria=$valor;
+                    }
+                }
+                $m=0;
+                $dia_actual=getdate();
+                $i=$dia_actual["wday"];
+
+                while($i != $dia_asesoria || $m==0)
+                {
+                    if($i>=0 && $i<6) 
+                        $i++;
+                    elseif($i==6)
+                        $i=0;
+                    $m++;    
+                }            
+                $date_now = date('d-m-Y');
+                $date_future = strtotime('+'.$m.' day', strtotime($date_now));//sumarle los días desde hoy 
+                $date_future1 = date('d-m-Y', $date_future);
+                $date_future2 = date('Y-m-d', $date_future); //especificar el formato que quieres
+                echo "<option val='$date_future2'>".$date_future2."</option>";
+                
+                
+
+            } 
             if(isset($_POST["tabla"]) || isset($_POST["todasAsesorias"])){
                 echo "<br><br><table border='1'>
                 <thead>
@@ -64,8 +101,11 @@
                     $tabla= "SELECT id_materia, id_asesoria, Medio, Modalidad, Fecha, Tema,id_ahh,Nombre,num_cuentaAsesor,Duracion,Estado,num_cuentaAlumno FROM asesoria NATURAL JOIN materia NATURAL JOIN asesoriahasalumno GROUP BY  id_asesoria";
                             echo"
                             <th>Asesor</th>
-                            <th></th>
-                            </tr>
+                            <th></th>";
+                            if($_SESSION["tipo"]=='A'){
+                                echo "<th>Eliminar</th>";
+                            }
+                            echo"</tr>
                             </thead>
                             <tbody>";
                 }
@@ -129,24 +169,24 @@
                                     $arr_cuantas=mysqli_fetch_array($res_cuantas);
                                     echo "<td>$arr_nombre[0]</td>";
                                     if($arr_cuantas[0]>0 && $xcupo[0]>0){
-                                        echo "<td><button type='button' class='desinscribirse' id='$arrtabla[1]'><i class='fas fa-user-check'></i></button></td>
-                                        </tr>";
+                                        echo "<td><button type='button' class='desinscribirse' id='$arrtabla[1]'><i class='fas fa-user-check'></i></button></td>";
                                     }
                                     elseif($arr_cuantas[0]==0 && $xcupo[0]>0){
-                                        echo "<td><button type='button' class='inscribirse' id='$arrtabla[1]'><i class='fas fa-marker'></i></button></td>
-                                        </tr>";
+                                        echo "<td><button type='button' class='inscribirse' id='$arrtabla[1]'><i class='fas fa-marker'></i></button></td>";
                                     }
                                     else{
-                                        echo "<td><button type='button' class='lleno' id='$arrtabla[1]'><i class='fas fa-ban'></i></button></td>
-                                        </tr>";
+                                        echo "<td><button type='button' class='lleno' id='$arrtabla[1]'><i class='fas fa-ban'></i></button></td>";
                                     }
 
                                 }
                                 else{
                                     echo "<td>$arr_nombre[0]</td>
-                                    <td><i class='fas fa-chalkboard-teacher'></i></td>
-                                    </tr>";
+                                    <td><i class='fas fa-chalkboard-teacher'></i></td>";
                                 }
+                                if($_SESSION["tipo"]=='A'){
+                                    echo "<td><button type='button' class='borrar' id='$arrtabla[1]'><i class='fas fa-trash-alt fa-2x'></i></button></td>";
+                                }
+                                echo"</tr>";
 
                             }
                     }
@@ -159,7 +199,7 @@
             }
 
             if(isset($_POST["delete"])){
-                $boton=validStr($_POST["delete"],$conexion);
+                $boton=$_POST["delete"];
                 $consul_borrar="DELETE from asesoriahasalumno WHERE id_asesoria=$boton";
                 $res_borrar=mysqli_query($conexion,$consul_borrar);
                 if($res_borrar){
