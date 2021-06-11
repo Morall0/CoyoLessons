@@ -1,7 +1,7 @@
 <?php
-    define("DBUSER", "root");
+    define("DBUSER", "coyolessons");
     define("DBHOST", "localhost");
-    define("PASSWORD", "");
+    define("PASSWORD", "c0yol3$$0nS?");
     define("DB", "coyolessons");
 
     function conectdb()
