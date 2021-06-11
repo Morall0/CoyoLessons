@@ -1,8 +1,48 @@
-/*= ----------------- TABLA -------------------------*/
+*{
+    font-family: 'roboto';
+}
+/* =NAV -------------------------------------------------- */
+.nav a{
+    display: flex;
+    flex-direction: row;
+    /*=justify-content: end;*/
+    text-decoration: none;
+    font-family: Roboto;
+    color: white;
+    font-size: 1.2rem;
+}
+.nav div#tit
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    text-decoration: none;
+    font-family: Roboto;
+    color: white;
+    font-size: 2rem;
+    align-self: center;
+    text-align: center;
+}
+#log
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
 #contTabla{
-    background-color: var(--azul);
-    width: 1000px;
-    height: 500px;
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+#crear{
+    background-color: var(--amarillo);
+    height: 40px;
+    width: 110px;
+    border-radius: 8px;
+    border-color: transparent;
+    margin-left: 5%;
+    margin-top: 2%;
+    position: relative;
 }
 /*= ----------------- MODAL -------------------------*/
 #miModal{
@@ -65,7 +105,7 @@ select{
 p{
     color: rgb(71, 68, 68);
 }
-#nombre, #numcuenta, #apPaterno, #apMaterno, #correo,#mes,#año,#dia,#cursando,#HorarioHora,#contraseña,#enviar,#materias,#tel,#fecha,#HorarioDia,#horarios,#caracteres{
+#nombre, #numcuenta, #apPaterno, #apMaterno, #correo,#mes,#año,#dia,#cursando,#HorarioHora,#contraseña,#enviar,#materias,#tel,#fecha,#HorarioDia,#horarios,#caracteres,#tipo{
     position: absolute;
 }
 #nombre, #apPaterno, #apMaterno{
@@ -99,19 +139,23 @@ p{
     bottom: 50%;
     left: 14%;
 }
-#dia,#año{
+#dia,#mes{
     bottom: 44%;
     width: 17%;
 }
 #dia{
     left: 14%;
 }
-#año{
+#mes{
     left: 33.5%;
 }
-#mes{
+#año{
     bottom: 34%;
     left: 14%;
+}
+#tipo{
+    bottom: 34%;
+    left: 25%;
 }
 #cursando{
     width: 33%;
@@ -158,12 +202,22 @@ p{
     bottom: 70px;
 }
 @media screen and (max-width: 1200px){
-    /* body{
-        font-family: 'roboto';
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    } */
+    #contTabla{
+        display: flex;
+        justify-content: center;
+        margin-top: 2%;
+        overflow-x: scroll;
+    }
+    #crear{
+        background-color: var(--amarillo);
+        height: 40px;
+        width: 110px;
+        border-radius: 8px;
+        border-color: transparent;
+        margin-left: 43%;
+        margin-top: 2%;
+        position: relative;
+    }
     .modal-contenidouser{
         background-color:white;
         width:max-content;
@@ -175,7 +229,6 @@ p{
         width: 320px;
         border-radius: 11px;
     }
-
     #modalhead{
         display: flex;
         align-items: center;
@@ -290,16 +343,20 @@ p{
     }
     #horarios{
         bottom: 15%;
-        left: 30%;
-        font-size: 13px;
+        left: 43%;
+        font-size: 12px;
     }
     #HorarioHora{
         bottom: 12%;
-        left: 54%;
+        left: 63%;
     }
     #HorarioDia{
         bottom: 12%;
-        left: 30%;
+        left: 43%;
+    }
+    #tipo{
+        bottom: 12%;
+        left: 16%;
     }
     #enviar{
         left: 14%;
@@ -313,6 +370,22 @@ p{
     }
 }
 @media screen and (max-width: 800px){
+    #contTabla{
+        display: flex;
+        justify-content: center;
+        margin-top: 2%;
+        overflow-x: scroll;
+    }
+    #crear{
+        background-color: var(--amarillo);
+        height: 40px;
+        width: 110px;
+        border-radius: 8px;
+        border-color: transparent;
+        margin-left: 43%;
+        margin-top: 2%;
+        position: relative;
+    }
     .modal-contenidouser{
         background-color:white;
         width:max-content;
@@ -380,7 +453,7 @@ p{
 
         bottom: 73%;
     }
-    #numcuenta,#tel,#correo,#contraseña{
+    #numcuenta,#tel,#correo{
         left: 30%;
         width: 38%;
     }
@@ -417,7 +490,13 @@ p{
         left: 30%;
     }
     #contraseña{
+        bottom: 16%;
+        width: 38%;
+        left: 10%;
+    }
+    #tipo{
         bottom: 17%;
+        left: 55%;
     }
     #caracteres{
         bottom: 3%;

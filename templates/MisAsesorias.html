@@ -16,7 +16,6 @@
     <div id="botones">
         <button id="regresar"><a href="../index.html">Volver</a></button>
         <button id="botonAsesoria">Crear Asesoria</button>
-        <div id="tablasec"></div>
     </div>
     <div id='miModal'>
         <div class='modal-contenidouser'>
@@ -50,7 +49,7 @@
                             <option value="" selected>Seleccionar horario</option>
                         </select>
                     </label>
-                    <label for="cupo">
+                    <label for="cupo"><p id="cupo2">Cupo</p>
                         <select name="cupo" id="cupo" required>
                             <option selected value="" hidden>Selecciona el cupo</option>
                             <option value="1">1</option>
@@ -75,6 +74,7 @@
             </div>
         </div>
     </div>
+    <div id="tablasec"></div>
     <canvas id="canvas"></canvas>
     <button id="descargarCanvas"><a id = "download" href="" download="MiAsesoria">Descargar</a></button>
     <script src="../dynamics/js/MisAsesorias.js"></script>

@@ -79,7 +79,7 @@
                     echo"no se inserto la asesoria";;
                 }
             }
-            //SELECT de las posibles fechas
+            //SELECT de las posibles fechas o del estado
             if(isset($_POST["valorhorario"])|| isset($_POST["estadoases"])){
                 date_default_timezone_set("America/Mexico_City");
                 $valorhorario=validStr($_POST["valorhorario"],$conexion);
@@ -89,7 +89,7 @@
 
                 $dias_fech=["D" => 0, "L" => 1, "Ma" => 2, "Mi" => 3, "J" => 4, "V" => 5, "S" => 6];
                 foreach($dias_fech as $llaves => $valor)
-                {   
+                {
                     if($arr_fechas[0] == $llaves)
                     {
                         $dia_asesoria=$valor;
@@ -101,21 +101,44 @@
 
                 while($i != $dia_asesoria || $m==0)
                 {
-                    if($i>=0 && $i<6) 
+                    if($i>=0 && $i<6)
                         $i++;
                     elseif($i==6)
                         $i=0;
-                    $m++;    
-                }            
+                    $m++;
+                }
                 $date_now = date('d-m-Y');
-                $date_future = strtotime('+'.$m.' day', strtotime($date_now));//sumarle los días desde hoy 
+                $date_future = strtotime('+'.$m.' day', strtotime($date_now));//sumarle los días desde hoy
                 $date_future1 = date('d-m-Y', $date_future);
                 $date_future2 = date('Y-m-d', $date_future); //especificar el formato que quieres
                 echo "<option val='$date_future2'>".$date_future2."</option>";
-                
-                
+                if(isset($_POST["estadoases"])){
+                    $asesoriah=$_POST["asesoriah"];
+                    $cualestado="SELECT Estado FROM asesoria WHERE id_asesoria=$asesoriah";
+                    $conex_est=mysqli_query($conexion,$cualestado);
+                    $arr_est=mysqli_fetch_array($conex_est);
+                    if($arr_est[0]=='I'){
+                        $consul_estado="UPDATE asesoria SET estado='T' WHERE id_asesoria=$asesoriah";
+                        $conex=mysqli_query($conexion,$consul_estado);
+                    }
+                    if($arr_est[0]=='P'){
+                        if($m==7){
+                            $consul_estado="UPDATE asesoria SET estado='I' WHERE id_asesoria=$asesoriah";
+                            $conex=mysqli_query($conexion,$consul_estado);
+                            if($conex){
+                                echo "Hoy inicia tu asesoría";
+                            }
+                        }
+                        if($m<7){
+                            echo "<p>Hoy no inicia tu asesoría<p>";
+                        }
+                    }
+                    
+                }
 
-            } 
+
+
+            }
             if(isset($_POST["tabla"]) || isset($_POST["todasAsesorias"])){
                 echo "<br><br><table border='1'>
                 <thead>
@@ -154,7 +177,7 @@
                 $restabla=mysqli_query($conexion,$tabla);
                 while($arrtabla=mysqli_fetch_array($restabla)){
                     //dia y hora
-                    $cons_hor="SELECT dia, hora FROM alumnohashorario NATURAL JOIN horario NATURAL JOIN hora WHERE id_ahh=".$arrtabla[6];
+                    $cons_hor="SELECT dia, hora, id_horario FROM alumnohashorario NATURAL JOIN horario NATURAL JOIN hora WHERE id_ahh=".$arrtabla[6];
                     $res_hor=mysqli_query($conexion,$cons_hor);
                     $arr_hor=mysqli_fetch_array($res_hor);
                     //nombre del asesor
@@ -189,8 +212,18 @@
                             <td>$arrtabla[9]</td>
                             <td>$arrtabla[4]</td>";
                             if(isset($_POST["tabla"])){
-                                echo "<td><button type='button' class='estado' id='$arrtabla[1]'><i class='fas fa-play-circle'></i></button></td>
-                                <td><button type='button' class='borrar' id='$arrtabla[1]'><i class='fas fa-trash-alt fa-2x'></i></button></td>
+                                if($arrtabla[10]=='P'){
+                                    echo "<td><button type='button' class='estado' id='$arr_hor[2]&asesoriah=$arrtabla[1]'><i class='fas fa-play'></i></button></td>";
+
+                                }
+                                else if($arrtabla[10]=='I'){
+                                    echo "<td><button type='button' class='estado $arr_hor[2]' id='$arr_hor[2]&asesoriah=$arrtabla[1]'><i class='fas fa-hourglass-half'></i></button></td>";
+                                }
+                                else if($arrtabla[10]=='T'){
+                                    echo "<td><button type='button' class='estado $arr_hor[2]' id='$arr_hor[2]&asesoriah=$arrtabla[1]'><i class='far fa-calendar-check'></i></i></button></td>";
+                                }
+
+                                echo"<td><button type='button' class='borrar' id='$arrtabla[1]'><i class='fas fa-trash-alt fa-2x'></i></button></td>
                                  </tr>";
                             }
                             else if(isset($_POST["todasAsesorias"])){

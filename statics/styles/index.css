@@ -29,16 +29,20 @@
     flex-direction: row;
     justify-content: end;
 }
- /*Búsqueda*/
+ /*--------------- Búsqueda -------------*/
  #izquierdo{
     display: flex;
     flex-direction:column;
     flex-wrap: nowrap;
-    margin-top: 20px;
+    margin-top: 3%;
     margin-left: 540px;
  }
+ #lupa
+ {
+     height: 5%;
+ }
  #buscador{
-    width: 550px;
+    width: 70%;
     border-radius: 8px;
  }
  #buscar{
@@ -47,6 +51,7 @@
  }
  #filtros{
     margin-top: 20px;
+    width: 10%;
  }
  #fecha,#horario,#materia,#modalidad,#medio{
      background-color: #C4C4C4;
@@ -92,13 +97,32 @@
     border-radius: 8px;
     padding: 10px;
 }
-table{
+#filtros
+{
+    width: 80%;
+    align-self: center;
+}
+select
+{
+    width: 12%;
+}
+.resultados
+{
+    width: 80%;
+    height: 70%;
+}
+.resultados table{
     border-collapse: collapse;
     margin: auto;
-    margin-left: -10%;
+    margin-left: 0%;
+    align-self: center;
 }
 thead{
     background-color: var(--carne);
+}
+th
+{
+    width: 11%;
 }
 tbody{
     text-align: center;
@@ -205,23 +229,36 @@ span{
 ---------------------------------------------*/
 @media screen and (max-width: 1200px){
     #izquierdo{
-        margin-left: 250px;
-        margin-top: 90px;
+        display: flex;
+        flex-direction:column;
+        flex-wrap: wrap;
+        margin-top: 5%;
+        margin-left: 13%;
+        width: 90%;   
+        height: 60%; 
+        align-self: center;
     }
     #indica{
         display: none;
     }
     #derecho{
+        display: flex;
         flex-direction:row;
-        margin-top: -220px;
-        margin-left: 360px;
+        flex-wrap: wrap;
+        margin-bottom: 5%;
+        margin-left: 30%;
+        width: 60%;    
+        align-items: center;
+        top: 0%;
     }
-    #cancelar{
-        padding-top: 10px;
-        padding-bottom: 20px;
-        height: 55px;
-        margin-top: 71px;
-        margin-left: 20px;
+    #agendar
+    {
+        color: white;
+    }
+    .resultados
+    {
+        overflow-y: scroll; 
+        overflow-x: scroll;   
     }
     #footer{
         position: absolute;
@@ -234,6 +271,7 @@ span{
         background-color: var(--azulF);
         color: white;
         width: 100%;
+        position: fixed;
     }
      /*= ----------------- MODAL -------------------------*/
      #mCreditos{

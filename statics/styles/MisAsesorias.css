@@ -21,9 +21,15 @@
     margin-left: 3%;
     font-size: 17px;
 }
+#botones{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-top: 1%;
+}
 #tablasec{
-    margin-left: -35.6%;
-    
+    margin-left: 0%;
 }
 table{
     border-collapse: collapse;
@@ -37,9 +43,12 @@ tbody{
     background-color: var(--amarillo);
 }
 /*= ----------------- MODAL -------------------------*/
+input{
+    height: 40px;
+}
 #materias{
     position: absolute;
-    left: 24%;
+    left: 22%;
     bottom: 78%;
 }
 #materias2{
@@ -49,45 +58,271 @@ tbody{
 }
 #tema{
     position: absolute;
-    bottom: 80%;
-    left: 59%;
+    bottom: 78%;
+    left: 57%;
 }
 #tema2{
     position: absolute;
-    bottom: 82.5%;
-    left: 59%;
+    bottom: 83%;
+    left: 63%;
+}
+#fecha2{
+    position: absolute;
+    bottom: 70%;
+    left: 35%;
+}
+#fecha{
+    position: absolute;
+    bottom: 64%;
+    left: 29%;
+    width: 130px;
+}
+#cupo2{
+    position: absolute;
+    left: 56%;
+    bottom: 70%;
+}
+#cupo{
+    position: absolute;
+    left: 50%;
+    bottom: 64%;
+}
+#medio2{
+    position: absolute;
+    bottom: 54.5%;
+    left: 39%;
+}
+#medio{
+    position: absolute;
+    bottom: 49%;
+    left: 32%;
+}
+#modalidad2{
+    position: absolute;
+    left: 54%;
+    bottom: 56%;
+}
+#modalidad{
+    position: absolute;
+    left: 53%;
+    bottom: 49%;
+}
+#horario2{
+    position: absolute;
+    left: 37%;
+    bottom: 39.8%;
+}
+#horario{
+    position: absolute;
+    left: 32%;
+    bottom: 33.5%;
+}
+#duracion2{
+    position: absolute;
+    left: 54%;
+    bottom: 39.8%;
+}
+#duracion{
+    position: absolute;
+    left: 53%;
+    bottom: 33.5%;
 }
 @media screen and (max-width: 1200px){
+    #tablasec{
+        overflow-x:scroll;
+        margin-top: 10px;
+    }
+/*= ----------------- MODAL -------------------------*/
+    p{
+        font-size: 14px;
+    }
     #botones{
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        justify-content: flex-start;
+        align-items: center;
         margin-top: 1%;
     }
-    #regresar{
+    input{
+        height: 25px;
+        font-size: 11px;
+    }
+    select{
         height: 30px;
-        width: 100px;
-        font-size: 17px;
+        font-size: 11px;
     }
-    #botonAsesoria{
-        height: 30px;
-        font-size: 17px;
+    #materias{
+        left: 12%;
+        bottom: 73%;
     }
-    #tablasec{
-        margin-top: 10px;
-        margin-left: -27%;
+    #materias2{
+        position: absolute;
+        bottom: 79%;
+        left: 21%;
     }
-    table{
-        border-collapse: collapse;
-        margin: auto;
+    #tema{
+        position: absolute;
+        bottom: 73%;
+        left: 47%;
     }
-    thead{
-        background-color: var(--amarillo);
+    #tema2{
+        position: absolute;
+        bottom: 79%;
+        left: 61%;
     }
-    tbody{
-        text-align: center;
-        background-color: var(--amarillo);
+    #fecha2{
+        position: absolute;
+        bottom: 59%;
+        left: 32%;
+    }
+    #fecha{
+        position: absolute;
+        bottom: 54%;
+        left: 16%;
+    }
+    #duracion2{
+        position: absolute;
+        left: 66%;
+        bottom: 59%;
+    }
+    #duracion{
+        position: absolute;
+        left: 65%;
+        bottom: 54%;
+    }
+    #cupo2{
+        position: absolute;
+        left: 22%;
+        bottom: 41%;
+    }
+    #cupo{
+        position: absolute;
+        left: 10%;
+        bottom: 35%;
+    }
+    #medio2{
+        position: absolute;
+        bottom: 41%;
+        left: 63%;
+    }
+    #medio{
+        position: absolute;
+        bottom: 35%;
+        left: 48%;
+    }
+    #modalidad2{
+        position: absolute;
+        left: 20%;
+        bottom: 22%;
+    }
+    #modalidad{
+        position: absolute;
+        left: 18%;
+        bottom: 15%;
+    }
+    #horario2{
+        position: absolute;
+        left: 58%;
+        bottom: 22%;
+    }
+    #horario{
+        position: absolute;
+        left: 47%;
+        bottom: 15%;
+    }
+    @media screen and (max-width: 1200px){
+        #tablasec{
+            overflow-x:scroll;
+            margin-top: 10px;
+        }
+    /*= ----------------- MODAL -------------------------*/
+        p{
+            font-size: 12px;
+        }
+        #botones{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-items: center;
+            margin-top: 1%;
+        }
+        input{
+            height: 25px;
+            font-size: 11px;
+        }
+        select{
+            height: 30px;
+            font-size: 11px;
+        }
+        #materias{
+            left: 32%;
+            bottom: 83%;
+        }
+        #materias2{
+            display: none;
+        }
+        #tema{
+            position: absolute;
+            bottom: 73%;
+            left: 24%;
+        }
+        #tema2{
+            display: none;
+        }
+        #fecha2{
+            display: none;
+        }
+        #fecha{
+            position: absolute;
+            bottom: 63%;
+            left: 20%;
+        }
+        #medio2{
+            position: absolute;
+            bottom: 54%;
+            left: 48%;
+        }
+        #medio{
+            position: absolute;
+            bottom: 49%;
+            left: 25%;
+        }
+        #cupo2{
+            display: none;
+        }
+        #cupo{
+            position: absolute;
+            left: 28%;
+            bottom: 39%;
+        }
+        #horario2{
+            display: none;
+        }
+        #horario{
+            position: absolute;
+            left: 27%;
+            bottom: 29%;
+        }
+        #duracion2{
+            position: absolute;
+            left: 59%;
+            bottom: 19.8%;
+        }
+        #duracion{
+            position: absolute;
+            left: 56%;
+            bottom: 15%;
+        }
+        #modalidad2{
+            position: absolute;
+            left: 24%;
+            bottom: 19.8%;
+        }
+        #modalidad{
+            position: absolute;
+            left: 20%;
+            bottom: 15%;
+        }
     }
 }
 /*= ----------------- CANVAS -------------------------*/

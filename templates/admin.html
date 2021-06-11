@@ -2,6 +2,7 @@
 <html lang="es" dir="ltr">
     <head>
         <meta charset="utf-8">
+        <link rel="icon" href="../statics/img/Logo.png" type="image/png">
         <link rel="stylesheet" href="../libs/fontawesome-free-5.15.3-web/css/all.min.css">
         <link rel="stylesheet" href="../statics/styles/basics.css">
         <link rel="stylesheet" href="../statics/styles/admin.css">
@@ -18,9 +19,10 @@
                  <div class="link"><a href="./admin.html">Administrar</a></div>
                  <div class="link"><i class="fas fa-paint-roller"></i></div>
          </nav>
+        <button type="button" id="crear">Crear usuario</button>
         <div id="contTabla">
             <table border='1'>
-                <thead>
+                <thead style="background-color: var(--azul);">
                     <tr>
                         <th>Tipo</th>
                         <th>Nombre</th>
@@ -31,7 +33,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody style="background-color: var(--azul);"></tbody>
             </table>
         </div>
         <div id='miModal'>
@@ -143,6 +145,5 @@
                 </div>
             </div>
         </div>
-        <button type="button" id="crear">Crear usuario</button>
     </body>
 </html>
