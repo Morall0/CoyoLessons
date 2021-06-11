@@ -28,3 +28,5 @@
     * En la vista de principal se encuentran los filtros de búsqueda y la parte de agendar o cancelar una asesoría. Inicio es la parte en la que podrás crear una cuenta o usar         tus datos para entrar en el caso de ya tener una cuenta. Perfil contiene los datos dados en tu registro, las asesorías que agendasre, las clases que tienes pendientes, los       temas que dominas y los horarios en los que estás disponible. Para entrar a historial tienes que ingresar primero tu perfil y buscar esa opción, ahí podrás ver las               asesorías que ya tomaste. En créditos está la informacón de los creadores de la página. Para poder ingresar a administración se necesita tener una cuenta especial, la           razón es que en este apartado se encuentra información importante y de mucho cuidado.
   
   4. Comentarios adicionales a su proyecto.
+     * El paso que debes de seguir para tener privilegios en tu base de datos es: emysqldump coyolessons -u CREATE USER 'coyolessons'@'localhost' IDENTIFIED BY 'c0yol3$$0nS?';
+
