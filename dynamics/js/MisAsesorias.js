@@ -1,4 +1,4 @@
-$(document).ready(()=>{
+$(document).ready(()=>
     //Funcion que nos permite hacer petiiciones.
     function peticion(url, data=""){
         let peticion =$.ajax({
@@ -16,7 +16,6 @@ $(document).ready(()=>{
             $("#tablasec").html(resp)
         });
         tabla.fail((resp)=>{
-            alert("fallo tabla");
         });
     }
 
@@ -78,7 +77,7 @@ $(document).ready(()=>{
             ctx.fillText("Asesor: "+datos[7], 0, canvas.height*.9);
         ctx.closePath();
     }
-    
+
     //abrir y cerrar el modal
     $("#botonAsesoria").click(()=>{
         $("#miModal").css("display", "block");
@@ -100,7 +99,6 @@ $(document).ready(()=>{
             $("#materias").html(resp);
         })
         materias.fail((resp)=>{
-            alert("fallaron las materias");
         })
 
     })
@@ -111,19 +109,15 @@ $(document).ready(()=>{
             $("#horario").html("<option selected>Elige un horario</option>"+resp);
         })
         horario.fail((resp)=>{
-          alert("fallaron los horarios");
         })
     })
     $("#horario").on("change",()=>{
         let valorhorario= $("#horario").val();
-        console.log(valorhorario);
         let horariofecha = peticion('../dynamics/php/misAsesorias.php', 'sesion='+true+'&valorhorario='+valorhorario);
         horariofecha.done((resp)=>{
-            console.log(resp);
             $("#fecha").html(resp);
         })
         horariofecha.fail((resp)=>{
-          alert("fallaron las fechas de los horarios");
         })
 
     })
@@ -147,10 +141,8 @@ $(document).ready(()=>{
             canvasAsesoria(ctx, resp);
             $("#miModal").css("display", "none");
             $("#crearAsesoria")[0].reset();
-            
         })
         crear.fail((resp)=>{
-          alert("falló el form");
         })
     })
     //Cargar tabla
@@ -159,26 +151,20 @@ $(document).ready(()=>{
     let body= $(document.body);
     $(body).on('click','.borrar', function(){
         let boton = $(this).attr("id");
-        alert(boton);
         let eliminar = peticion("../dynamics/php/MisAsesorias.php", "sesion="+true+"&delete="+boton);
         eliminar.done((resp)=>{
-            alert(resp+"respuesta");
             tabla();
         });
         eliminar.fail((resp)=>{
-            alert("Hubo un problema para procesar tu peticion");
         });
     });
     $(body).on('click','.estado', function(){
         let boton = $(this).attr("id");
-        alert(boton);
         let estado= peticion("../dynamics/php/MisAsesorias.php", "sesion="+true+"&valorhorario="+boton+"&estadoases="+true);
         estado.done((resp)=>{
-            alert(resp);
             tabla();
         });
         estado.fail((resp)=>{
-            alert("Hubo un problema para procesar tu peticion");
         });
     });
 
