@@ -108,10 +108,10 @@ $(document).ready(()=>{
     $(body).on('click','.estado', function(){
         let boton = $(this).attr("id");
         alert(boton);
-        let estado= peticion("../dynamics/php/MisAsesorias.php", "sesion="+true+"&estadoases="+boton);
+        let estado= peticion("../dynamics/php/MisAsesorias.php", "sesion="+true+"&valorhorario="+boton+"&estadoases="+true);
         estado.done((resp)=>{
-            //alert(resp+"respuesta");
-            //tabla();
+            alert(resp);
+            tabla();
         });
         estado.fail((resp)=>{
             alert("Hubo un problema para procesar tu peticion");
